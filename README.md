@@ -8,28 +8,14 @@
 <meta name="keywords" content="Astore, Tourism, Tourist Hub, Room Booking, Car Booking, Tour Packages, Asim Khanzai">
 <meta name="author" content="Asim Khanzai">
 
-<!-- Open Graph & Twitter Card -->
-<meta property="og:title" content="Astore Tourist Information Hub">
-<meta property="og:description" content="Book rooms, cars, and tours in Astore with Asim Khanzai. Professional tourist guide services.">
-<meta property="og:image" content="https://i.ibb.co/2jL0MDK/mountains.jpg">
-<meta property="og:url" content="https://yourwebsite.com">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Astore Tourist Information Hub">
-<meta name="twitter:description" content="Book rooms, cars, and tours in Astore with Asim Khanzai. Professional tourist guide services.">
-<meta name="twitter:image" content="https://i.ibb.co/2jL0MDK/mountains.jpg">
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 
 <style>
-/* Reset */
 *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 body{font-family:'Poppins',sans-serif;color:#fff;overflow-x:hidden;transition:0.5s;}
 
-/* Dark/Light mode */
 :root{
-  --bg-color:#000428;
   --bg-gradient:linear-gradient(270deg,#000428,#004e92,#001f3f,#000428);
   --text-color:#00eaff;
   --card-bg:rgba(0,0,0,0.35);
@@ -37,7 +23,6 @@ body{font-family:'Poppins',sans-serif;color:#fff;overflow-x:hidden;transition:0.
   --button-bg:#00eaff;
 }
 body.light-mode{
-  --bg-color:#e0f7fa;
   --bg-gradient:linear-gradient(270deg,#e0f7fa,#80deea,#4dd0e1,#e0f7fa);
   --text-color:#004e92;
   --card-bg:rgba(255,255,255,0.85);
@@ -60,11 +45,6 @@ body.light-mode{
 .logo{text-align:center;font-size:42px;font-weight:700;color:var(--text-color);text-shadow:0 0 15px var(--text-color),0 0 30px #00ffff;margin-bottom:20px;font-family:'Orbitron',sans-serif;animation:glowPulse 2s infinite alternate;}
 @keyframes glowPulse{0%{text-shadow:0 0 15px #00eaff,0 0 30px #00ffff;}100%{text-shadow:0 0 25px #00eaff,0 0 50px #00ffff;}}
 
-/* Hero slideshow */
-.slideshow-container{position:relative;margin:auto;overflow:hidden;border-radius:15px;box-shadow:var(--card-shadow);margin-bottom:30px;}
-.slide{display:none;opacity:0;transition:1s;}
-.slide.active{display:block;opacity:1;}
-
 /* Hero text */
 .hero-text{text-align:center;margin-bottom:30px;opacity:0;transform:translateY(30px);transition:1s;}
 .hero-text.show{opacity:1;transform:translateY(0);}
@@ -85,7 +65,9 @@ button:hover{background:#00bcd4;box-shadow:0 0 20px #00ffff;}
 .package:hover{transform:scale(1.05);box-shadow:0 0 30px #00ffff;animation:packagePulse 1.5s infinite alternate;}
 .package h3{text-shadow:0 0 10px var(--text-color);font-family:'Orbitron',sans-serif;}
 .package p{font-size:14px;color:#a7f5ff;}
+.package i{font-size:32px;color:#00eaff;margin-bottom:10px;display:block;animation:iconPulse 2s infinite alternate;}
 @keyframes packagePulse{0%{box-shadow:0 0 30px #00eaff;}100%{box-shadow:0 0 50px #00ffff;}}
+@keyframes iconPulse{0%{text-shadow:0 0 10px #00eaff,0 0 20px #00ffff;}100%{text-shadow:0 0 20px #00eaff,0 0 40px #00ffff;}}
 
 /* Map */
 .map-container{margin-top:30px;border-radius:15px;overflow:hidden;box-shadow:var(--card-shadow);transition:0.5s;opacity:0;transform:translateY(30px);}
@@ -115,10 +97,8 @@ button:hover{background:#00bcd4;box-shadow:0 0 20px #00ffff;}
 <body>
 <div class="bg-animate"></div>
 
-<!-- Mode toggle -->
 <button class="mode-toggle" onclick="toggleMode()">Toggle Dark/Light</button>
 
-<!-- Floating particles -->
 <script>
 for(let i=0;i<50;i++){
     let p=document.createElement("div");
@@ -132,14 +112,6 @@ for(let i=0;i<50;i++){
 
 <div class="container">
   <div class="logo">Astore Tourist Hub</div>
-
-  <!-- Hero slideshow -->
-  <div class="slideshow-container">
-      <div class="slide active"><img src="https://i.ibb.co/2jL0MDK/mountains.jpg" alt="Mountains"></div>
-      <div class="slide"><img src="https://i.ibb.co/s3Xs1H0/lake.jpg" alt="Lake"></div>
-      <div class="slide"><img src="https://i.ibb.co/x3tFLYc/valley.jpg" alt="Valley"></div>
-  </div>
-
   <div class="hero-text"> <p>Owner: Asim Khanzai | WhatsApp: 03171588489 | Email: mohammadasimkhan2746@gmail.com</p></div>
 
   <!-- Room Booking -->
@@ -177,9 +149,9 @@ for(let i=0;i<50;i++){
   <!-- Packages -->
   <h2 style="text-shadow:0 0 10px var(--text-color);">Tour Packages</h2>
   <div class="packages">
-      <div class="package"><h3>Basic Package</h3><p>2 Nights, 3 Days<br>Standard Room + Local Guide</p></div>
-      <div class="package"><h3>Luxury Package</h3><p>4 Nights, 5 Days<br>Luxury Room + Car + Guide</p></div>
-      <div class="package"><h3>Adventure Package</h3><p>5 Nights, 6 Days<br>Family Suite + Jeep Tour + Hiking</p></div>
+      <div class="package"><i class="fa-solid fa-mountain"></i><h3>Basic Package</h3><p>2 Nights, 3 Days<br>Standard Room + Local Guide</p></div>
+      <div class="package"><i class="fa-solid fa-car"></i><h3>Luxury Package</h3><p>4 Nights, 5 Days<br>Luxury Room + Car + Guide</p></div>
+      <div class="package"><i class="fa-solid fa-person-hiking"></i><h3>Adventure Package</h3><p>5 Nights, 6 Days<br>Family Suite + Jeep Tour + Hiking</p></div>
   </div>
 
   <!-- Map -->
@@ -188,10 +160,8 @@ for(let i=0;i<50;i++){
       <iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
   </div>
 
-  <!-- Contact -->
   <div class="contact"><p><i class="fa-solid fa-envelope"></i> Email: mohammadasimkhan2746@gmail.com</p></div>
 
-  <!-- Social Share -->
   <div class="social-share">
       <a href="https://wa.me/923171588489" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
       <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
@@ -199,21 +169,13 @@ for(let i=0;i<50;i++){
   </div>
 </div>
 
-<!-- Floating WhatsApp Button -->
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Dark/Light mode toggle
 function toggleMode(){document.body.classList.toggle("light-mode");}
 
-// Hero slideshow
-let slideIndex=0;
-function showSlides(){let slides=document.getElementsByClassName("slide");
-for(let i=0;i<slides.length;i++){slides[i].classList.remove("active");}
-slideIndex++;if(slideIndex>slides.length){slideIndex=1;}
-slides[slideIndex-1].classList.add("active");
-setTimeout(showSlides,4000);}
-showSlides();
+// Floating particles
+// Already created in top
 
 // Booking Forms WhatsApp
 document.getElementById("roomForm").addEventListener("submit",function(e){
