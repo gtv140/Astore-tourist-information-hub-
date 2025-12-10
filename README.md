@@ -41,7 +41,7 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 .contact{margin-top:20px;text-align:center;font-size:16px;color:#00eaff;}
 #authContainer,#dashboard{max-width:700px;margin:40px auto;background:rgba(0,0,0,0.4);padding:25px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 25px #00eaff;text-align:center;}
 .dashboard-section{display:none;}
-.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:0;width:100%;background:rgba(0,0,0,0.4);padding:10px 0;box-shadow:0 0 20px #00eaff;border-top:1px solid #00eaff;z-index:999;border-radius:15px 15px 0 0;}
+.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.4);padding:10px 0;box-shadow:0 0 20px #00eaff;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;position:relative;}
 .icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
 .icon-item i:hover{color:#00fff0;transform:scale(1.2);}
@@ -91,6 +91,7 @@ for(let i=0;i<60;i++){
 <!-- DASHBOARD -->
 <div id="dashboard">
 <h2>Welcome, <span id="userDisplay"></span>! <i class="fa-solid fa-user icon"></i></h2>
+<button id="logoutBtn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
 
 <div id="room" class="dashboard-section">
 <h2>Room Booking</h2>
@@ -179,6 +180,11 @@ function login(){
   }else{alert("Invalid credentials");}
 }
 
+function logout(){
+  localStorage.removeItem("loggedInUser");
+  showLogin();
+}
+
 function showSignup(){document.getElementById("signupDiv").style.display="block";document.getElementById("loginDiv").style.display="none";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
 function showLogin(){document.getElementById("signupDiv").style.display="none";document.getElementById("loginDiv").style.display="block";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
 
@@ -252,12 +258,14 @@ function loadHistory(){
       div.style.border="1px solid #00eaff"; 
       div.style.padding="8px"; 
       div.style.margin="5px"; 
-      div.style.borderRadius="8px";
-      let content="";
-      if(b.type==="Room"){
-        content=`Room Booking:<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}<br>Room: ${b.room}`;
-      } else if(b.type==="Car"){
-        content=`Car Booking:<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Pickup Date: ${b.date}<br>Car: ${b.car}<br>Car Type: ${b.car}`;
+      div.style.borderRadius = "10px";
+      div.style.background = "rgba(0,0,0,0.2)";
+      div.style.boxShadow = "0 0 10px #00eaff";
+      let content = "";
+      if(b.type === "Room"){
+        content = `<strong>Room Booking</strong><br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}<br>Room: ${b.room}`;
+      } else if(b.type === "Car"){
+        content = `<strong>Car Booking</strong><br>Name: ${b.name}<br>Phone: ${b.phone}<br>Pickup Date: ${b.date}<br>Car: ${b.car}`;
       }
       div.innerHTML = content;
       list.appendChild(div);
@@ -267,19 +275,10 @@ function loadHistory(){
   }
 }
 
-// Logout
-function logout(){
-  localStorage.removeItem("loggedInUser");
-  showLogin();
+// Initialize dashboard if already logged in
+if(localStorage.getItem("loggedInUser")){
+  showDashboard();
 }
-
-// Show logout button when dashboard visible
-const logoutBtn = document.createElement("button");
-logoutBtn.id = "logoutBtn";
-logoutBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
-logoutBtn.onclick = logout;
-document.body.appendChild(logoutBtn);
 </script>
-
 </body>
 </html>
