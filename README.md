@@ -1,4 +1,4 @@
-<ASTORE TOURIST INFORMATION HUB>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,14 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-body{font-family:'Poppins',sans-serif;color:#fff;overflow-x:hidden;transition:0.5s;}
-:root{--bg-gradient:linear-gradient(270deg,#000000,#0f0f0f,#001f3f,#000000);--text-color:#00eaff;--card-bg:rgba(0,0,0,0.4);--card-shadow:0 0 25px #00eaff;--button-bg:#00eaff;}
-body.light-mode{--bg-gradient:linear-gradient(270deg,#e0f7fa,#80deea,#4dd0e1,#e0f7fa);--text-color:#004e92;--card-bg:rgba(255,255,255,0.85);--card-shadow:0 0 20px #004e92;--button-bg:#004e92;}
+/* MOBILE-FIRST STYLING */
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;font-family:'Poppins',sans-serif;}
+body{color:#fff;overflow-x:hidden;transition:0.5s;font-size:14px;}
+:root{--bg-gradient:linear-gradient(270deg,#000000,#0f0f0f,#001f3f,#000000);--text-color:#00eaff;--card-bg:rgba(0,0,0,0.4);--card-shadow:0 0 20px #00eaff;--button-bg:#00eaff;}
+body.light-mode{--bg-gradient:linear-gradient(270deg,#e0f7fa,#80deea,#4dd0e1,#e0f7fa);--text-color:#004e92;--card-bg:rgba(255,255,255,0.85);--card-shadow:0 0 15px #004e92;--button-bg:#004e92;}
 .bg-animate{position:fixed;width:100%;height:100%;background:var(--bg-gradient);background-size:800% 800%;animation:gradientBG 20s ease infinite;z-index:-3;}
 @keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 .stripes{position:fixed;width:100%;height:100%;z-index:-1;overflow:hidden;}
-.stripe{position:absolute;width:3px;height:200%;background:rgba(0,255,255,0.05);top:-50%;animation:moveStripe linear infinite;}
+.stripe{position:absolute;width:2px;height:200%;background:rgba(0,255,255,0.05);top:-50%;animation:moveStripe linear infinite;}
 .stripe:nth-child(1){left:10%;animation-duration:18s;}
 .stripe:nth-child(2){left:25%;animation-duration:22s;}
 .stripe:nth-child(3){left:40%;animation-duration:20s;}
@@ -23,90 +24,64 @@ body.light-mode{--bg-gradient:linear-gradient(270deg,#e0f7fa,#80deea,#4dd0e1,#e0
 @keyframes moveStripe{0%{transform:translateY(0) rotate(20deg);}100%{transform:translateY(100%) rotate(20deg);}}
 .particle{position:fixed;width:6px;height:6px;background:#00eaff;border-radius:50%;opacity:0.7;animation:floatUp linear infinite;}
 @keyframes floatUp{0%{transform:translateY(110vh);}100%{transform:translateY(-10vh);}}
-.container{max-width:1100px;margin:60px auto;background:var(--card-bg);padding:30px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:var(--card-shadow);transition:0.5s;}
-.logo{text-align:center;font-size:46px;font-weight:700;color:var(--text-color);text-shadow:0 0 15px var(--text-color),0 0 30px #00ffff;margin-bottom:20px;font-family:'Orbitron',sans-serif;animation:glowPulse 2s infinite alternate;}
-@keyframes glowPulse{0%{text-shadow:0 0 15px #00eaff,0 0 30px #00ffff;}100%{text-shadow:0 0 30px #00eaff,0 0 60px #00ffff;}}
-.hero-text{text-align:center;margin-bottom:30px;font-size:18px;font-weight:500;background:linear-gradient(90deg,#00eaff,#00ff99,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:0;transform:translateY(30px);transition:1s;}
+.logo{text-align:center;font-size:36px;font-weight:700;color:var(--text-color);text-shadow:0 0 15px var(--text-color),0 0 25px #00ffff;margin-bottom:15px;font-family:'Orbitron',sans-serif;animation:glowPulse 2s infinite alternate;}
+@keyframes glowPulse{0%{text-shadow:0 0 15px #00eaff,0 0 30px #00ffff;}100%{text-shadow:0 0 25px #00eaff,0 0 50px #00ffff;}}
+.hero-text{text-align:center;margin-bottom:20px;font-size:14px;font-weight:500;background:linear-gradient(90deg,#00eaff,#00ff99,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:0;transform:translateY(20px);transition:1s;}
 .hero-text.show{opacity:1;transform:translateY(0);}
-label{margin-top:12px;display:block;font-weight:500;}
-input,select{width:100%;padding:12px;margin-top:6px;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:#fff;font-size:15px;transition:0.3s;}
+input,select{width:100%;padding:10px;margin-top:6px;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:#fff;font-size:14px;transition:0.3s;}
 input:focus,select:focus{background:rgba(255,255,255,0.25);outline:none;}
-button{width:100%;padding:14px;margin-top:18px;border:none;border-radius:10px;background:var(--button-bg);color:#000;font-size:18px;font-weight:600;cursor:pointer;transition:0.3s, box-shadow 0.5s;animation:btnPulse 2s infinite alternate;}
-button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
-@keyframes btnPulse{0%{box-shadow:0 0 15px #00eaff;}100%{box-shadow:0 0 30px #00ffff;}}
-.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px;}
-.package{background:var(--card-bg);padding:20px;border-radius:15px;box-shadow:var(--card-shadow);text-align:center;transition:0.3s, transform 0.5s;opacity:0;transform:translateY(30px);}
-.package.show{opacity:1;transform:translateY(0);}
-.package:hover{transform:scale(1.05);box-shadow:0 0 40px #00ffff;animation:packagePulse 1.5s infinite alternate;}
-.package h3{text-shadow:0 0 15px #00eaff;font-family:'Orbitron',sans-serif;}
-.package p{font-size:14px;color:#a7f5ff;}
-.package i{font-size:36px;color:#00eaff;margin-bottom:10px;display:block;animation:iconPulse 2s infinite alternate;}
-@keyframes packagePulse{0%{box-shadow:0 0 30px #00eaff;}100%{box-shadow:0 0 50px #00ffff;}}
-@keyframes iconPulse{0%{text-shadow:0 0 10px #00eaff,0 0 20px #00ffff;}100%{text-shadow:0 0 20px #00eaff,0 0 40px #00ffff;}}
-.map-container{margin-top:30px;border-radius:15px;overflow:hidden;box-shadow:var(--card-shadow);transition:0.5s;opacity:0;transform:translateY(30px);}
-.map-container.show{opacity:1;transform:translateY(0);}
-.contact{margin-top:30px;text-align:center;font-size:16px;opacity:0;transform:translateY(30px);transition:1s;}
-.contact.show{opacity:1;transform:translateY(0);}
-.contact i{margin-right:8px;color:var(--text-color);}
-.social-share{margin-top:20px;text-align:center;opacity:0;transform:translateY(30px);transition:1s;}
-.social-share.show{opacity:1;transform:translateY(0);}
-.social-share a{margin:0 10px;font-size:28px;color:var(--text-color);text-decoration:none;transition:0.3s;}
-.social-share a:hover{color:#00fff0;transform:scale(1.3);}
-.whatsapp-btn{position:fixed;right:20px;bottom:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s, box-shadow 0.5s;animation:whatsappPulse 2s infinite alternate;}
-.whatsapp-btn:hover{transform:scale(1.1);}
-@keyframes whatsappPulse{0%{box-shadow:0 0 15px #25d366;}100%{box-shadow:0 0 30px #00ff99;}}
-.mode-toggle{position:fixed;top:20px;right:20px;padding:10px 14px;background:#00eaff;color:#000;border:none;border-radius:10px;cursor:pointer;z-index:999;transition:0.3s;}
-.mode-toggle:hover{background:#00bcd4;}
-#authContainer,#dashboard{max-width:700px;margin:40px auto;background:var(--card-bg);padding:25px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:var(--card-shadow);text-align:center;}
+button{width:100%;padding:12px;margin-top:12px;border:none;border-radius:10px;background:var(--button-bg);color:#000;font-size:16px;font-weight:600;cursor:pointer;transition:0.3s, box-shadow 0.5s;animation:btnPulse 2s infinite alternate;}
+button:hover{background:#00bcd4;box-shadow:0 0 20px #00ffff;}
+@keyframes btnPulse{0%{box-shadow:0 0 12px #00eaff;}100%{box-shadow:0 0 25px #00ffff;}}
+.container,#authContainer,#dashboard{max-width:400px;margin:20px auto;background:var(--card-bg);padding:20px;border-radius:15px;backdrop-filter:blur(8px);box-shadow:var(--card-shadow);text-align:center;}
 .dashboard-section{display:none;}
-.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:70px;width:100%;background:rgba(0,0,0,0.4);padding:10px 0;box-shadow:0 0 20px #00eaff;border-top:1px solid #00eaff;z-index:999;border-radius:15px 15px 0 0;}
+.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:0;width:100%;background:rgba(0,0,0,0.5);padding:10px 0;box-shadow:0 0 15px #00eaff;border-top:1px solid #00eaff;z-index:999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;position:relative;}
-.icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
+.icon-item i{font-size:24px;color:#00eaff;cursor:pointer;transition:0.3s;}
 .icon-item i:hover{color:#00fff0;transform:scale(1.2);}
-.icon-item span{display:block;font-size:12px;margin-top:4px;}
-#logoutBtn{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);padding:10px 18px;}
+.icon-item span{display:block;font-size:10px;margin-top:2px;}
+#logoutBtn{position:fixed;bottom:50px;left:50%;transform:translateX(-50%);padding:8px 14px;font-size:14px;}
 </style>
 </head>
 <body>
 <div class="bg-animate"></div>
 <div class="stripes"><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div></div>
-<button class="mode-toggle" onclick="toggleMode()">Toggle Dark/Light</button>
+<button class="mode-toggle" onclick="toggleMode()">Toggle</button>
 <script>
-for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(8+Math.random()*7)+"s";p.style.opacity=Math.random()*0.7+0.3;document.body.appendChild(p);}
+for(let i=0;i<50;i++){let p=document.createElement("div");p.className="particle";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(6+Math.random()*6)+"s";p.style.opacity=Math.random()*0.7+0.3;document.body.appendChild(p);}
 </script>
 
 <div id="authContainer">
 <h2 class="logo">Astore Tourist Hub</h2>
-<div class="hero-text show">Owner: Asim Khanzai | WhatsApp: 03171588489 | Email: mohammadasimkhan2746@gmail.com</div>
+<div class="hero-text show">Owner: Asim Khanzai | WhatsApp: 03171588489</div>
 
 <div id="signupDiv">
 <h3>Signup <i class="fa-solid fa-user-plus icon"></i></h3>
-<input type="text" id="signupUsername" placeholder="Username" required>
-<input type="password" id="signupPassword" placeholder="Password" required>
+<input type="text" id="signupUsername" placeholder="Username">
+<input type="password" id="signupPassword" placeholder="Password">
 <button onclick="signup()">Signup</button>
 <p class="message">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
 </div>
 
 <div id="loginDiv" style="display:none;">
 <h3>Login <i class="fa-solid fa-right-to-bracket icon"></i></h3>
-<input type="text" id="loginUsername" placeholder="Username" required>
-<input type="password" id="loginPassword" placeholder="Password" required>
+<input type="text" id="loginUsername" placeholder="Username">
+<input type="password" id="loginPassword" placeholder="Password">
 <button onclick="login()">Login</button>
 <p class="message">Don't have an account? <a href="#" onclick="showSignup()">Signup</a></p>
 </div>
 </div>
 
 <div id="dashboard" style="display:none;">
-<h2>Welcome, <span id="userDisplay"></span>! <i class="fa-solid fa-user icon"></i></h2>
+<h2>Welcome, <span id="userDisplay"></span>!</h2>
 
 <div id="room" class="dashboard-section">
 <h2>Room Booking</h2>
 <form id="roomForm">
-<label>Name</label><input type="text" id="rname" required>
-<label>Phone</label><input type="text" id="rphone" required>
-<label>Check-in</label><input type="date" id="rcheckin" required>
-<label>Check-out</label><input type="date" id="rcheckout" required>
-<label>Room Type</label>
+<input type="text" id="rname" placeholder="Name" required>
+<input type="text" id="rphone" placeholder="Phone" required>
+<input type="date" id="rcheckin" required>
+<input type="date" id="rcheckout" required>
 <select id="rtype" required>
 <option>Standard Room</option>
 <option>Luxury Room</option>
@@ -119,10 +94,9 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <div id="car" class="dashboard-section">
 <h2>Car Booking</h2>
 <form id="carForm">
-<label>Name</label><input type="text" id="cname" required>
-<label>Phone</label><input type="text" id="cphone" required>
-<label>Pickup Date</label><input type="date" id="cdate" required>
-<label>Car Type</label>
+<input type="text" id="cname" placeholder="Name" required>
+<input type="text" id="cphone" placeholder="Phone" required>
+<input type="date" id="cdate" required>
 <select id="ctype" required>
 <option>Corolla</option>
 <option>Hiace</option>
@@ -133,67 +107,60 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 </form>
 </div>
 
-<div id="packages" class="dashboard-section packages">
-<div class="package"><i class="fa-solid fa-mountain"></i><h3>Basic Package</h3><p>2 Nights, 3 Days<br>Standard Room + Local Guide</p></div>
-<div class="package"><i class="fa-solid fa-car"></i><h3>Luxury Package</h3><p>4 Nights, 5 Days<br>Luxury Room + Car + Guide</p></div>
-<div class="package"><i class="fa-solid fa-person-hiking"></i><h3>Adventure Package</h3><p>5 Nights, 6 Days<br>Family Suite + Jeep Tour + Hiking</p></div>
+<div id="packages" class="dashboard-section">
+<div class="package"><i class="fa-solid fa-mountain"></i> Basic Package</div>
+<div class="package"><i class="fa-solid fa-car"></i> Luxury Package</div>
+<div class="package"><i class="fa-solid fa-person-hiking"></i> Adventure Package</div>
 </div>
 
-<div id="map" class="dashboard-section map-container">
-<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</div>
-
-<div id="contact" class="dashboard-section contact">
-<p>Email: mohammadasimkhan2746@gmail.com</p>
-<p>Owner: Asim Khanzai | WhatsApp: 03171588489</p>
-</div>
-
-<div class="booking-history dashboard-section" id="historySection">
-<h4>Booking History</h4>
+<div id="historySection" class="dashboard-section">
+<h3>Booking History</h3>
 <div id="historyList"></div>
 </div>
 
 <div class="icon-menu">
-<div class="icon-item"><i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span></div>
-<div class="icon-item"><i class="fa-solid fa-car" onclick="showSection('car')"></i><span>Car</span></div>
-<div class="icon-item"><i class="fa-solid fa-mountain" onclick="showSection('packages')"></i><span>Packages</span></div>
-<div class="icon-item"><i class="fa-solid fa-map-location-dot" onclick="showSection('map')"></i><span>Map</span></div>
-<div class="icon-item"><i class="fa-solid fa-envelope" onclick="showSection('contact')"></i><span>Contact</span></div>
+<div class="icon-item" onclick="showSection('room')"><i class="fa-solid fa-bed"></i><span>Room</span></div>
+<div class="icon-item" onclick="showSection('car')"><i class="fa-solid fa-car"></i><span>Car</span></div>
+<div class="icon-item" onclick="showSection('packages')"><i class="fa-solid fa-mountain"></i><span>Packages</span></div>
+<div class="icon-item" onclick="showSection('historySection')"><i class="fa-solid fa-list"></i><span>History</span></div>
 </div>
 
-<button id="logoutBtn" onclick="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></button>
+<button id="logoutBtn" onclick="logout()">Logout</button>
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Dark/Light mode
+// Dark/Light
 function toggleMode(){document.body.classList.toggle("light-mode");}
 
-// Signup/Login/Logout
+// Signup/Login
 function signup(){
   const u=document.getElementById("signupUsername").value.trim();
   const p=document.getElementById("signupPassword").value.trim();
-  if(!u||!p){alert("Fill all fields"); return;}
+  if(!u||!p){alert("Fill all"); return;}
   let users=JSON.parse(localStorage.getItem("users"))||{};
   if(users[u]){alert("Username exists"); return;}
   users[u]={password:p,history:[]};
   localStorage.setItem("users",JSON.stringify(users));
-  alert("Signup successful! Login now"); showLogin();
+  alert("Signup success!"); showLogin();
 }
+
 function login(){
   const u=document.getElementById("loginUsername").value.trim();
   const p=document.getElementById("loginPassword").value.trim();
   let users=JSON.parse(localStorage.getItem("users"))||{};
   if(users[u] && users[u].password===p){
     localStorage.setItem("loggedInUser",u); showDashboard();
-  }else{alert("Invalid credentials");}
+  }else{alert("Invalid");}
 }
+
 function logout(){
-  localStorage.removeItem("loggedInUser"); showLogin();
+  localStorage.removeItem("loggedInUser");
+  showLogin();
 }
+
 function showSignup(){document.getElementById("signupDiv").style.display="block";document.getElementById("loginDiv").style.display="none";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
 function showLogin(){document.getElementById("signupDiv").style.display="none";document.getElementById("loginDiv").style.display="block";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
 
-// Dashboard & Sections
 function showDashboard(){
   const u=localStorage.getItem("loggedInUser");
   if(!u){showLogin(); return;}
@@ -203,85 +170,61 @@ function showDashboard(){
   showSection('room');
   loadHistory();
 }
+
 function showSection(section){
   document.querySelectorAll(".dashboard-section").forEach(s=>s.style.display="none");
   document.getElementById(section).style.display="block";
 }
 
-// Booking forms
+// Room Booking
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
   const u=localStorage.getItem("loggedInUser");
   if(!u)return alert("Login first");
   let users=JSON.parse(localStorage.getItem("users"))||{};
-  const roomData={
-    type:"Room",
-    name:document.getElementById("rname").value,
-    phone:document.getElementById("rphone").value,
-    checkin:document.getElementById("rcheckin").value,
-    checkout:document.getElementById("rcheckout").value,
-    rtype:document.getElementById("rtype").value,
-    date:new Date().toLocaleString()
-  };
+  const roomData={type:"Room",name:document.getElementById("rname").value,phone:document.getElementById("rphone").value,checkin:document.getElementById("rcheckin").value,checkout:document.getElementById("rcheckout").value,rtype:document.getElementById("rtype").value,date:new Date().toLocaleString()};
   users[u].history.push(roomData);
   localStorage.setItem("users",JSON.stringify(users));
-  alert("Room booked successfully!");
+  alert("Room booked!");
   document.getElementById("roomForm").reset();
   loadHistory();
 });
 
+// Car Booking
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
   const u=localStorage.getItem("loggedInUser");
   if(!u)return alert("Login first");
   let users=JSON.parse(localStorage.getItem("users"))||{};
-  const carData={
-    type:"Car",
-    name:document.getElementById("cname").value,
-    phone:document.getElementById("cphone").value,
-    pickup:document.getElementById("cdate").value,
-    ctype:document.getElementById("ctype").value,
-    date:new Date().toLocaleString()
-  };
+  const carData={type:"Car",name:document.getElementById("cname").value,phone:document.getElementById("cphone").value,pickup:document.getElementById("cdate").value,ctype:document.getElementById("ctype").value,date:new Date().toLocaleString()};
   users[u].history.push(carData);
   localStorage.setItem("users",JSON.stringify(users));
-  alert("Car booked successfully!");
+  alert("Car booked!");
   document.getElementById("carForm").reset();
   loadHistory();
 });
 
-// Load Booking History
+// Booking History
 function loadHistory(){
   const u=localStorage.getItem("loggedInUser");
   if(!u)return;
   let users=JSON.parse(localStorage.getItem("users"))||{};
   const historyList=document.getElementById("historyList");
   historyList.innerHTML="";
-  if(users[u].history.length===0){
-    historyList.innerHTML="<p>No bookings yet.</p>";
-    return;
-  }
-  users[u].history.slice().reverse().forEach((b,i)=>{
+  if(users[u].history.length===0){historyList.innerHTML="<p>No bookings yet.</p>";return;}
+  users[u].history.slice().reverse().forEach(b=>{
     const div=document.createElement("div");
     div.style.background="rgba(0,255,255,0.1)";
-    div.style.padding="10px";
-    div.style.margin="8px 0";
-    div.style.borderRadius="10px";
-    div.innerHTML=`<strong>${b.type} Booking</strong><br>
-    Name: ${b.name}<br>
-    Phone: ${b.phone}<br>
-    ${b.type==="Room" ? `Room: ${b.rtype}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}` : `Car: ${b.ctype}<br>Pickup: ${b.pickup}`}<br>
-    Date: ${b.date}`;
+    div.style.padding="8px";div.style.margin="6px 0";div.style.borderRadius="8px";
+    div.innerHTML=`<strong>${b.type} Booking</strong><br>Name: ${b.name}<br>Phone: ${b.phone}<br>${b.type==="Room"?`Room: ${b.rtype}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}`:`Car: ${b.ctype}<br>Pickup: ${b.pickup}`}<br>Date: ${b.date}`;
     historyList.appendChild(div);
   });
 }
 
-// Show hero-text animation
-window.addEventListener("load",()=>{document.querySelector(".hero-text").classList.add("show");});
-
-// Show packages animation
-document.querySelectorAll(".package").forEach((pkg,i)=>{
-  setTimeout(()=>{pkg.classList.add("show");},i*300);
+// Auto login if refresh
+window.addEventListener("load",()=>{
+  const u=localStorage.getItem("loggedInUser");
+  if(u) showDashboard();
 });
 </script>
 </body>
