@@ -1,4 +1,4 @@
-<ASTORE TOURIST HUB>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -58,10 +58,19 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 .mode-toggle{position:fixed;top:20px;right:20px;padding:10px 14px;background:#00eaff;color:#000;border:none;border-radius:10px;cursor:pointer;z-index:999;transition:0.3s;}
 .mode-toggle:hover{background:#00bcd4;}
 #authContainer,#dashboard{max-width:700px;margin:40px auto;background:var(--card-bg);padding:25px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:var(--card-shadow);text-align:center;}
-.icon-menu{display:flex;justify-content:space-around;margin:20px 0;}
-.icon-menu i{font-size:40px;color:#00eaff;cursor:pointer;transition:0.3s;}
-.icon-menu i:hover{transform:scale(1.2);color:#00fff0;}
 .dashboard-section{display:none;}
+/* ICON MENU BOTTOM */
+.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:80px;width:100%;background:rgba(0,0,0,0.4);padding:10px 0;box-shadow:0 0 20px #00eaff;border-top:1px solid #00eaff;z-index:999;border-radius:15px 15px 0 0;}
+.icon-item{text-align:center;position:relative;}
+.icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
+.icon-item i:hover{color:#00fff0;transform:scale(1.2);}
+.icon-item span{display:block;font-size:12px;margin-top:4px;}
+.dropdown{display:none;position:absolute;bottom:50px;left:-50%;background:rgba(0,0,0,0.9);padding:10px;border-radius:12px;min-width:180px;box-shadow:0 0 20px #00eaff;z-index:99;transform:scaleY(0);transform-origin:bottom;transition:0.3s ease;}
+.dropdown.show{display:block;transform:scaleY(1);}
+.dropdown p{margin:6px 0;padding:8px 12px;border-radius:8px;cursor:pointer;transition:0.3s, background 0.3s;display:flex;align-items:center;gap:10px;color:#00eaff;}
+.dropdown p:hover{background:#00eaff;color:#000;}
+#logoutBtn{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);}
+@media(max-width:600px){.icon-menu{flex-wrap:wrap;}}
 </style>
 </head>
 <body>
@@ -72,11 +81,10 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(8+Math.random()*7)+"s";p.style.opacity=Math.random()*0.7+0.3;document.body.appendChild(p);}
 </script>
 
-<!-- AUTH -->
+<!-- AUTH CONTAINER -->
 <div id="authContainer">
 <h2 class="logo">Astore Tourist Hub</h2>
 <div class="hero-text show">Owner: Asim Khanzai | WhatsApp: 03171588489 | Email: mohammadasimkhan2746@gmail.com</div>
-
 <div id="signupDiv">
 <h3>Signup <i class="fa-solid fa-user-plus icon"></i></h3>
 <input type="text" id="signupUsername" placeholder="Username" required>
@@ -84,7 +92,6 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <button onclick="signup()">Signup</button>
 <p class="message">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
 </div>
-
 <div id="loginDiv" style="display:none;">
 <h3>Login <i class="fa-solid fa-right-to-bracket icon"></i></h3>
 <input type="text" id="loginUsername" placeholder="Username" required>
@@ -98,26 +105,15 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <div id="dashboard" style="display:none;">
 <h2>Welcome, <span id="userDisplay"></span>! <i class="fa-solid fa-user icon"></i></h2>
 
-<!-- ICON MENU -->
-<div class="icon-menu">
-<i class="fa-solid fa-bed" onclick="showSection('room')"></i>
-<i class="fa-solid fa-car" onclick="showSection('car')"></i>
-<i class="fa-solid fa-mountain" onclick="showSection('packages')"></i>
-<i class="fa-solid fa-map-location-dot" onclick="showSection('map')"></i>
-<i class="fa-solid fa-envelope" onclick="showSection('contact')"></i>
-</div>
-
-<button id="logoutBtn" onclick="logout()">Logout <i class="fa-solid fa-right-from-bracket icon"></i></button>
-
 <!-- SECTIONS -->
 <div id="room" class="dashboard-section">
 <h2>Room Booking</h2>
 <form id="roomForm">
-<label><i class="fa-solid fa-user"></i> Name</label><input type="text" id="rname" required>
-<label><i class="fa-solid fa-phone"></i> Phone</label><input type="text" id="rphone" required>
-<label><i class="fa-solid fa-calendar-days"></i> Check-in Date</label><input type="date" id="rcheckin" required>
-<label><i class="fa-solid fa-calendar-days"></i> Check-out Date</label><input type="date" id="rcheckout" required>
-<label><i class="fa-solid fa-bed"></i> Room Type</label>
+<label>Name</label><input type="text" id="rname" required>
+<label>Phone</label><input type="text" id="rphone" required>
+<label>Check-in</label><input type="date" id="rcheckin" required>
+<label>Check-out</label><input type="date" id="rcheckout" required>
+<label>Room Type</label>
 <select id="rtype" required>
 <option>Standard Room</option>
 <option>Luxury Room</option>
@@ -130,10 +126,10 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <div id="car" class="dashboard-section">
 <h2>Car Booking</h2>
 <form id="carForm">
-<label><i class="fa-solid fa-user"></i> Name</label><input type="text" id="cname" required>
-<label><i class="fa-solid fa-phone"></i> Phone</label><input type="text" id="cphone" required>
-<label><i class="fa-solid fa-calendar-days"></i> Pickup Date</label><input type="date" id="cdate" required>
-<label><i class="fa-solid fa-car"></i> Car Type</label>
+<label>Name</label><input type="text" id="cname" required>
+<label>Phone</label><input type="text" id="cphone" required>
+<label>Pickup Date</label><input type="date" id="cdate" required>
+<label>Car Type</label>
 <select id="ctype" required>
 <option>Corolla</option>
 <option>Hiace</option>
@@ -155,127 +151,174 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 </div>
 
 <div id="contact" class="dashboard-section contact">
-<p><i class="fa-solid fa-envelope"></i> Email: mohammadasimkhan2746@gmail.com</p>
+<p>Email: mohammadasimkhan2746@gmail.com</p>
 <p>Owner: Asim Khanzai | WhatsApp: 03171588489</p>
 </div>
 
 <div class="booking-history dashboard-section" id="historySection">
-<h4>Booking History <i class="fa-solid fa-history icon"></i></h4>
+<h4>Booking History</h4>
 <div id="historyList"></div>
 </div>
 
+<!-- ICON MENU BOTTOM -->
+<div class="icon-menu">
+  <div class="icon-item">
+    <i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span>
+  </div>
+  <div class="icon-item">
+    <i class="fa-solid fa-car" onclick="showSection('car')"></i><span>Car</span>
+  </div>
+  <div class="icon-item">
+    <i class="fa-solid fa-mountain" onclick="showSection('packages')"></i><span>Packages</span>
+  </div>
+  <div class="icon-item">
+    <i class="fa-solid fa-map-location-dot" onclick="showSection('map')"></i><span>Map</span>
+  </div>
+  <div class="icon-item">
+    <i class="fa-solid fa-envelope" onclick="showSection('contact')"></i><span>Contact</span>
+  </div>
 </div>
 
+<button id="logoutBtn" onclick="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></button>
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Toggle dark/light
 function toggleMode(){document.body.classList.toggle("light-mode");}
 
-// login/signup
+// signup/login/logout
 function signup(){
   const u=document.getElementById("signupUsername").value.trim();
   const p=document.getElementById("signupPassword").value.trim();
-  if(!u||!p){alert("Fill all fields."); return;}
+  if(!u||!p){alert("Fill all fields"); return;}
   let users=JSON.parse(localStorage.getItem("users"))||{};
-  if(users[u]){alert("Username exists!");return;}
+  if(users[u]){alert("Username exists"); return;}
   users[u]={password:p,history:[]};
   localStorage.setItem("users",JSON.stringify(users));
-  alert("Signup successful! Login now.");showLogin();
+  alert("Signup successful! Login now"); showLogin();
 }
 function login(){
   const u=document.getElementById("loginUsername").value.trim();
   const p=document.getElementById("loginPassword").value.trim();
   let users=JSON.parse(localStorage.getItem("users"))||{};
-  if(users[u]&&users[u].password===p){localStorage.setItem("loggedInUser",u);showDashboard();}
-  else{alert("Invalid credentials!");}
+  if(users[u]&&users[u].password===p){
+    localStorage.setItem("loggedInUser",u);
+    showDashboard();
+  }else{alert("Invalid credentials");}
 }
-function logout(){localStorage.removeItem("loggedInUser");showLogin();}
+function logout(){
+  localStorage.removeItem("loggedInUser");
+  showLogin();
+}
 function showDashboard(){
   const u=localStorage.getItem("loggedInUser");
-  if(!u)return showLogin();
-  document.getElementById("userDisplay").textContent=u;
+  if(!u){showLogin(); return;}
+  document.getElementBy<script>
+// Show/hide signup & login
+function showSignup(){
+  document.getElementById("signupDiv").style.display="block";
+  document.getElementById("loginDiv").style.display="none";
+  document.getElementById("authContainer").style.display="block";
+  document.getElementById("dashboard").style.display="none";
+}
+function showLogin(){
+  document.getElementById("signupDiv").style.display="none";
+  document.getElementById("loginDiv").style.display="block";
+  document.getElementById("authContainer").style.display="block";
+  document.getElementById("dashboard").style.display="none";
+}
+
+// Show sections
+function showSection(section){
+  const sections = document.querySelectorAll(".dashboard-section");
+  sections.forEach(s=>s.style.display="none");
+  document.getElementById(section).style.display="block";
+}
+
+// Dashboard display
+function showDashboard(){
+  const u = localStorage.getItem("loggedInUser");
+  if(!u){showLogin(); return;}
   document.getElementById("authContainer").style.display="none";
   document.getElementById("dashboard").style.display="block";
-  displayHistory();
+  document.getElementById("userDisplay").textContent = u;
   showSection('room'); // default section
-}
-function showLogin(){document.getElementById("signupDiv").style.display="none";document.getElementById("loginDiv").style.display="block";document.getElementById("dashboard").style.display="none";}
-function showSignup(){document.getElementById("signupDiv").style.display="block";document.getElementById("loginDiv").style.display="none";document.getElementById("dashboard").style.display="none";}
-
-// Section switching
-function showSection(id){
-  document.querySelectorAll('.dashboard-section').forEach(s=>s.style.display='none');
-  if(id==='room' || id==='car') document.getElementById(id).style.display='block';
-  else if(id==='packages') document.getElementById('packages').style.display='grid';
-  else document.getElementById(id).style.display='block';
-  document.getElementById('historySection').style.display='block';
+  loadHistory();
 }
 
 // Booking forms
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const u=localStorage.getItem("loggedInUser");
-  if(!u){alert("Login first!");return;}
-  const rname=document.getElementById("rname").value;
-  const rphone=document.getElementById("rphone").value;
-  const rcheckin=document.getElementById("rcheckin").value;
-  const rcheckout=document.getElementById("rcheckout").value;
-  const rtype=document.getElementById("rtype").value;
-const msg=`Room Booking Request:
-Name: ${rname}
-Phone: ${rphone}
-Check-in: ${rcheckin}
-Check-out: ${rcheckout}
-Room Type: ${rtype}`;
-window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`);
-
-// Save to history
-let users=JSON.parse(localStorage.getItem("users"));
-users[u].history.push({type:"Room",name:rname,phone:rphone,checkin:rcheckin,checkout:rcheckout,room:rtype});
-localStorage.setItem("users",JSON.stringify(users));
-displayHistory();
-this.reset();
+  const u = localStorage.getItem("loggedInUser");
+  if(!u) return alert("Login first");
+  let users = JSON.parse(localStorage.getItem("users"))||{};
+  const booking = {
+    type:"Room",
+    name:document.getElementById("rname").value,
+    phone:document.getElementById("rphone").value,
+    checkin:document.getElementById("rcheckin").value,
+    checkout:document.getElementById("rcheckout").value,
+    roomType:document.getElementById("rtype").value,
+    date:new Date().toLocaleString()
+  };
+  users[u].history.push(booking);
+  localStorage.setItem("users",JSON.stringify(users));
+  alert("Room booked! Check history section");
+  document.getElementById("roomForm").reset();
+  loadHistory();
 });
 
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const u=localStorage.getItem("loggedInUser");
-  if(!u){alert("Login first!");return;}
-  const cname=document.getElementById("cname").value;
-  const cphone=document.getElementById("cphone").value;
-  const cdate=document.getElementById("cdate").value;
-  const ctype=document.getElementById("ctype").value;
-  const msg=`Car Booking Request:
-Name: ${cname}
-Phone: ${cphone}
-Pickup Date: ${cdate}
-Car Type: ${ctype}`;
-window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`);
-
-// Save to history
-let users=JSON.parse(localStorage.getItem("users"));
-users[u].history.push({type:"Car",name:cname,phone:cphone,date:cdate,car:ctype});
-localStorage.setItem("users",JSON.stringify(users));
-displayHistory();
-this.reset();
+  const u = localStorage.getItem("loggedInUser");
+  if(!u) return alert("Login first");
+  let users = JSON.parse(localStorage.getItem("users"))||{};
+  const booking = {
+    type:"Car",
+    name:document.getElementById("cname").value,
+    phone:document.getElementById("cphone").value,
+    datePick:document.getElementById("cdate").value,
+    carType:document.getElementById("ctype").value,
+    date:new Date().toLocaleString()
+  };
+  users[u].history.push(booking);
+  localStorage.setItem("users",JSON.stringify(users));
+  alert("Car booked! Check history section");
+  document.getElementById("carForm").reset();
+  loadHistory();
 });
 
-// Display booking history
-function displayHistory(){
-  const u=localStorage.getItem("loggedInUser");
-  const historyList=document.getElementById("historyList");
-  historyList.innerHTML="";
-  if(!u)return;
-  let users=JSON.parse(localStorage.getItem("users"));
-  let history=users[u].history||[];
-  if(history.length===0){historyList.innerHTML="<p>No bookings yet.</p>"; return;}
-  history.forEach(h=>{
-    if(h.type==="Room"){
-      historyList.innerHTML+=`<p><b>Room:</b> ${h.room} | ${h.name} | ${h.phone} | ${h.checkin} to ${h.checkout}</p>`;
-    }else if(h.type==="Car"){
-      historyList.innerHTML+=`<p><b>Car:</b> ${h.car} | ${h.name} | ${h.phone} | ${h.date}</p>`;
+// Load booking history
+function loadHistory(){
+  const u = localStorage.getItem("loggedInUser");
+  if(!u) return;
+  let users = JSON.parse(localStorage.getItem("users"))||{};
+  const history = users[u].history || [];
+  const container = document.getElementById("historyList");
+  container.innerHTML = "";
+  if(history.length===0){
+    container.innerHTML="<p>No bookings yet.</p>";
+    return;
+  }
+  history.slice().reverse().forEach(b=>{
+    const div = document.createElement("div");
+    div.style.background="rgba(0,255,255,0.1)";
+    div.style.padding="10px"; div.style.margin="8px 0"; div.style.borderRadius="10px";
+    let html = `<strong>${b.type} Booking</strong><br>`;
+    if(b.type==="Room"){
+      html += `Name: ${b.name}<br>Phone: ${b.phone}<br>Room: ${b.roomType}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}<br>`;
+    }else{
+      html += `Name: ${b.name}<br>Phone: ${b.phone}<br>Car: ${b.carType}<br>Pickup Date: ${b.datePick}<br>`;
     }
+    html += `Booked on: ${b.date}`;
+    div.innerHTML = html;
+    container.appendChild(div);
   });
+}
+
+// On page load, check login
+window.onload = function(){
+  const u = localStorage.getItem("loggedInUser");
+  if(u) showDashboard();
+  else showLogin();
 }
 </script>
