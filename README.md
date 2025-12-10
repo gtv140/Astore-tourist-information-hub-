@@ -1,164 +1,149 @@
-<ASTORE TOURIST HUB>
+<Astore tourist hub>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Astore Tourist Information Hub</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: #fff;
     overflow-x: hidden;
+    background: #001f3f;
 }
 
-/* Animated Neon Gradient */
+/* Animated Gradient Background */
 .bg-animate {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, #001f3f, #003a75, #007bff, #00d4ff);
-    background-size: 400% 400%;
-    animation: gradient 12s ease infinite;
+    background: linear-gradient(270deg, #001f3f, #003f7f, #007bff, #00d4ff);
+    background-size: 800% 800%;
+    animation: gradientBG 20s ease infinite;
     z-index: -1;
 }
-@keyframes gradient {
+@keyframes gradientBG {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
 }
 
-/* Card */
+/* Container */
 .container {
-    max-width: 900px;
-    margin: 90px auto;
-    background: rgba(0,0,0,0.35);
+    max-width: 1000px;
+    margin: 80px auto;
+    background: rgba(0,0,0,0.4);
     padding: 30px;
     border-radius: 20px;
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(6px);
     box-shadow: 0 0 20px #00eaff;
 }
 
-h1 {
+/* Hero Section */
+.hero {
     text-align: center;
-    text-shadow: 0 0 15px #00eaff;
-    font-size: 38px;
+    padding: 20px;
 }
-
-.section-title {
-    margin-top: 25px;
-    font-size: 24px;
-    text-shadow: 0 0 10px #00eaff;
-}
-
-label {
-    margin-top: 15px;
-    display: block;
-    font-weight: 500;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 6px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.2);
-    border: none;
-    color: #fff;
-}
-
-button {
-    width: 100%;
-    padding: 14px;
-    margin-top: 20px;
-    background: #00eaff;
-    color: #000;
-    border-radius: 10px;
+.hero h1 {
+    font-size: 42px;
     font-weight: 600;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
+    text-shadow: 0 0 12px #00eaff;
 }
-button:hover {background: #00c7d6;}
+.hero p {
+    font-size: 18px;
+    color: #a7f5ff;
+}
 
-/* Floating WhatsApp */
+/* Booking Forms */
+label {margin-top: 12px; display:block;}
+input, select {width:100%; padding:12px; margin-top:6px; border-radius:8px; border:none; background:rgba(255,255,255,0.15); color:#fff;}
+button {width:100%; padding:14px; margin-top:18px; border:none; border-radius:8px; background:#00eaff; color:#000; font-size:18px; font-weight:600; cursor:pointer;}
+button:hover {background:#00bcd4;}
+
+/* Gallery */
+.gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; margin-top:20px;}
+.gallery img {width:100%; border-radius:12px; box-shadow:0 0 15px #00eaff55;}
+
+/* WhatsApp Button */
 .whatsapp-btn {
     position: fixed;
     right: 20px;
     bottom: 20px;
     background: #25d366;
     padding: 16px 18px;
-    border-radius: 50%;
-    font-size: 30px;
+    border-radius:50%;
     color: #fff;
-    text-decoration: none;
-    box-shadow: 0 0 15px #25d366;
+    font-size:28px;
+    text-decoration:none;
+    box-shadow:0 0 15px #25d366;
 }
 </style>
 </head>
-
 <body>
-
 <div class="bg-animate"></div>
 
 <div class="container">
-    <h1>Astore Tourist Information Hub</h1>
+    <div class="hero">
+        <h1>Astore Tourist Information Hub</h1>
+        <p>Owner: Asim Khanzai | WhatsApp: 03171588489</p>
+    </div>
 
-    <p style="text-align:center; font-size:17px;">
-        Premium Tourism Services • Rooms • Cars • Local Guide  
-        <br>Owner: <b>Asim Khanzai</b>
-        <br>WhatsApp: <b>03171588489</b>
-    </p>
-
-    <h2 class="section-title">Online Booking Form</h2>
-
-    <form id="bookingForm">
-        <label>Name</label>
-        <input type="text" id="name" required>
-
-        <label>Phone</label>
-        <input type="text" id="phone" required>
-
-        <label>Booking Type</label>
-        <select id="type" required>
-            <option>Room Booking</option>
-            <option>Car Booking</option>
-            <option>Tour Package</option>
+    <h2 style="text-shadow:0 0 8px #00eaff;">Room Booking</h2>
+    <form id="roomForm">
+        <label>Name</label><input type="text" id="rname" required>
+        <label>Phone</label><input type="text" id="rphone" required>
+        <label>Check-in Date</label><input type="date" id="rcheckin" required>
+        <label>Check-out Date</label><input type="date" id="rcheckout" required>
+        <label>Room Type</label>
+        <select id="rtype" required>
+            <option>Standard Room</option>
+            <option>Luxury Room</option>
+            <option>Family Suite</option>
         </select>
-
-        <label>Date</label>
-        <input type="date" id="date" required>
-
-        <button type="submit">Send Booking Request</button>
+        <button type="submit">Book Room on WhatsApp</button>
     </form>
+
+    <h2 style="text-shadow:0 0 8px #00eaff;">Car Booking</h2>
+    <form id="carForm">
+        <label>Name</label><input type="text" id="cname" required>
+        <label>Phone</label><input type="text" id="cphone" required>
+        <label>Pickup Date</label><input type="date" id="cdate" required>
+        <label>Car Type</label>
+        <select id="ctype" required>
+            <option>Corolla</option>
+            <option>Hiace</option>
+            <option>Prado</option>
+            <option>Astore Local Jeep</option>
+        </select>
+        <button type="submit">Book Car on WhatsApp</button>
+    </form>
+
+    <h2 style="text-shadow:0 0 8px #00eaff;">Tourist Gallery</h2>
+    <div class="gallery">
+        <img src="https://i.ibb.co/2jL0MDK/mountains.jpg">
+        <img src="https://i.ibb.co/s3Xs1H0/lake.jpg">
+        <img src="https://i.ibb.co/x3tFLYc/valley.jpg">
+        <img src="https://i.ibb.co/jJxZTcZ/river.jpg">
+        <img src="https://i.ibb.co/mJ9xXrF/forest.jpg">
+        <img src="https://i.ibb.co/G0r6yCJ/hills.jpg">
+    </div>
 </div>
 
-<!-- WhatsApp Button -->
 <a class="whatsapp-btn" href="https://wa.me/923171588489">💬</a>
 
 <script>
-document.getElementById("bookingForm").addEventListener("submit", function(e){
+document.getElementById("roomForm").addEventListener("submit", function(e){
     e.preventDefault();
-
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
-    let type = document.getElementById("type").value;
-    let date = document.getElementById("date").value;
-
-    let msg =
-        "New Booking Request:%0A" +
-        "Name: " + name + "%0A" +
-        "Phone: " + phone + "%0A" +
-        "Booking Type: " + type + "%0A" +
-        "Date: " + date + "%0A%0A" +
-        "Kindly confirm my booking.";
-
+    let msg = `Room Booking Request:%0AName: ${document.getElementById("rname").value}%0APhone: ${document.getElementById("rphone").value}%0ACheck-in: ${document.getElementById("rcheckin").value}%0ACheck-out: ${document.getElementById("rcheckout").value}%0ARoom Type: ${document.getElementById("rtype").value}`;
+    window.location.href = "https://wa.me/923171588489?text=" + msg;
+});
+document.getElementById("carForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    let msg = `Car Booking Request:%0AName: ${document.getElementById("cname").value}%0APhone: ${document.getElementById("cphone").value}%0APickup Date: ${document.getElementById("cdate").value}%0ACar Type: ${document.getElementById("ctype").value}`;
     window.location.href = "https://wa.me/923171588489?text=" + msg;
 });
 </script>
-
 </body>
 </html>
