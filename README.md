@@ -58,6 +58,10 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 .mode-toggle{position:fixed;top:20px;right:20px;padding:10px 14px;background:#00eaff;color:#000;border:none;border-radius:10px;cursor:pointer;z-index:999;transition:0.3s;}
 .mode-toggle:hover{background:#00bcd4;}
 #authContainer,#dashboard{max-width:700px;margin:40px auto;background:var(--card-bg);padding:25px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:var(--card-shadow);text-align:center;}
+.icon-menu{display:flex;justify-content:space-around;margin:20px 0;}
+.icon-menu i{font-size:40px;color:#00eaff;cursor:pointer;transition:0.3s;}
+.icon-menu i:hover{transform:scale(1.2);color:#00fff0;}
+.dashboard-section{display:none;}
 </style>
 </head>
 <body>
@@ -68,6 +72,7 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(8+Math.random()*7)+"s";p.style.opacity=Math.random()*0.7+0.3;document.body.appendChild(p);}
 </script>
 
+<!-- AUTH -->
 <div id="authContainer">
 <h2 class="logo">Astore Tourist Hub</h2>
 <div class="hero-text show">Owner: Asim Khanzai | WhatsApp: 03171588489 | Email: mohammadasimkhan2746@gmail.com</div>
@@ -89,11 +94,24 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 </div>
 </div>
 
+<!-- DASHBOARD -->
 <div id="dashboard" style="display:none;">
 <h2>Welcome, <span id="userDisplay"></span>! <i class="fa-solid fa-user icon"></i></h2>
+
+<!-- ICON MENU -->
+<div class="icon-menu">
+<i class="fa-solid fa-bed" onclick="showSection('room')"></i>
+<i class="fa-solid fa-car" onclick="showSection('car')"></i>
+<i class="fa-solid fa-mountain" onclick="showSection('packages')"></i>
+<i class="fa-solid fa-map-location-dot" onclick="showSection('map')"></i>
+<i class="fa-solid fa-envelope" onclick="showSection('contact')"></i>
+</div>
+
 <button id="logoutBtn" onclick="logout()">Logout <i class="fa-solid fa-right-from-bracket icon"></i></button>
 
-<h2 style="text-shadow:0 0 12px #00eaff;">Room Booking</h2>
+<!-- SECTIONS -->
+<div id="room" class="dashboard-section">
+<h2>Room Booking</h2>
 <form id="roomForm">
 <label><i class="fa-solid fa-user"></i> Name</label><input type="text" id="rname" required>
 <label><i class="fa-solid fa-phone"></i> Phone</label><input type="text" id="rphone" required>
@@ -107,8 +125,10 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 </select>
 <button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Room on WhatsApp</button>
 </form>
+</div>
 
-<h2 style="text-shadow:0 0 12px #00eaff;">Car Booking</h2>
+<div id="car" class="dashboard-section">
+<h2>Car Booking</h2>
 <form id="carForm">
 <label><i class="fa-solid fa-user"></i> Name</label><input type="text" id="cname" required>
 <label><i class="fa-solid fa-phone"></i> Phone</label><input type="text" id="cphone" required>
@@ -122,22 +142,28 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 </select>
 <button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Car on WhatsApp</button>
 </form>
+</div>
 
-<div class="booking-history">
+<div id="packages" class="dashboard-section packages">
+<div class="package"><i class="fa-solid fa-mountain"></i><h3>Basic Package</h3><p>2 Nights, 3 Days<br>Standard Room + Local Guide</p></div>
+<div class="package"><i class="fa-solid fa-car"></i><h3>Luxury Package</h3><p>4 Nights, 5 Days<br>Luxury Room + Car + Guide</p></div>
+<div class="package"><i class="fa-solid fa-person-hiking"></i><h3>Adventure Package</h3><p>5 Nights, 6 Days<br>Family Suite + Jeep Tour + Hiking</p></div>
+</div>
+
+<div id="map" class="dashboard-section map-container">
+<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<div id="contact" class="dashboard-section contact">
+<p><i class="fa-solid fa-envelope"></i> Email: mohammadasimkhan2746@gmail.com</p>
+<p>Owner: Asim Khanzai | WhatsApp: 03171588489</p>
+</div>
+
+<div class="booking-history dashboard-section" id="historySection">
 <h4>Booking History <i class="fa-solid fa-history icon"></i></h4>
 <div id="historyList"></div>
 </div>
 
-<div class="map-container">
-<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</div>
-
-<div class="contact"><p><i class="fa-solid fa-envelope"></i> Email: mohammadasimkhan2746@gmail.com</p></div>
-<div class="social-share">
-<a href="https://wa.me/923171588489" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-<a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-<a href="https://twitter.com/intent/tweet?url=https://yourwebsite.com&text=Astore+Tourist+Information+Hub" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-</div>
 </div>
 
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
@@ -146,10 +172,7 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 // Toggle dark/light
 function toggleMode(){document.body.classList.toggle("light-mode");}
 
-// Floating particles
-// (already added above)
-
-// localStorage login/signup
+// login/signup
 function signup(){
   const u=document.getElementById("signupUsername").value.trim();
   const p=document.getElementById("signupPassword").value.trim();
@@ -175,11 +198,21 @@ function showDashboard(){
   document.getElementById("authContainer").style.display="none";
   document.getElementById("dashboard").style.display="block";
   displayHistory();
+  showSection('room'); // default section
 }
 function showLogin(){document.getElementById("signupDiv").style.display="none";document.getElementById("loginDiv").style.display="block";document.getElementById("dashboard").style.display="none";}
 function showSignup(){document.getElementById("signupDiv").style.display="block";document.getElementById("loginDiv").style.display="none";document.getElementById("dashboard").style.display="none";}
 
-// Booking + WhatsApp
+// Section switching
+function showSection(id){
+  document.querySelectorAll('.dashboard-section').forEach(s=>s.style.display='none');
+  if(id==='room' || id==='car') document.getElementById(id).style.display='block';
+  else if(id==='packages') document.getElementById('packages').style.display='grid';
+  else document.getElementById(id).style.display='block';
+  document.getElementById('historySection').style.display='block';
+}
+
+// Booking forms
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
   const u=localStorage.getItem("loggedInUser");
@@ -189,9 +222,20 @@ document.getElementById("roomForm").addEventListener("submit",function(e){
   const rcheckin=document.getElementById("rcheckin").value;
   const rcheckout=document.getElementById("rcheckout").value;
   const rtype=document.getElementById("rtype").value;
-  const msg=`Room Booking Request:%0AName: ${rname}%0APhone: ${rphone}%0ACheck-in: ${rcheckin}%0ACheck-out: ${rcheckout}%0ARoom Type: ${rtype}`;
-  window.open(`https://wa.me/923171588489?text=${msg}`);
-  addHistory(`Room booked: ${rtype} (${rcheckin} to ${rcheckout})`);
+const msg=`Room Booking Request:
+Name: ${rname}
+Phone: ${rphone}
+Check-in: ${rcheckin}
+Check-out: ${rcheckout}
+Room Type: ${rtype}`;
+window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`);
+
+// Save to history
+let users=JSON.parse(localStorage.getItem("users"));
+users[u].history.push({type:"Room",name:rname,phone:rphone,checkin:rcheckin,checkout:rcheckout,room:rtype});
+localStorage.setItem("users",JSON.stringify(users));
+displayHistory();
+this.reset();
 });
 
 document.getElementById("carForm").addEventListener("submit",function(e){
@@ -202,45 +246,36 @@ document.getElementById("carForm").addEventListener("submit",function(e){
   const cphone=document.getElementById("cphone").value;
   const cdate=document.getElementById("cdate").value;
   const ctype=document.getElementById("ctype").value;
-  const msg=`Car Booking Request:%0AName: ${cname}%0APhone: ${cphone}%0APickup Date: ${cdate}%0ACar Type: ${ctype}`;
-  window.open(`https://wa.me/923171588489?text=${msg}`);
-  addHistory(`Car booked: ${ctype} on ${cdate}`);
+  const msg=`Car Booking Request:
+Name: ${cname}
+Phone: ${cphone}
+Pickup Date: ${cdate}
+Car Type: ${ctype}`;
+window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`);
+
+// Save to history
+let users=JSON.parse(localStorage.getItem("users"));
+users[u].history.push({type:"Car",name:cname,phone:cphone,date:cdate,car:ctype});
+localStorage.setItem("users",JSON.stringify(users));
+displayHistory();
+this.reset();
 });
 
-function addHistory(action){
-  const u = localStorage.getItem("loggedInUser");
-  let users = JSON.parse(localStorage.getItem("users")) || {};
-  if(!users[u]) return;
-  users[u].history.push({action: action, time: new Date().toLocaleString()});
-  localStorage.setItem("users", JSON.stringify(users));
-  displayHistory();
-}
-
+// Display booking history
 function displayHistory(){
-  const u = localStorage.getItem("loggedInUser");
-  let users = JSON.parse(localStorage.getItem("users")) || {};
-  const historyDiv = document.getElementById("historyList");
-  historyDiv.innerHTML = "";
-  if(users[u] && users[u].history.length > 0){
-    users[u].history.slice().reverse().forEach(h=>{
-      const div = document.createElement("div");
-      div.style.padding="10px";
-      div.style.margin="6px 0";
-      div.style.borderRadius="8px";
-      div.style.background="rgba(0,255,255,0.1)";
-      div.innerHTML = `<strong>${h.action}</strong> <br><small>${h.time}</small>`;
-      historyDiv.appendChild(div);
-    });
-  } else {
-    historyDiv.innerHTML = "<p>No bookings yet.</p>";
-  }
-}
-
-// On load, check if logged in
-window.onload = function(){
-  const u = localStorage.getItem("loggedInUser");
-  if(u) showDashboard();
+  const u=localStorage.getItem("loggedInUser");
+  const historyList=document.getElementById("historyList");
+  historyList.innerHTML="";
+  if(!u)return;
+  let users=JSON.parse(localStorage.getItem("users"));
+  let history=users[u].history||[];
+  if(history.length===0){historyList.innerHTML="<p>No bookings yet.</p>"; return;}
+  history.forEach(h=>{
+    if(h.type==="Room"){
+      historyList.innerHTML+=`<p><b>Room:</b> ${h.room} | ${h.name} | ${h.phone} | ${h.checkin} to ${h.checkout}</p>`;
+    }else if(h.type==="Car"){
+      historyList.innerHTML+=`<p><b>Car:</b> ${h.car} | ${h.name} | ${h.phone} | ${h.date}</p>`;
+    }
+  });
 }
 </script>
-</body>
-</html>
