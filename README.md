@@ -101,7 +101,7 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <option>Luxury Room</option>
 <option>Family Suite</option>
 </select>
-<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Room</button>
+<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Room via WhatsApp</button>
 </form>
 </div>
 
@@ -118,7 +118,7 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <option>Prado</option>
 <option>Astore Local Jeep</option>
 </select>
-<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Car</button>
+<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Car via WhatsApp</button>
 </form>
 </div>
 
@@ -152,7 +152,6 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 </div>
 
 <button id="logoutBtn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
-<a class="whatsapp-btn" href="https://wa.me/923171588489" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
 // Signup/Login/Logout
@@ -195,7 +194,7 @@ function showSection(section){
   document.getElementById(section).style.display="block";
 }
 
-// Booking Forms
+// Room Booking WhatsApp
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
   const u=localStorage.getItem("loggedInUser");
@@ -211,10 +210,13 @@ document.getElementById("roomForm").addEventListener("submit",function(e){
   };
   users[u].history.push(booking);
   localStorage.setItem("users",JSON.stringify(users));
-  alert("Room booking sent via WhatsApp!");
-  this.reset();
   loadHistory();
+  const msg=`Room Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nCheck-in: ${booking.checkin}\nCheck-out: ${booking.checkout}\nRoom: ${booking.room}`;
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
+  this.reset();
 });
+
+// Car Booking WhatsApp
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
   const u=localStorage.getItem("loggedInUser");
@@ -229,9 +231,10 @@ document.getElementById("carForm").addEventListener("submit",function(e){
   };
   users[u].history.push(booking);
   localStorage.setItem("users",JSON.stringify(users));
-  alert("Car booking sent via WhatsApp!");
-  this.reset();
   loadHistory();
+  const msg=`Car Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nPickup Date: ${booking.date}\nCar: ${booking.car}`;
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
+  this.reset();
 });
 
 function loadHistory(){
@@ -244,11 +247,17 @@ function loadHistory(){
     users[u].history.forEach((b,i)=>{
       const div=document.createElement("div");
       div.style.border="1px solid #00eaff"; div.style.padding="8px"; div.style.margin="5px"; div.style.borderRadius="8px";
-      div.innerHTML=`<b>${b.type} Booking #${i+1}</b><br>${JSON.stringify(b)}`;
+      let content="";
+      if(b.type==="Room"){
+        content=`Room: ${b.room}, ${b.checkin} to ${b.checkout}`;
+      } else{
+        content=`Car: ${b.car}, Pickup: ${b.date}`;
+      }
+      div.innerHTML=`<b>${b.type} Booking:</b> ${content}`;
       list.appendChild(div);
     });
-  }else{
-    list.innerHTML="<p>No bookings yet</p>";
+  } else {
+    list.innerHTML="<p>No bookings yet.</p>";
   }
 }
 </script>
