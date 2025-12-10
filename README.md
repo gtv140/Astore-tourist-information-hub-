@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<ASTORE TOURIST INFORMATION HUB>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -59,18 +59,12 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 .mode-toggle:hover{background:#00bcd4;}
 #authContainer,#dashboard{max-width:700px;margin:40px auto;background:var(--card-bg);padding:25px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:var(--card-shadow);text-align:center;}
 .dashboard-section{display:none;}
-/* ICON MENU BOTTOM */
-.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:80px;width:100%;background:rgba(0,0,0,0.4);padding:10px 0;box-shadow:0 0 20px #00eaff;border-top:1px solid #00eaff;z-index:999;border-radius:15px 15px 0 0;}
+.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:70px;width:100%;background:rgba(0,0,0,0.4);padding:10px 0;box-shadow:0 0 20px #00eaff;border-top:1px solid #00eaff;z-index:999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;position:relative;}
 .icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
 .icon-item i:hover{color:#00fff0;transform:scale(1.2);}
 .icon-item span{display:block;font-size:12px;margin-top:4px;}
-.dropdown{display:none;position:absolute;bottom:50px;left:-50%;background:rgba(0,0,0,0.9);padding:10px;border-radius:12px;min-width:180px;box-shadow:0 0 20px #00eaff;z-index:99;transform:scaleY(0);transform-origin:bottom;transition:0.3s ease;}
-.dropdown.show{display:block;transform:scaleY(1);}
-.dropdown p{margin:6px 0;padding:8px 12px;border-radius:8px;cursor:pointer;transition:0.3s, background 0.3s;display:flex;align-items:center;gap:10px;color:#00eaff;}
-.dropdown p:hover{background:#00eaff;color:#000;}
-#logoutBtn{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);}
-@media(max-width:600px){.icon-menu{flex-wrap:wrap;}}
+#logoutBtn{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);padding:10px 18px;}
 </style>
 </head>
 <body>
@@ -81,10 +75,10 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(8+Math.random()*7)+"s";p.style.opacity=Math.random()*0.7+0.3;document.body.appendChild(p);}
 </script>
 
-<!-- AUTH CONTAINER -->
 <div id="authContainer">
 <h2 class="logo">Astore Tourist Hub</h2>
 <div class="hero-text show">Owner: Asim Khanzai | WhatsApp: 03171588489 | Email: mohammadasimkhan2746@gmail.com</div>
+
 <div id="signupDiv">
 <h3>Signup <i class="fa-solid fa-user-plus icon"></i></h3>
 <input type="text" id="signupUsername" placeholder="Username" required>
@@ -92,6 +86,7 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <button onclick="signup()">Signup</button>
 <p class="message">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
 </div>
+
 <div id="loginDiv" style="display:none;">
 <h3>Login <i class="fa-solid fa-right-to-bracket icon"></i></h3>
 <input type="text" id="loginUsername" placeholder="Username" required>
@@ -101,11 +96,9 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 </div>
 </div>
 
-<!-- DASHBOARD -->
 <div id="dashboard" style="display:none;">
 <h2>Welcome, <span id="userDisplay"></span>! <i class="fa-solid fa-user icon"></i></h2>
 
-<!-- SECTIONS -->
 <div id="room" class="dashboard-section">
 <h2>Room Booking</h2>
 <form id="roomForm">
@@ -119,7 +112,7 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <option>Luxury Room</option>
 <option>Family Suite</option>
 </select>
-<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Room on WhatsApp</button>
+<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Room</button>
 </form>
 </div>
 
@@ -136,7 +129,7 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <option>Prado</option>
 <option>Astore Local Jeep</option>
 </select>
-<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Car on WhatsApp</button>
+<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Car</button>
 </form>
 </div>
 
@@ -160,32 +153,22 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <div id="historyList"></div>
 </div>
 
-<!-- ICON MENU BOTTOM -->
 <div class="icon-menu">
-  <div class="icon-item">
-    <i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span>
-  </div>
-  <div class="icon-item">
-    <i class="fa-solid fa-car" onclick="showSection('car')"></i><span>Car</span>
-  </div>
-  <div class="icon-item">
-    <i class="fa-solid fa-mountain" onclick="showSection('packages')"></i><span>Packages</span>
-  </div>
-  <div class="icon-item">
-    <i class="fa-solid fa-map-location-dot" onclick="showSection('map')"></i><span>Map</span>
-  </div>
-  <div class="icon-item">
-    <i class="fa-solid fa-envelope" onclick="showSection('contact')"></i><span>Contact</span>
-  </div>
+<div class="icon-item"><i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span></div>
+<div class="icon-item"><i class="fa-solid fa-car" onclick="showSection('car')"></i><span>Car</span></div>
+<div class="icon-item"><i class="fa-solid fa-mountain" onclick="showSection('packages')"></i><span>Packages</span></div>
+<div class="icon-item"><i class="fa-solid fa-map-location-dot" onclick="showSection('map')"></i><span>Map</span></div>
+<div class="icon-item"><i class="fa-solid fa-envelope" onclick="showSection('contact')"></i><span>Contact</span></div>
 </div>
 
 <button id="logoutBtn" onclick="logout()">Logout <i class="fa-solid fa-right-from-bracket"></i></button>
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
+// Dark/Light mode
 function toggleMode(){document.body.classList.toggle("light-mode");}
 
-// signup/login/logout
+// Signup/Login/Logout
 function signup(){
   const u=document.getElementById("signupUsername").value.trim();
   const p=document.getElementById("signupPassword").value.trim();
@@ -200,125 +183,106 @@ function login(){
   const u=document.getElementById("loginUsername").value.trim();
   const p=document.getElementById("loginPassword").value.trim();
   let users=JSON.parse(localStorage.getItem("users"))||{};
-  if(users[u]&&users[u].password===p){
-    localStorage.setItem("loggedInUser",u);
-    showDashboard();
+  if(users[u] && users[u].password===p){
+    localStorage.setItem("loggedInUser",u); showDashboard();
   }else{alert("Invalid credentials");}
 }
 function logout(){
-  localStorage.removeItem("loggedInUser");
-  showLogin();
+  localStorage.removeItem("loggedInUser"); showLogin();
 }
+function showSignup(){document.getElementById("signupDiv").style.display="block";document.getElementById("loginDiv").style.display="none";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
+function showLogin(){document.getElementById("signupDiv").style.display="none";document.getElementById("loginDiv").style.display="block";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
+
+// Dashboard & Sections
 function showDashboard(){
   const u=localStorage.getItem("loggedInUser");
   if(!u){showLogin(); return;}
-  document.getElementBy<script>
-// Show/hide signup & login
-function showSignup(){
-  document.getElementById("signupDiv").style.display="block";
-  document.getElementById("loginDiv").style.display="none";
-  document.getElementById("authContainer").style.display="block";
-  document.getElementById("dashboard").style.display="none";
-}
-function showLogin(){
-  document.getElementById("signupDiv").style.display="none";
-  document.getElementById("loginDiv").style.display="block";
-  document.getElementById("authContainer").style.display="block";
-  document.getElementById("dashboard").style.display="none";
-}
-
-// Show sections
-function showSection(section){
-  const sections = document.querySelectorAll(".dashboard-section");
-  sections.forEach(s=>s.style.display="none");
-  document.getElementById(section).style.display="block";
-}
-
-// Dashboard display
-function showDashboard(){
-  const u = localStorage.getItem("loggedInUser");
-  if(!u){showLogin(); return;}
   document.getElementById("authContainer").style.display="none";
   document.getElementById("dashboard").style.display="block";
-  document.getElementById("userDisplay").textContent = u;
-  showSection('room'); // default section
+  document.getElementById("userDisplay").textContent=u;
+  showSection('room');
   loadHistory();
+}
+function showSection(section){
+  document.querySelectorAll(".dashboard-section").forEach(s=>s.style.display="none");
+  document.getElementById(section).style.display="block";
 }
 
 // Booking forms
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const u = localStorage.getItem("loggedInUser");
-  if(!u) return alert("Login first");
-  let users = JSON.parse(localStorage.getItem("users"))||{};
-  const booking = {
+  const u=localStorage.getItem("loggedInUser");
+  if(!u)return alert("Login first");
+  let users=JSON.parse(localStorage.getItem("users"))||{};
+  const roomData={
     type:"Room",
     name:document.getElementById("rname").value,
     phone:document.getElementById("rphone").value,
     checkin:document.getElementById("rcheckin").value,
     checkout:document.getElementById("rcheckout").value,
-    roomType:document.getElementById("rtype").value,
+    rtype:document.getElementById("rtype").value,
     date:new Date().toLocaleString()
   };
-  users[u].history.push(booking);
+  users[u].history.push(roomData);
   localStorage.setItem("users",JSON.stringify(users));
-  alert("Room booked! Check history section");
+  alert("Room booked successfully!");
   document.getElementById("roomForm").reset();
   loadHistory();
 });
 
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const u = localStorage.getItem("loggedInUser");
-  if(!u) return alert("Login first");
-  let users = JSON.parse(localStorage.getItem("users"))||{};
-  const booking = {
+  const u=localStorage.getItem("loggedInUser");
+  if(!u)return alert("Login first");
+  let users=JSON.parse(localStorage.getItem("users"))||{};
+  const carData={
     type:"Car",
     name:document.getElementById("cname").value,
     phone:document.getElementById("cphone").value,
-    datePick:document.getElementById("cdate").value,
-    carType:document.getElementById("ctype").value,
+    pickup:document.getElementById("cdate").value,
+    ctype:document.getElementById("ctype").value,
     date:new Date().toLocaleString()
   };
-  users[u].history.push(booking);
+  users[u].history.push(carData);
   localStorage.setItem("users",JSON.stringify(users));
-  alert("Car booked! Check history section");
+  alert("Car booked successfully!");
   document.getElementById("carForm").reset();
   loadHistory();
 });
 
-// Load booking history
+// Load Booking History
 function loadHistory(){
-  const u = localStorage.getItem("loggedInUser");
-  if(!u) return;
-  let users = JSON.parse(localStorage.getItem("users"))||{};
-  const history = users[u].history || [];
-  const container = document.getElementById("historyList");
-  container.innerHTML = "";
-  if(history.length===0){
-    container.innerHTML="<p>No bookings yet.</p>";
+  const u=localStorage.getItem("loggedInUser");
+  if(!u)return;
+  let users=JSON.parse(localStorage.getItem("users"))||{};
+  const historyList=document.getElementById("historyList");
+  historyList.innerHTML="";
+  if(users[u].history.length===0){
+    historyList.innerHTML="<p>No bookings yet.</p>";
     return;
   }
-  history.slice().reverse().forEach(b=>{
-    const div = document.createElement("div");
+  users[u].history.slice().reverse().forEach((b,i)=>{
+    const div=document.createElement("div");
     div.style.background="rgba(0,255,255,0.1)";
-    div.style.padding="10px"; div.style.margin="8px 0"; div.style.borderRadius="10px";
-    let html = `<strong>${b.type} Booking</strong><br>`;
-    if(b.type==="Room"){
-      html += `Name: ${b.name}<br>Phone: ${b.phone}<br>Room: ${b.roomType}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}<br>`;
-    }else{
-      html += `Name: ${b.name}<br>Phone: ${b.phone}<br>Car: ${b.carType}<br>Pickup Date: ${b.datePick}<br>`;
-    }
-    html += `Booked on: ${b.date}`;
-    div.innerHTML = html;
-    container.appendChild(div);
+    div.style.padding="10px";
+    div.style.margin="8px 0";
+    div.style.borderRadius="10px";
+    div.innerHTML=`<strong>${b.type} Booking</strong><br>
+    Name: ${b.name}<br>
+    Phone: ${b.phone}<br>
+    ${b.type==="Room" ? `Room: ${b.rtype}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}` : `Car: ${b.ctype}<br>Pickup: ${b.pickup}`}<br>
+    Date: ${b.date}`;
+    historyList.appendChild(div);
   });
 }
 
-// On page load, check login
-window.onload = function(){
-  const u = localStorage.getItem("loggedInUser");
-  if(u) showDashboard();
-  else showLogin();
-}
+// Show hero-text animation
+window.addEventListener("load",()=>{document.querySelector(".hero-text").classList.add("show");});
+
+// Show packages animation
+document.querySelectorAll(".package").forEach((pkg,i)=>{
+  setTimeout(()=>{pkg.classList.add("show");},i*300);
+});
 </script>
+</body>
+</html>
