@@ -1,285 +1,271 @@
 <ASTORE>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Astore Tourist Information Hub</title>
 
 <!-- Icons -->
-<script src="https://kit.fontawesome.com/a2d041e5c5.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
 <style>
+/* Background Neon Animation */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #000;
+  background: black;
+  color: white;
   overflow-x: hidden;
-  color: #fff;
 }
 
-/* Neon Animated BG */
-@keyframes neonBg {
-  0% { background: linear-gradient(135deg,#000428,#004e92); }
-  50% { background: linear-gradient(135deg,#020111,#001f3f); }
-  100% { background: linear-gradient(135deg,#000428,#004e92); }
+.neon-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle,#00111a,#000000);
+  animation: glow 6s infinite alternate;
+  z-index: -1;
 }
-body {
-  animation: neonBg 10s infinite alternate;
+@keyframes glow {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  100% { filter: hue-rotate(90deg) brightness(1.4); }
 }
 
-/* HEADER */
+/* Header */
 header {
   text-align: center;
   padding: 25px;
-  font-size: 28px;
-  color: cyan;
-  text-shadow: 0 0 15px cyan;
+  font-size: 26px;
   font-weight: bold;
+  text-shadow: 0 0 10px #00eaff;
 }
 
-/* DASHBOARD TEXT */
-#dashboard {
+/* Dashboard Content */
+.container {
   padding: 20px;
-  text-align: center;
+  margin-bottom: 90px;
 }
 
-/* DETAILS BOX */
-.detail-box {
+.section {
+  display: none;
+  padding: 20px;
   background: rgba(0,0,0,0.4);
-  padding: 20px;
-  margin: 10px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px cyan;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-/* FORMS */
-form {
-  background: rgba(255,255,255,0.05);
-  padding: 15px;
-  margin: 10px;
   border-radius: 12px;
-  box-shadow: 0 0 10px cyan;
-}
-input, select {
-  width: 95%;
-  padding: 10px;
-  margin: 6px 0;
-  border-radius: 10px;
-  border: none;
-}
-button {
-  background: cyan;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  width: 100%;
-  margin-top: 10px;
-  cursor: pointer;
-  font-weight: bold;
+  box-shadow: 0 0 15px #00eaff;
+  margin-bottom: 20px;
 }
 
-/* FIXED BOTTOM MENU */
+.section h2 {
+  text-align: center;
+  text-shadow: 0 0 10px #00eaff;
+}
+
+/* Fixed Bottom Icon Menu */
 .icon-menu {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(5px);
   display: flex;
   justify-content: space-around;
-  padding: 10px 0;
-  border-top: 2px solid cyan;
-  box-shadow: 0 -2px 15px cyan;
-}
-.icon-menu div {
-  text-align: center;
-  color: cyan;
-  font-size: 12px;
-}
-.icon-menu i {
-  font-size: 22px;
-  display: block;
-  margin-bottom: 3px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 0;
+  background: rgba(0,0,0,0.6);
+  border-top: 1px solid #00eaff;
+  box-shadow: 0 0 15px #00eaff;
+  z-index: 9999;
 }
 
-/* HIDE ALL PAGES */
-.page { display: none; }
+.icon-menu div {
+  color: #00eaff;
+  text-align: center;
+  font-size: 22px;
+}
+
+.icon-menu div span {
+  font-size: 12px;
+  display: block;
+  margin-top: 3px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background: #00eaff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  box-shadow: 0 0 10px #00eaff;
+}
+button:hover {
+  filter: brightness(1.2);
+}
+
+/* Forms */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+a {
+  color: #00eaff;
+  text-decoration: none;
+}
+a:hover {
+  text-shadow: 0 0 10px #00eaff;
+}
 </style>
 </head>
 
 <body>
 
-<header>Astore Tourist Information Hub</header>
+<div class="neon-bg"></div>
 
-<!-- DASHBOARD PAGE -->
-<div id="pageDashboard" class="page" style="display:block;">
-  <div class="detail-box">
-    <h2 style="color:cyan;">Welcome to Astore Valley ❄️</h2>
-    <p>
-      Astore Pakistan ka ek sab se khubsurat tourist paradise hai —  
-      yahan ki mountains, greenery, fresh air aur lakes har visitor ko ek  
-      unforgettable experience deti hain.  
-      <br><br>
-      Hamari service aap ko provide karti hai:
-    </p>
-    <ul style="text-align:left;">
-      <li>🏨 Room Booking (Hotels, Guest Houses, Camps)</li>
-      <li>🚗 Car Booking (Jeep, Prado, GLi, Hiace)</li>
-      <li>📍 Astore Tourist Guide Assistance</li>
-      <li>📞 24/7 Contact & Support</li>
-    </ul>
-  </div>
+<header>
+  🌌 ASTORE TOURIST INFORMATION HUB 🌌  
+  <div style="font-size:14px;margin-top:5px;">Owner: Asim Khanzai</div>
+</header>
 
-  <div class="detail-box">
-    <h3 style="color:cyan;">Contact & Social Links</h3>
+<div class="container">
 
-    <p><b>Owner:</b> Asim KhanZai</p>
+<!-- ABOUT SECTION -->
+<div id="about" class="section" style="display:block;">
+<h2>About Astore Tourist Information Hub</h2>
+<p style="line-height:1.6; font-size:15px;">
+Astore Tourist Information Hub is your trusted gateway to the breathtaking valleys of Astore,
+Gilgit-Baltistan — a paradise of mountains, lakes, meadows and unforgettable adventure.
+<br><br>
+We provide complete assistance for:
+<br>✔ Room Booking  
+<br>✔ Car / Jeep Booking  
+<br>✔ Tourist Guidance  
+<br>✔ Local Area Information  
+<br>✔ Family Tours & Private Trips  
+<br><br>
+Our mission is to make your journey smooth, safe and memorable. Whether you are exploring  
+Rama Lake, Minimarg, Deosai, Chillam, Tarishing or Rupal — we guide you with real and reliable information.
+</p>
 
-    <p><b>Phone:</b> <a href="https://wa.me/03171588489" style="color:cyan;">0317-1588489</a></p>
+<h3>📍 Contact Information</h3>
+<p>
+<b>Facebook:</b>  
+<a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank">
+Visit Page <i class="fa-brands fa-facebook"></i>
+</a><br><br>
 
-    <p><b>Email:</b>  
-       <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:cyan;">
-       mohammadasimkhan2746@gmail.com</a>
-    </p>
+<b>WhatsApp:</b>  
+<a href="https://wa.me/03171588489" target="_blank">
+0317-1588489 <i class="fa-brands fa-whatsapp"></i>
+</a><br><br>
 
-    <p><b>Facebook:</b>  
-    <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" style="color:cyan;">
-      Visit Page
-    </a></p>
+<b>Email:</b>  
+<a href="mailto:mohammadasimkhan2746@gmail.com">
+mohammadasimkhan2746@gmail.com <i class="fa-solid fa-envelope"></i>
+</a><br><br>
 
-    <p><b>Location:</b><br>
-      <a href="https://maps.app.goo.gl/D7fEwdZ9wJf1T8y57" style="color:cyan;">
-        Asim KhanZai Social Worker, Near DC House, Eidgah, Astore  
-      </a>
-    </p>
-  </div>
+<b>Google Map:</b><br>
+<a href="https://maps.google.com/?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore+14300" target="_blank">
+Open Location <i class="fa-solid fa-map-location-dot"></i>
+</a>
+</p>
 </div>
 
 <!-- ROOM BOOKING -->
-<div id="pageRoom" class="page">
-  <form onsubmit="sendRoom(event)">
-    <h3 style="text-align:center;color:cyan;">Room Booking</h3>
-    <input id="rname" placeholder="Your Name" required>
-    <input id="rphone" placeholder="Phone Number" required>
-    <label style="color:cyan;">Check-in:</label>
-    <input type="date" id="rcheckin" required>
-    <label style="color:cyan;">Check-out:</label>
-    <input type="date" id="rcheckout" required>
-    <select id="rroom">
-      <option value="Standard Room">Standard Room</option>
-      <option value="Luxury Room">Luxury Room</option>
-      <option value="Family Room">Family Room</option>
-    </select>
-    <button>Book on WhatsApp</button>
-  </form>
+<div id="rooms" class="section">
+<h2>Room Booking</h2>
+<input id="rname" placeholder="Your Name">
+<input id="rphone" placeholder="Phone Number">
+<input id="rcheckin" type="date">
+<input id="rcheckout" type="date">
+<select id="rroom">
+<option>Single Room</option>
+<option>Double Room</option>
+<option>Family Suite</option>
+<option>Luxury Room</option>
+</select>
+<button onclick="roomBooking()">Book on WhatsApp</button>
 </div>
 
 <!-- CAR BOOKING -->
-<div id="pageCar" class="page">
-  <form onsubmit="sendCar(event)">
-    <h3 style="text-align:center;color:cyan;">Car Booking</h3>
-    <input id="cname" placeholder="Your Name" required>
-    <input id="cphone" placeholder="Phone Number" required>
-    <label style="color:cyan;">Pickup Date:</label>
-    <input type="date" id="cdate" required>
-    <select id="ccar">
-      <option>Jeep</option>
-      <option>Prado</option>
-      <option>GLI</option>
-      <option>Hiace</option>
-    </select>
-    <button>Book on WhatsApp</button>
-  </form>
+<div id="cars" class="section">
+<h2>Car / Jeep Booking</h2>
+<input id="cname" placeholder="Your Name">
+<input id="cphone" placeholder="Phone Number">
+<input id="cdate" type="date">
+<select id="ccar">
+<option>Jeep (4×4 – Astore Local)</option>
+<option>Prado</option>
+<option>Corolla</option>
+<option>Hiace</option>
+</select>
+<button onclick="carBooking()">Book on WhatsApp</button>
 </div>
 
-<!-- HISTORY -->
-<div id="pageHistory" class="page">
-  <div class="detail-box">
-    <h3 style="color:cyan;">Booking History</h3>
-    <div id="historyList"></div>
-  </div>
+<!-- CONTACT SECTION -->
+<div id="contact" class="section">
+<h2>Contact Us</h2>
+<p style="text-align:center;">Feel free to reach us anytime.</p>
+<p><b>Owner:</b> Asim Khanzai</p>
+<p><b>Phone/WhatsApp:</b> 0317-1588489</p>
+<p><b>Email:</b> <a href="mailto:mohammadasimkhan2746@gmail.com">mohammadasimkhan2746@gmail.com</a></p>
+<p><b>Facebook:</b>  
+<a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr">Facebook Page</a></p>
 </div>
 
-<!-- FIXED ICON MENU -->
+</div>
+
+<!-- FIXED BOTTOM ICON MENU -->
 <div class="icon-menu">
-  <div onclick="openPage('Dashboard')">
-    <i class="fa-solid fa-house"></i> Home
-  </div>
-  <div onclick="openPage('Room')">
-    <i class="fa-solid fa-bed"></i> Room
-  </div>
-  <div onclick="openPage('Car')">
-    <i class="fa-solid fa-car"></i> Car
-  </div>
-  <div onclick="openPage('History')">
-    <i class="fa-solid fa-clock-rotate-left"></i> History
-  </div>
+  <div onclick="show('about')"><i class="fa-solid fa-house"></i><span>Home</span></div>
+  <div onclick="show('rooms')"><i class="fa-solid fa-bed"></i><span>Rooms</span></div>
+  <div onclick="show('cars')"><i class="fa-solid fa-car"></i><span>Cars</span></div>
+  <div onclick="show('contact')"><i class="fa-solid fa-phone"></i><span>Contact</span></div>
 </div>
 
 <script>
-function openPage(name){
-  document.querySelectorAll('.page').forEach(p=>p.style.display="none");
-  document.querySelector('#page'+name).style.display="block";
+function show(sec){
+  document.querySelectorAll('.section').forEach(s=>s.style.display="none");
+  document.getElementById(sec).style.display="block";
 }
 
-/* ROOM BOOKING */
-function sendRoom(e){
-  e.preventDefault();
+function roomBooking(){
   let name = rname.value;
   let phone = rphone.value;
   let ci = rcheckin.value;
   let co = rcheckout.value;
   let room = rroom.value;
 
-  let msg = `Room Booking:%0AName: ${name}%0APhone: ${phone}%0ACheck-in: ${ci}%0ACheck-out: ${co}%0ARoom: ${room}`;
+  let msg = `Room Booking Request:
+Name: ${name}
+Phone: ${phone}
+Check-in: ${ci}
+Check-out: ${co}
+Room Type: ${room}`;
 
-  window.open("https://wa.me/03171588489?text=" + msg, "_blank");
-
-  saveHistory(`Room → ${name} | ${room} | ${ci} to ${co}`);
+  window.open(`https://wa.me/03171588489?text=${encodeURIComponent(msg)}`);
 }
 
-/* CAR BOOKING */
-function sendCar(e){
-  e.preventDefault();
+function carBooking(){
   let name = cname.value;
   let phone = cphone.value;
   let date = cdate.value;
   let car = ccar.value;
 
-  let msg = `Car Booking:%0AName: ${name}%0APhone: ${phone}%0APickup: ${date}%0ACar: ${car}`;
+  let msg = `Car Booking Request:
+Name: ${name}
+Phone: ${phone}
+Pickup Date: ${date}
+Car Type: ${car}`;
 
-  window.open("https://wa.me/03171588489?text=" + msg, "_blank");
-
-  saveHistory(`Car → ${name} | ${car} | ${date}`);
+  window.open(`https://wa.me/03171588489?text=${encodeURIComponent(msg)}`);
 }
-
-/* SAVE HISTORY */
-function saveHistory(item){
-  let h = JSON.parse(localStorage.getItem("history") || "[]");
-  h.push(item);
-  localStorage.setItem("history", JSON.stringify(h));
-  loadHistory();
-}
-
-/* LOAD HISTORY */
-function loadHistory(){
-  let list = document.getElementById("historyList");
-  list.innerHTML = "";
-  let h = JSON.parse(localStorage.getItem("history") || "[]");
-  h.forEach(x=>{
-    let div = document.createElement("div");
-    div.style.margin="10px 0";
-    div.style.padding="10px";
-    div.style.border="1px solid cyan";
-    div.style.borderRadius="10px";
-    div.innerHTML = x;
-    list.appendChild(div);
-  });
-}
-loadHistory();
 </script>
 
 </body>
