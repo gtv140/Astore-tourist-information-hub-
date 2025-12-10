@@ -21,33 +21,33 @@ body{font-family:'Poppins',sans-serif;color:#fff;overflow-x:hidden;background:#0
 @keyframes moveStripe{0%{transform:translateY(0) rotate(20deg);}100%{transform:translateY(100%) rotate(20deg);}}
 .particle{position:fixed;width:6px;height:6px;background:#00eaff;border-radius:50%;opacity:0.7;animation:floatUp linear infinite;}
 @keyframes floatUp{0%{transform:translateY(110vh);}100%{transform:translateY(-10vh);}}
-.container{max-width:1100px;margin:80px auto;padding:30px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 25px #00eaff;transition:0.5s;}
-.logo{text-align:center;font-size:46px;font-weight:700;color:#00eaff;text-shadow:0 0 15px #00eaff,0 0 30px #00ffff;margin-bottom:20px;font-family:'Orbitron',sans-serif;animation:glowPulse 2s infinite alternate;}
+.container{max-width:500px;margin:80px auto;padding:20px;border-radius:15px;backdrop-filter:blur(10px);box-shadow:0 0 20px #00eaff;transition:0.5s;}
+.logo{text-align:center;font-size:36px;font-weight:700;color:#00eaff;text-shadow:0 0 15px #00eaff,0 0 30px #00ffff;margin-bottom:15px;font-family:'Orbitron',sans-serif;animation:glowPulse 2s infinite alternate;}
 @keyframes glowPulse{0%{text-shadow:0 0 15px #00eaff,0 0 30px #00ffff;}100%{text-shadow:0 0 30px #00eaff,0 0 60px #00ffff;}}
-.hero-text{text-align:center;margin-bottom:30px;font-size:18px;font-weight:500;background:linear-gradient(90deg,#00eaff,#00ff99,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-label{margin-top:12px;display:block;font-weight:500;}
-input,select,button{width:100%;padding:12px;margin-top:6px;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:#fff;font-size:15px;transition:0.3s;}
+.hero-text{text-align:center;margin-bottom:20px;font-size:16px;font-weight:500;background:linear-gradient(90deg,#00eaff,#00ff99,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+label{margin-top:10px;display:block;font-weight:500;font-size:14px;}
+input,select,button{width:100%;padding:10px;margin-top:6px;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:#fff;font-size:14px;transition:0.3s;}
 input:focus,select:focus{background:rgba(255,255,255,0.25);outline:none;}
-button{background:#00eaff;color:#000;font-size:16px;font-weight:600;cursor:pointer;transition:0.3s,box-shadow 0.5s;animation:btnPulse 2s infinite alternate;}
+button{background:#00eaff;color:#000;font-size:15px;font-weight:600;cursor:pointer;transition:0.3s,box-shadow 0.5s;animation:btnPulse 2s infinite alternate;}
 button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 @keyframes btnPulse{0%{box-shadow:0 0 15px #00eaff;}100%{box-shadow:0 0 30px #00ffff;}}
-.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px;}
-.package{background:rgba(0,0,0,0.4);padding:20px;border-radius:15px;box-shadow:0 0 25px #00eaff;text-align:center;transition:0.3s, transform 0.5s;}
-.package:hover{transform:scale(1.05);box-shadow:0 0 40px #00ffff;}
-.package h3{text-shadow:0 0 15px #00eaff;font-family:'Orbitron',sans-serif;}
-.package p{font-size:14px;color:#a7f5ff;}
-.package i{font-size:36px;color:#00eaff;margin-bottom:10px;display:block;}
-.map-container{margin-top:20px;border-radius:15px;overflow:hidden;box-shadow:0 0 25px #00eaff;}
-.contact{margin-top:20px;text-align:center;font-size:16px;color:#00eaff;}
-.dashboard-section{margin-top:20px;}
-.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.4);padding:10px 0;box-shadow:0 0 20px #00eaff;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
+.packages{display:grid;grid-template-columns:1fr;gap:15px;margin-top:15px;}
+.package{background:rgba(0,0,0,0.4);padding:15px;border-radius:12px;box-shadow:0 0 20px #00eaff;text-align:center;transition:0.3s, transform 0.5s;}
+.package:hover{transform:scale(1.05);box-shadow:0 0 30px #00ffff;}
+.package h3{text-shadow:0 0 12px #00eaff;font-family:'Orbitron',sans-serif;font-size:16px;}
+.package p{font-size:13px;color:#a7f5ff;}
+.package i{font-size:28px;color:#00eaff;margin-bottom:8px;display:block;}
+.map-container{margin-top:15px;border-radius:12px;overflow:hidden;box-shadow:0 0 20px #00eaff;}
+.contact{margin-top:15px;text-align:center;font-size:14px;color:#00eaff;}
+.dashboard-section{margin-top:15px;display:none;}
+.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.4);padding:8px 0;box-shadow:0 0 15px #00eaff;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;position:relative;}
-.icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
+.icon-item i{font-size:24px;color:#00eaff;cursor:pointer;transition:0.3s;}
 .icon-item i:hover{color:#00fff0;transform:scale(1.2);}
-.icon-item span{display:block;font-size:12px;margin-top:4px;}
-.whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s, box-shadow 0.5s;}
+.icon-item span{display:block;font-size:10px;margin-top:3px;}
+.whatsapp-btn{position:fixed;bottom:65px;right:15px;background:#25d366;padding:14px 16px;border-radius:50%;color:#fff;font-size:24px;text-decoration:none;box-shadow:0 0 15px #25d366;transition:0.3s, box-shadow 0.5s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
-a{color:#00eaff;text-decoration:none;}
+a{color:#00eaff;text-decoration:none;font-size:14px;}
 a:hover{text-decoration:underline;}
 </style>
 </head>
@@ -55,7 +55,7 @@ a:hover{text-decoration:underline;}
 <div class="bg-animate"></div>
 <div class="stripes"><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div></div>
 <script>
-for(let i=0;i<60;i++){
+for(let i=0;i<40;i++){
   let p=document.createElement("div");
   p.className="particle";
   p.style.left=Math.random()*100+"vw";
@@ -67,9 +67,8 @@ for(let i=0;i<60;i++){
 
 <div class="container">
 <h2 class="logo">Astore Tourist Hub</h2>
-<div class="hero-text">Explore the pristine valleys of Astore with luxury rooms, guided tours, and adventure packages. Book cars, rooms and enjoy the breathtaking scenery!</div>
+<div class="hero-text">Explore Astore Valley with ease! Book rooms, cars, and adventure packages for a premium travel experience.</div>
 
-<!-- Rooms -->
 <div id="room" class="dashboard-section">
 <h3><i class="fa-solid fa-bed"></i> Book a Room</h3>
 <form id="roomForm">
@@ -87,7 +86,6 @@ for(let i=0;i<60;i++){
 </form>
 </div>
 
-<!-- Cars -->
 <div id="car" class="dashboard-section">
 <h3><i class="fa-solid fa-car"></i> Book a Car</h3>
 <form id="carForm">
@@ -105,20 +103,17 @@ for(let i=0;i<60;i++){
 </form>
 </div>
 
-<!-- Packages -->
 <div id="packages" class="dashboard-section packages">
 <div class="package"><i class="fa-solid fa-mountain"></i><h3>Basic Package</h3><p>2 Nights, 3 Days<br>Standard Room + Local Guide</p></div>
 <div class="package"><i class="fa-solid fa-car"></i><h3>Luxury Package</h3><p>4 Nights, 5 Days<br>Luxury Room + Car + Guide</p></div>
 <div class="package"><i class="fa-solid fa-person-hiking"></i><h3>Adventure Package</h3><p>5 Nights, 6 Days<br>Family Suite + Jeep Tour + Hiking</p></div>
 </div>
 
-<!-- Map -->
 <div id="map" class="dashboard-section map-container">
 <h3><i class="fa-solid fa-map-location-dot"></i> Our Location</h3>
-<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
-<!-- Contact -->
 <div id="contact" class="dashboard-section contact">
 <h3><i class="fa-solid fa-envelope"></i> Contact Us</h3>
 <p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com">mohammadasimkhan2746@gmail.com</a></p>
@@ -126,7 +121,6 @@ for(let i=0;i<60;i++){
 <p>Facebook: <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank">Our Page</a></p>
 </div>
 
-<!-- ICON MENU -->
 <div class="icon-menu">
 <div class="icon-item"><i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span></div>
 <div class="icon-item"><i class="fa-solid fa-car" onclick="showSection('car')"></i><span>Car</span></div>
@@ -138,44 +132,24 @@ for(let i=0;i<60;i++){
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Section switch
 function showSection(section){
   document.querySelectorAll(".dashboard-section").forEach(s=>s.style.display="none");
   document.getElementById(section).style.display="block";
 }
-
-// Room WhatsApp
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const booking={
-    type:"Room",
-    name:document.getElementById("rname").value,
-    phone:document.getElementById("rphone").value,
-    checkin:document.getElementById("rcheckin").value,
-    checkout:document.getElementById("rcheckout").value,
-    room:document.getElementById("rtype").value
-  };
+  const booking={type:"Room",name:document.getElementById("rname").value,phone:document.getElementById("rphone").value,checkin:document.getElementById("rcheckin").value,checkout:document.getElementById("rcheckout").value,room:document.getElementById("rtype").value};
   const msg=`Room Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nCheck-in: ${booking.checkin}\nCheck-out: ${booking.checkout}\nRoom: ${booking.room}`;
-  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
   this.reset();
 });
-
-// Car WhatsApp
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const booking={
-    type:"Car",
-    name:document.getElementById("cname").value,
-    phone:document.getElementById("cphone").value,
-    date:document.getElementById("cdate").value,
-    car:document.getElementById("ctype").value
-  };
+  const booking={type:"Car",name:document.getElementById("cname").value,phone:document.getElementById("cphone").value,date:document.getElementById("cdate").value,car:document.getElementById("ctype").value};
   const msg=`Car Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nPickup Date: ${booking.date}\nCar: ${booking.car}`;
-  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
   this.reset();
 });
-
-// Show default section
 showSection('room');
 </script>
 </body>
