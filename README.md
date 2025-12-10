@@ -1,4 +1,4 @@
-<Astore>
+<ASTORE TOURIST HUB>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -62,9 +62,7 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 </head>
 <body>
 <div class="bg-animate"></div>
-<div class="stripes">
-  <div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div>
-</div>
+<div class="stripes"><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div></div>
 <button class="mode-toggle" onclick="toggleMode()">Toggle Dark/Light</button>
 <script>
 for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle";p.style.left=Math.random()*100+"vw";p.style.animationDuration=(8+Math.random()*7)+"s";p.style.opacity=Math.random()*0.7+0.3;document.body.appendChild(p);}
@@ -97,17 +95,24 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 
 <h2 style="text-shadow:0 0 12px #00eaff;">Room Booking</h2>
 <form id="roomForm">
+<label><i class="fa-solid fa-user"></i> Name</label><input type="text" id="rname" required>
+<label><i class="fa-solid fa-phone"></i> Phone</label><input type="text" id="rphone" required>
+<label><i class="fa-solid fa-calendar-days"></i> Check-in Date</label><input type="date" id="rcheckin" required>
+<label><i class="fa-solid fa-calendar-days"></i> Check-out Date</label><input type="date" id="rcheckout" required>
 <label><i class="fa-solid fa-bed"></i> Room Type</label>
 <select id="rtype" required>
 <option>Standard Room</option>
 <option>Luxury Room</option>
 <option>Family Suite</option>
 </select>
-<button type="submit">Book Room</button>
+<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Room on WhatsApp</button>
 </form>
 
 <h2 style="text-shadow:0 0 12px #00eaff;">Car Booking</h2>
 <form id="carForm">
+<label><i class="fa-solid fa-user"></i> Name</label><input type="text" id="cname" required>
+<label><i class="fa-solid fa-phone"></i> Phone</label><input type="text" id="cphone" required>
+<label><i class="fa-solid fa-calendar-days"></i> Pickup Date</label><input type="date" id="cdate" required>
 <label><i class="fa-solid fa-car"></i> Car Type</label>
 <select id="ctype" required>
 <option>Corolla</option>
@@ -115,7 +120,7 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <option>Prado</option>
 <option>Astore Local Jeep</option>
 </select>
-<button type="submit">Book Car</button>
+<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Car on WhatsApp</button>
 </form>
 
 <div class="booking-history">
@@ -140,6 +145,9 @@ for(let i=0;i<60;i++){let p=document.createElement("div");p.className="particle"
 <script>
 // Toggle dark/light
 function toggleMode(){document.body.classList.toggle("light-mode");}
+
+// Floating particles
+// (already added above)
 
 // localStorage login/signup
 function signup(){
@@ -171,40 +179,68 @@ function showDashboard(){
 function showLogin(){document.getElementById("signupDiv").style.display="none";document.getElementById("loginDiv").style.display="block";document.getElementById("dashboard").style.display="none";}
 function showSignup(){document.getElementById("signupDiv").style.display="block";document.getElementById("loginDiv").style.display="none";document.getElementById("dashboard").style.display="none";}
 
-// Booking
+// Booking + WhatsApp
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
   const u=localStorage.getItem("loggedInUser");
   if(!u){alert("Login first!");return;}
-  let r=document.getElementById("rtype").value;
-  addHistory(`Room booked: ${r}`);
+  const rname=document.getElementById("rname").value;
+  const rphone=document.getElementById("rphone").value;
+  const rcheckin=document.getElementById("rcheckin").value;
+  const rcheckout=document.getElementById("rcheckout").value;
+  const rtype=document.getElementById("rtype").value;
+  const msg=`Room Booking Request:%0AName: ${rname}%0APhone: ${rphone}%0ACheck-in: ${rcheckin}%0ACheck-out: ${rcheckout}%0ARoom Type: ${rtype}`;
+  window.open(`https://wa.me/923171588489?text=${msg}`);
+  addHistory(`Room booked: ${rtype} (${rcheckin} to ${rcheckout})`);
 });
+
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
   const u=localStorage.getItem("loggedInUser");
   if(!u){alert("Login first!");return;}
-  let c=document.getElementById("ctype").value;
-  addHistory(`Car booked: ${c}`);
+  const cname=document.getElementById("cname").value;
+  const cphone=document.getElementById("cphone").value;
+  const cdate=document.getElementById("cdate").value;
+  const ctype=document.getElementById("ctype").value;
+  const msg=`Car Booking Request:%0AName: ${cname}%0APhone: ${cphone}%0APickup Date: ${cdate}%0ACar Type: ${ctype}`;
+  window.open(`https://wa.me/923171588489?text=${msg}`);
+  addHistory(`Car booked: ${ctype} on ${cdate}`);
 });
 
 function addHistory(action){
-  const u=localStorage.getItem("loggedInUser");
-  let users=JSON.parse(localStorage.getItem("users"))||{};
-  if(!users[u])return;
-  const t=new Date().toLocaleString();
-  users[u].history.push(`${t} - ${action}`);
-  localStorage.setItem("users",JSON.stringify(users));
+  const u = localStorage.getItem("loggedInUser");
+  let users = JSON.parse(localStorage.getItem("users")) || {};
+  if(!users[u]) return;
+  users[u].history.push({action: action, time: new Date().toLocaleString()});
+  localStorage.setItem("users", JSON.stringify(users));
   displayHistory();
 }
+
 function displayHistory(){
-  const u=localStorage.getItem("loggedInUser");
-  const h=document.getElementById("historyList");h.innerHTML="";
-  let users=JSON.parse(localStorage.getItem("users"))||{};
-  if(users[u]&&users[u].history.length>0){users[u].history.slice().reverse().forEach(i=>{let p=document.createElement("p");p.textContent=i;h.appendChild(p);});}
-  else{h.innerHTML="<p>No bookings yet.</p>";}
+  const u = localStorage.getItem("loggedInUser");
+  let users = JSON.parse(localStorage.getItem("users")) || {};
+  const historyDiv = document.getElementById("historyList");
+  historyDiv.innerHTML = "";
+  if(users[u] && users[u].history.length > 0){
+    users[u].history.slice().reverse().forEach(h=>{
+      const div = document.createElement("div");
+      div.style.padding="10px";
+      div.style.margin="6px 0";
+      div.style.borderRadius="8px";
+      div.style.background="rgba(0,255,255,0.1)";
+      div.innerHTML = `<strong>${h.action}</strong> <br><small>${h.time}</small>`;
+      historyDiv.appendChild(div);
+    });
+  } else {
+    historyDiv.innerHTML = "<p>No bookings yet.</p>";
+  }
 }
-if(localStorage.getItem("loggedInUser")) showDashboard();
-else showLogin();
+
+// On load, check if logged in
+window.onload = function(){
+  const u = localStorage.getItem("loggedInUser");
+  if(u) showDashboard();
+}
 </script>
 </body>
 </html>
