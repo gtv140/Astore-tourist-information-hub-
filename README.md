@@ -26,9 +26,9 @@ body{font-family:'Poppins',sans-serif;color:#fff;overflow-x:hidden;transition:0.
 @keyframes glowPulse{0%{text-shadow:0 0 15px #00eaff,0 0 30px #00ffff;}100%{text-shadow:0 0 30px #00eaff,0 0 60px #00ffff;}}
 .hero-text{text-align:center;margin-bottom:30px;font-size:18px;font-weight:500;background:linear-gradient(90deg,#00eaff,#00ff99,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:1;transform:translateY(0);}
 label{margin-top:12px;display:block;font-weight:500;}
-input,select{width:100%;padding:12px;margin-top:6px;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:#fff;font-size:15px;transition:0.3s;}
+input,select,button{width:100%;padding:12px;margin-top:6px;border-radius:10px;border:none;background:rgba(255,255,255,0.1);color:#fff;font-size:15px;transition:0.3s;}
 input:focus,select:focus{background:rgba(255,255,255,0.25);outline:none;}
-button{width:100%;padding:14px;margin-top:18px;border:none;border-radius:10px;background:#00eaff;color:#000;font-size:18px;font-weight:600;cursor:pointer;transition:0.3s, box-shadow 0.5s;animation:btnPulse 2s infinite alternate;}
+button{background:#00eaff;color:#000;font-size:16px;font-weight:600;cursor:pointer;transition:0.3s,box-shadow 0.5s;animation:btnPulse 2s infinite alternate;}
 button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 @keyframes btnPulse{0%{box-shadow:0 0 15px #00eaff;}100%{box-shadow:0 0 30px #00ffff;}}
 .packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:20px;}
@@ -46,7 +46,7 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 .icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
 .icon-item i:hover{color:#00fff0;transform:scale(1.2);}
 .icon-item span{display:block;font-size:12px;margin-top:4px;}
-#logoutBtn{position:fixed;top:15px;right:15px;padding:8px;font-size:18px;background:#ff4444;border:none;border-radius:50%;box-shadow:0 0 15px #ff6666;color:#fff;cursor:pointer;z-index:9999;}
+#logoutBtn{position:fixed;top:15px;right:15px;width:45px;height:45px;font-size:20px;padding:0;background:#ff4444;border:none;border-radius:50%;box-shadow:0 0 15px #ff6666;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9999;transition:0.3s;}
 #logoutBtn:hover{transform:scale(1.1);}
 .whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s, box-shadow 0.5s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
@@ -257,7 +257,7 @@ function loadHistory(){
       if(b.type==="Room"){
         content=`Room Booking:<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}<br>Room: ${b.room}`;
       } else if(b.type==="Car"){
-        content=`Car Booking:<br>Name: ${b.name}<br>Phone: : ${b.phone}<br>Pickup Date: ${b.date}<br>Car: ${b.car}`;
+        content=`Car Booking:<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Pickup Date: ${b.date}<br>Car: ${b.car}<br>Car Type: ${b.car}`;
       }
       div.innerHTML = content;
       list.appendChild(div);
@@ -273,21 +273,13 @@ function logout(){
   showLogin();
 }
 
-// Show logout button only on dashboard
-const logoutBtn=document.createElement("button");
-logoutBtn.id="logoutBtn";
-logoutBtn.innerHTML="&#x2716;";
-logoutBtn.onclick=logout;
+// Show logout button when dashboard visible
+const logoutBtn = document.createElement("button");
+logoutBtn.id = "logoutBtn";
+logoutBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i>';
+logoutBtn.onclick = logout;
 document.body.appendChild(logoutBtn);
-
-// Auto-show dashboard if already logged in
-window.onload=function(){
-  if(localStorage.getItem("loggedInUser")){
-    showDashboard();
-  } else {
-    showLogin();
-  }
-}
 </script>
+
 </body>
 </html>
