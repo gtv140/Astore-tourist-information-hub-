@@ -128,7 +128,7 @@ Phone: ${phone}
 Pickup Date: ${date}
 Car Type: ${car}`;
 
-    window.open("https://wa.me/923555396518?text=" + encodeURIComponent(msg));
+    window.open("https://wa.me/923171588489?text=" + encodeURIComponent(msg));
 }
 </script>
 
@@ -138,7 +138,7 @@ Car Type: ${car}`;
 <!-- HEADER -->
 <header style="padding:25px;">
     <h1 class="neon-title">Astore Tourist Information Hub</h1>
-    <p class="sub">Owner: Asim Khanzai — Contact: 03555396518</p>
+    <p class="sub">Owner: Asim Khanzai — Contact: 03171588489</p>
 </header>
 
 <!-- ROOM BOOKING -->
