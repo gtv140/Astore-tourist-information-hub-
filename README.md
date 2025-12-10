@@ -46,20 +46,7 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 .icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
 .icon-item i:hover{color:#00fff0;transform:scale(1.2);}
 .icon-item span{display:block;font-size:12px;margin-top:4px;}
-#logoutBtn{
-  position:fixed;
-  top:15px;
-  right:15px;
-  padding:8px;
-  font-size:18px;
-  background:#ff4444;
-  border:none;
-  border-radius:50%;
-  box-shadow:0 0 15px #ff6666;
-  color:#fff;
-  cursor:pointer;
-  z-index:9999;
-}
+#logoutBtn{position:fixed;top:15px;right:15px;padding:8px;font-size:18px;background:#ff4444;border:none;border-radius:50%;box-shadow:0 0 15px #ff6666;color:#fff;cursor:pointer;z-index:9999;}
 #logoutBtn:hover{transform:scale(1.1);}
 .whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s, box-shadow 0.5s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
@@ -182,6 +169,7 @@ function signup(){
   localStorage.setItem("users",JSON.stringify(users));
   alert("Signup successful! Login now"); showLogin();
 }
+
 function login(){
   const u=document.getElementById("loginUsername").value.trim();
   const p=document.getElementById("loginPassword").value.trim();
@@ -190,8 +178,10 @@ function login(){
     localStorage.setItem("loggedInUser",u); showDashboard();
   }else{alert("Invalid credentials");}
 }
+
 function showSignup(){document.getElementById("signupDiv").style.display="block";document.getElementById("loginDiv").style.display="none";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
 function showLogin(){document.getElementById("signupDiv").style.display="none";document.getElementById("loginDiv").style.display="block";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
+
 function showDashboard(){
   const u=localStorage.getItem("loggedInUser");
   if(!u){showLogin(); return;}
@@ -201,6 +191,7 @@ function showDashboard(){
   showSection('room');
   loadHistory();
 }
+
 function showSection(section){
   document.querySelectorAll(".dashboard-section").forEach(s=>s.style.display="none");
   document.getElementById(section).style.display="block";
@@ -256,29 +247,23 @@ function loadHistory(){
   const list=document.getElementById("historyList");
   list.innerHTML="";
   if(users[u] && users[u].history.length>0){
-    users[u].history.forEach((b,i)=>{
+    users[u].history.forEach((b)=>{
       const div=document.createElement("div");
-      div.style.border="1px solid #00eaff"; div.style.padding="8px"; div.style.margin="5px"; div.style.borderRadius="8px";
+      div.style.border="1px solid #00eaff"; 
+      div.style.padding="8px"; 
+      div.style.margin="5px"; 
+      div.style.borderRadius="8px";
       let content="";
       if(b.type==="Room"){
-        content=`RoomBooking:<br>
-Name: ${b.name}<br>
-Phone: ${b.phone}<br>
-Check-in: ${b.checkin}<br>
-Check-out: ${b.checkout}<br>
-Room: ${b.room}`;
+        content=`Room Booking:<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}<br>Room: ${b.room}`;
       } else if(b.type==="Car"){
-        content=`Car Booking:<br>
-Name: ${b.name}<br>
-Phone: ${b.phone}<br>
-Pickup Date: ${b.date}<br>
-Car: ${b.car}`;
+        content=`Car Booking:<br>Name: ${b.name}<br>Phone: : ${b.phone}<br>Pickup Date: ${b.date}<br>Car: ${b.car}`;
       }
-      div.innerHTML=content;
+      div.innerHTML = content;
       list.appendChild(div);
     });
   } else {
-    list.innerHTML="<p>No bookings yet.</p>";
+    list.innerHTML = "<p>No bookings yet.</p>";
   }
 }
 
@@ -288,22 +273,21 @@ function logout(){
   showLogin();
 }
 
-// Check login state on load
-window.addEventListener("load",()=>{
-  const u=localStorage.getItem("loggedInUser");
-  if(u){
+// Show logout button only on dashboard
+const logoutBtn=document.createElement("button");
+logoutBtn.id="logoutBtn";
+logoutBtn.innerHTML="&#x2716;";
+logoutBtn.onclick=logout;
+document.body.appendChild(logoutBtn);
+
+// Auto-show dashboard if already logged in
+window.onload=function(){
+  if(localStorage.getItem("loggedInUser")){
     showDashboard();
   } else {
     showLogin();
   }
-});
-
-// Attach logout button
-const logoutBtn=document.createElement("button");
-logoutBtn.id="logoutBtn";
-logoutBtn.innerHTML='<i class="fa-solid fa-right-from-bracket"></i>';
-logoutBtn.onclick=logout;
-document.body.appendChild(logoutBtn);
+}
 </script>
 </body>
 </html>
