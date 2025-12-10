@@ -1,4 +1,4 @@
-<ASTORE TOURIST HUB>
+<ASTORE TOURIST INFORMATION>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -39,15 +39,13 @@ button:hover{background:#00bcd4;box-shadow:0 0 25px #00ffff;}
 .package i{font-size:36px;color:#00eaff;margin-bottom:10px;display:block;}
 .map-container{margin-top:20px;border-radius:15px;overflow:hidden;box-shadow:0 0 25px #00eaff;}
 .contact{margin-top:20px;text-align:center;font-size:16px;color:#00eaff;}
-#authContainer,#dashboard{max-width:700px;margin:40px auto;background:rgba(0,0,0,0.4);padding:25px;border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 25px #00eaff;text-align:center;}
+#dashboard{max-width:700px;margin:40px auto;padding:25px;text-align:center;}
 .dashboard-section{display:none;}
 .icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.4);padding:10px 0;box-shadow:0 0 20px #00eaff;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;position:relative;}
 .icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
 .icon-item i:hover{color:#00fff0;transform:scale(1.2);}
 .icon-item span{display:block;font-size:12px;margin-top:4px;}
-#logoutBtn{position:fixed;top:15px;right:15px;width:45px;height:45px;font-size:20px;padding:0;background:#ff4444;border:none;border-radius:50%;box-shadow:0 0 15px #ff6666;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:9999;transition:0.3s;}
-#logoutBtn:hover{transform:scale(1.1);}
 .whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s, box-shadow 0.5s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
 </style>
@@ -66,38 +64,15 @@ for(let i=0;i<60;i++){
 }
 </script>
 
-<!-- AUTH -->
-<div id="authContainer">
+<div id="dashboard">
 <h2 class="logo">Astore Tourist Hub</h2>
 <div class="hero-text">Owner: Asim Khanzai | WhatsApp: 03171588489 | Email: mohammadasimkhan2746@gmail.com</div>
 
-<div id="signupDiv">
-<h3>Signup <i class="fa-solid fa-user-plus icon"></i></h3>
-<input type="text" id="signupUsername" placeholder="Username" required>
-<input type="password" id="signupPassword" placeholder="Password" required>
-<button onclick="signup()">Signup</button>
-<p class="message">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
-</div>
-
-<div id="loginDiv" style="display:none;">
-<h3>Login <i class="fa-solid fa-right-to-bracket icon"></i></h3>
-<input type="text" id="loginUsername" placeholder="Username" required>
-<input type="password" id="loginPassword" placeholder="Password" required>
-<button onclick="login()">Login</button>
-<p class="message">Don't have an account? <a href="#" onclick="showSignup()">Signup</a></p>
-</div>
-</div>
-
-<!-- DASHBOARD -->
-<div id="dashboard">
-<h2>Welcome, <span id="userDisplay"></span>! <i class="fa-solid fa-user icon"></i></h2>
-<button id="logoutBtn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
-
-<div id="room" class="dashboard-section">
+<div id="room" class="dashboard-section" style="display:block;">
 <h2>Room Booking</h2>
 <form id="roomForm">
-<label>Name</label><input type="text" id="rname" required>
-<label>Phone</label><input type="text" id="rphone" required>
+<label>Name</label><input type="text" id="rname" placeholder="Your Name" required>
+<label>Phone</label><input type="text" id="rphone" placeholder="Phone Number" required>
 <label>Check-in</label><input type="date" id="rcheckin" required>
 <label>Check-out</label><input type="date" id="rcheckout" required>
 <label>Room Type</label>
@@ -113,8 +88,8 @@ for(let i=0;i<60;i++){
 <div id="car" class="dashboard-section">
 <h2>Car Booking</h2>
 <form id="carForm">
-<label>Name</label><input type="text" id="cname" required>
-<label>Phone</label><input type="text" id="cphone" required>
+<label>Name</label><input type="text" id="cname" placeholder="Your Name" required>
+<label>Phone</label><input type="text" id="cphone" placeholder="Phone Number" required>
 <label>Pickup Date</label><input type="date" id="cdate" required>
 <label>Car Type</label>
 <select id="ctype" required>
@@ -142,11 +117,6 @@ for(let i=0;i<60;i++){
 <p>Owner: Asim Khanzai | WhatsApp: 03171588489</p>
 </div>
 
-<div class="booking-history dashboard-section" id="historySection">
-<h4>Booking History</h4>
-<div id="historyList"></div>
-</div>
-
 <!-- ICON MENU -->
 <div class="icon-menu">
 <div class="icon-item"><i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span></div>
@@ -159,56 +129,15 @@ for(let i=0;i<60;i++){
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Signup/Login/Logout
-function signup(){
-  const u=document.getElementById("signupUsername").value.trim();
-  const p=document.getElementById("signupPassword").value.trim();
-  if(!u||!p){alert("Fill all fields"); return;}
-  let users=JSON.parse(localStorage.getItem("users"))||{};
-  if(users[u]){alert("Username exists"); return;}
-  users[u]={password:p,history:[]};
-  localStorage.setItem("users",JSON.stringify(users));
-  alert("Signup successful! Login now"); showLogin();
-}
-
-function login(){
-  const u=document.getElementById("loginUsername").value.trim();
-  const p=document.getElementById("loginPassword").value.trim();
-  let users=JSON.parse(localStorage.getItem("users"))||{};
-  if(users[u] && users[u].password===p){
-    localStorage.setItem("loggedInUser",u); showDashboard();
-  }else{alert("Invalid credentials");}
-}
-
-function logout(){
-  localStorage.removeItem("loggedInUser");
-  showLogin();
-}
-
-function showSignup(){document.getElementById("signupDiv").style.display="block";document.getElementById("loginDiv").style.display="none";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
-function showLogin(){document.getElementById("signupDiv").style.display="none";document.getElementById("loginDiv").style.display="block";document.getElementById("authContainer").style.display="block";document.getElementById("dashboard").style.display="none";}
-
-function showDashboard(){
-  const u=localStorage.getItem("loggedInUser");
-  if(!u){showLogin(); return;}
-  document.getElementById("authContainer").style.display="none";
-  document.getElementById("dashboard").style.display="block";
-  document.getElementById("userDisplay").textContent=u;
-  showSection('room');
-  loadHistory();
-}
-
+// Show sections
 function showSection(section){
   document.querySelectorAll(".dashboard-section").forEach(s=>s.style.display="none");
   document.getElementById(section).style.display="block";
 }
 
-// Room Booking WhatsApp
+// Room WhatsApp
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const u=localStorage.getItem("loggedInUser");
-  if(!u)return alert("Login first");
-  let users=JSON.parse(localStorage.getItem("users"))||{};
   const booking={
     type:"Room",
     name:document.getElementById("rname").value,
@@ -217,20 +146,14 @@ document.getElementById("roomForm").addEventListener("submit",function(e){
     checkout:document.getElementById("rcheckout").value,
     room:document.getElementById("rtype").value
   };
-  users[u].history.push(booking);
-  localStorage.setItem("users",JSON.stringify(users));
-  loadHistory();
   const msg=`Room Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nCheck-in: ${booking.checkin}\nCheck-out: ${booking.checkout}\nRoom: ${booking.room}`;
   window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
   this.reset();
 });
 
-// Car Booking WhatsApp
+// Car WhatsApp
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const u=localStorage.getItem("loggedInUser");
-  if(!u)return alert("Login first");
-  let users=JSON.parse(localStorage.getItem("users"))||{};
   const booking={
     type:"Car",
     name:document.getElementById("cname").value,
@@ -238,47 +161,10 @@ document.getElementById("carForm").addEventListener("submit",function(e){
     date:document.getElementById("cdate").value,
     car:document.getElementById("ctype").value
   };
-  users[u].history.push(booking);
-  localStorage.setItem("users",JSON.stringify(users));
-  loadHistory();
   const msg=`Car Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nPickup Date: ${booking.date}\nCar: ${booking.car}`;
   window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
   this.reset();
 });
-
-function loadHistory(){
-  const u=localStorage.getItem("loggedInUser");
-  if(!u)return;
-  const users=JSON.parse(localStorage.getItem("users"))||{};
-  const list=document.getElementById("historyList");
-  list.innerHTML="";
-  if(users[u] && users[u].history.length>0){
-    users[u].history.forEach((b)=>{
-      const div=document.createElement("div");
-      div.style.border="1px solid #00eaff"; 
-      div.style.padding="8px"; 
-      div.style.margin="5px"; 
-      div.style.borderRadius = "10px";
-      div.style.background = "rgba(0,0,0,0.2)";
-      div.style.boxShadow = "0 0 10px #00eaff";
-      let content = "";
-      if(b.type === "Room"){
-        content = `<strong>Room Booking</strong><br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}<br>Room: ${b.room}`;
-      } else if(b.type === "Car"){
-        content = `<strong>Car Booking</strong><br>Name: ${b.name}<br>Phone: ${b.phone}<br>Pickup Date: ${b.date}<br>Car: ${b.car}`;
-      }
-      div.innerHTML = content;
-      list.appendChild(div);
-    });
-  } else {
-    list.innerHTML = "<p>No bookings yet.</p>";
-  }
-}
-
-// Initialize dashboard if already logged in
-if(localStorage.getItem("loggedInUser")){
-  showDashboard();
-}
 </script>
 </body>
 </html>
