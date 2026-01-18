@@ -8,51 +8,56 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;color:#fff;background:#111;overflow-x:hidden;}
-.container{max-width:1000px;margin:0 auto;padding:20px;}
-.logo{text-align:center;font-size:32px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;text-shadow:0 0 10px #00fff0;}
+body{font-family:'Poppins',sans-serif;color:#fff;background:#000;overflow-x:hidden;}
+a{text-decoration:none;color:#00fff0;transition:0.3s;}
+a:hover{color:#00eaff;}
+.container{max-width:1000px;margin:60px auto;padding:20px;background:rgba(0,0,0,0.5);border-radius:15px;backdrop-filter:blur(8px);}
+.logo{text-align:center;font-size:36px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;text-shadow:0 0 10px #00eaff;}
 .hero-text{text-align:center;font-size:16px;margin-bottom:20px;color:#00fff0;}
-.slider{position:relative;width:100%;overflow:hidden;border-radius:15px;margin-bottom:20px;}
-.slider img{width:100%;display:none;transition:0.8s;}
-.slider img.active{display:block;}
-section{margin-bottom:30px;padding:10px;}
-section h2{color:#00eaff;margin-bottom:10px;text-shadow:0 0 5px #00fff0;font-family:'Orbitron',sans-serif;}
+section{margin-bottom:30px;}
+section h2{color:#00eaff;margin-bottom:15px;font-family:'Orbitron',sans-serif;text-shadow:0 0 8px #00fff0;}
 section p{font-size:14px;color:#a7f5ff;line-height:1.5;}
-section img{width:100%;border-radius:10px;margin-top:10px;}
+section img{width:100%;border-radius:12px;margin-top:10px;box-shadow:0 0 15px #00eaff;}
 form{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
-input,select,button{padding:10px;border-radius:10px;border:none;font-size:15px;}
+input,select,button{padding:10px;border-radius:8px;border:none;font-size:15px;}
 input,select{background:rgba(255,255,255,0.1);color:#fff;}
 input:focus,select:focus{background:rgba(255,255,255,0.2);outline:none;}
 button{background:#00eaff;color:#000;font-weight:600;cursor:pointer;transition:0.3s;}
 button:hover{background:#00fff0;}
-#historyList div{border:1px solid #00eaff;padding:8px;margin:5px;border-radius:8px;color:#a7f5ff;}
 .icon-menu{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;background:rgba(0,0,0,0.4);padding:10px 0;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;}
-.icon-item i{font-size:26px;color:#00eaff;cursor:pointer;transition:0.3s;}
-.icon-item i:hover{color:#00fff0;transform:scale(1.2);}
+.icon-item i{font-size:26px;cursor:pointer;transition:0.3s;}
 .icon-item span{display:block;font-size:12px;margin-top:3px;color:#00fff0;}
-.whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s;}
+.icon-item i.room{color:#ff7f50;} 
+.icon-item i.car{color:#7fff00;}
+.icon-item i.package{color:#1e90ff;}
+.icon-item i.map{color:#ffa500;}
+.icon-item i.contact{color:#ff69b4;}
+.whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 15px #25d366;transition:0.3s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
-footer{text-align:center;margin-top:20px;padding:15px;background:rgba(0,0,0,0.5);border-radius:10px;color:#00fff0;font-size:14px;}
-footer img{vertical-align:middle;border-radius:50%;margin-right:10px;}
+#historyList div{border:1px solid #00eaff;padding:8px;margin:5px;border-radius:8px;color:#a7f5ff;}
+@media(max-width:768px){.container{margin:20px 10px;padding:15px;} section h2{font-size:20px;} section p{font-size:13px;} input,select,button{font-size:14px;padding:8px;}}
 </style>
 </head>
 <body>
 
 <div class="container" id="dashboard">
 <h1 class="logo">Astore Tourist Hub</h1>
-<div class="hero-text">Welcome to Gilgit-Baltistan! Explore nature, mountains, rivers & local culture.<br>Email: <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;">mohammadasimkhan2746@gmail.com</a> | WhatsApp: <a href="https://wa.me/923171588489" style="color:#00fff0;">0317-1588489</a></div>
-
-<div class="slider" id="slider">
-<img src="https://picsum.photos/id/1015/600/300" class="active" alt="Nature 1">
-<img src="https://picsum.photos/id/1020/600/300" alt="Nature 2">
-<img src="https://picsum.photos/id/1032/600/300" alt="Nature 3">
-<img src="https://picsum.photos/id/1043/600/300" alt="Nature 4">
-<img src="https://picsum.photos/id/1050/600/300" alt="Nature 5">
+<div class="hero-text">
+Welcome to Gilgit-Baltistan! Explore majestic mountains, serene rivers, and rich culture with our guided tours and premium services.  
+<br>Owner: Asim Khanzai | <a href="mailto:mohammadasimkhan2746@gmail.com">Email</a> | <a href="https://wa.me/923171588489">WhatsApp</a>
 </div>
 
-<!-- Sections hidden until icon click -->
-<section id="room" style="display:none;">
+<!-- Hero Slider -->
+<section id="home">
+<img src="https://picsum.photos/id/1015/800/400" alt="Mountains">
+<img src="https://picsum.photos/id/1016/800/400" alt="River">
+<img src="https://picsum.photos/id/1018/800/400" alt="Valley">
+<p style="margin-top:10px;font-size:14px;color:#a7f5ff;">Experience the breathtaking natural beauty of Gilgit-Baltistan through our curated packages and local expertise.</p>
+</section>
+
+<!-- Rooms -->
+<section id="room">
 <h2>Room Booking</h2>
 <form id="roomForm">
 <input type="text" id="rname" placeholder="Your Name" required>
@@ -68,7 +73,8 @@ footer img{vertical-align:middle;border-radius:50%;margin-right:10px;}
 </form>
 </section>
 
-<section id="car" style="display:none;">
+<!-- Cars -->
+<section id="car">
 <h2>Car Booking</h2>
 <form id="carForm">
 <input type="text" id="cname" placeholder="Your Name" required>
@@ -78,13 +84,14 @@ footer img{vertical-align:middle;border-radius:50%;margin-right:10px;}
 <option>Corolla</option>
 <option>Hiace</option>
 <option>Prado</option>
-<option>Astore Local Jeep</option>
+<option>Astore Jeep</option>
 </select>
 <button type="submit"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</button>
 </form>
 </section>
 
-<section id="packages" style="display:none;">
+<!-- Packages -->
+<section id="packages">
 <h2>Adventure Packages</h2>
 <div style="display:flex;flex-direction:column;gap:10px;">
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
@@ -102,89 +109,79 @@ footer img{vertical-align:middle;border-radius:50%;margin-right:10px;}
 </div>
 </section>
 
-<section id="map" style="display:none;">
+<!-- Map -->
+<section id="map">
 <h2>Find Us</h2>
-<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="250" style="border:0;border-radius:15px;"></iframe>
+<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="250" style="border:0;border-radius:12px;"></iframe>
 </section>
 
-<section id="contact" style="display:none;">
+<!-- Contact -->
+<section id="contact">
 <h2>Contact</h2>
-<p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;">mohammadasimkhan2746@gmail.com</a></p>
-<p>WhatsApp: <a href="https://wa.me/923171588489" style="color:#00fff0;">0317-1588489</a></p>
-<p>Facebook: <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank" style="color:#00fff0;">Visit Page</a></p>
+<p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com">mohammadasimkhan2746@gmail.com</a></p>
+<p>WhatsApp: <a href="https://wa.me/923171588489">0317-1588489</a></p>
+<p>Facebook: <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank">Visit Page</a></p>
 </section>
 
-<section id="history" style="display:none;">
+<!-- Booking History -->
+<section id="history">
 <h2>Booking History</h2>
 <div id="historyList"></div>
 </section>
 
-<footer>
-<img src="https://picsum.photos/50/50?random=1" alt="Logo">
-<span>Created by <strong>CrazyKhanTV</strong></span>
-</footer>
-
+<!-- Bottom Icons -->
 <div class="icon-menu">
-<div class="icon-item"><i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span></div>
-<div class="icon-item"><i class="fa-solid fa-car" onclick="showSection('car')"></i><span>Car</span></div>
-<div class="icon-item"><i class="fa-solid fa-mountain" onclick="showSection('packages')"></i><span>Packages</span></div>
-<div class="icon-item"><i class="fa-solid fa-map-location-dot" onclick="showSection('map')"></i><span>Map</span></div>
-<div class="icon-item"><i class="fa-solid fa-envelope" onclick="showSection('contact')"></i><span>Contact</span></div>
+<div class="icon-item"><i class="fa-solid fa-bed room" onclick="scrollToSection('room')"></i><span>Room</span></div>
+<div class="icon-item"><i class="fa-solid fa-car car" onclick="scrollToSection('car')"></i><span>Car</span></div>
+<div class="icon-item"><i class="fa-solid fa-mountain package" onclick="scrollToSection('packages')"></i><span>Packages</span></div>
+<div class="icon-item"><i class="fa-solid fa-map-location-dot map" onclick="scrollToSection('map')"></i><span>Map</span></div>
+<div class="icon-item"><i class="fa-solid fa-envelope contact" onclick="scrollToSection('contact')"></i><span>Contact</span></div>
 </div>
 
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Slider
-let slideIndex=0;
-const slides=document.querySelectorAll("#slider img");
-function showSlide(){slides.forEach(s=>s.classList.remove("active"));slideIndex=(slideIndex+1)%slides.length;slides[slideIndex].classList.add("active");}
-setInterval(showSlide,3000);
-
-// Show section
-function showSection(id){
-document.querySelectorAll("section").forEach(s=>s.style.display="none");
-document.getElementById(id).style.display="block";
-}
-
 // Booking Forms
 document.getElementById("roomForm").addEventListener("submit",function(e){
-e.preventDefault();
-const booking={type:"Room",name:document.getElementById("rname").value,phone:document.getElementById("rphone").value,checkin:document.getElementById("rcheckin").value,checkout:document.getElementById("rcheckout").value,room:document.getElementById("rtype").value};
-const msg=`Room Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nCheck-in: ${booking.checkin}\nCheck-out: ${booking.checkout}\nRoom: ${booking.room}`;
-window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
-this.reset();addHistory(booking);
+  e.preventDefault();
+  const booking={type:"Room", name:document.getElementById("rname").value, phone:document.getElementById("rphone").value, checkin:document.getElementById("rcheckin").value, checkout:document.getElementById("rcheckout").value, room:document.getElementById("rtype").value};
+  const msg=`Room Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nCheck-in: ${booking.checkin}\nCheck-out: ${booking.checkout}\nRoom: ${booking.room}`;
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
+  this.reset(); addHistory(booking);
 });
 
 document.getElementById("carForm").addEventListener("submit",function(e){
-e.preventDefault();
-const booking={type:"Car",name:document.getElementById("cname").value,phone:document.getElementById("cphone").value,date:document.getElementById("cdate").value,car:document.getElementById("ctype").value};
-const msg=`Car Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nPickup Date: ${booking.date}\nCar: ${booking.car}`;
-window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
-this.reset();addHistory(booking);
+  e.preventDefault();
+  const booking={type:"Car", name:document.getElementById("cname").value, phone:document.getElementById("cphone").value, date:document.getElementById("cdate").value, car:document.getElementById("ctype").value};
+  const msg=`Car Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nPickup Date: ${booking.date}\nCar: ${booking.car}`;
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
+  this.reset(); addHistory(booking);
 });
 
-// Booking history localStorage
+// History
 function addHistory(booking){
-let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
-history.push(booking);
-localStorage.setItem("tourHistory",JSON.stringify(history));
-loadHistory();
+  let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
+  history.push(booking);
+  localStorage.setItem("tourHistory",JSON.stringify(history));
+  loadHistory();
 }
 function loadHistory(){
-let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
-const list=document.getElementById("historyList");
-list.innerHTML="";
-history.forEach(b=>{
-const div=document.createElement("div");
-let content="";
-if(b.type==="Room") content=`Room: ${b.room}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}`;
-if(b.type==="Car") content=`Car: ${b.car}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Date: ${b.date}`;
-div.innerHTML=content;
-list.appendChild(div);
-});
+  let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
+  const list=document.getElementById("historyList");
+  list.innerHTML="";
+  history.forEach(b=>{
+    const div=document.createElement("div");
+    if(b.type==="Room") div.innerHTML=`Room: ${b.room}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}`;
+    if(b.type==="Car") div.innerHTML=`Car: ${b.car}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Date: ${b.date}`;
+    list.appendChild(div);
+  });
 }
 loadHistory();
+
+// Scroll to Section
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 </script>
+
+<div style="text-align:center;margin:20px;color:#00fff0;font-size:12px;">Created by CrazyKhanTV</div>
 </body>
 </html>
