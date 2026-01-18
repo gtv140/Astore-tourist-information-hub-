@@ -12,10 +12,6 @@ body{font-family:'Poppins',sans-serif;color:#fff;background:#000;overflow-x:hidd
 .container{max-width:1000px;margin:80px auto;padding:20px;background:rgba(0,0,0,0.4);border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 20px #00eaff;}
 .logo{text-align:center;font-size:36px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;}
 .hero-text{text-align:center;font-size:18px;margin-bottom:20px;color:#00fff0;}
-section{margin-bottom:30px;}
-section h2{color:#00eaff;margin-bottom:15px;text-shadow:0 0 10px #00fff0;font-family:'Orbitron',sans-serif;}
-section p{font-size:14px;color:#a7f5ff;line-height:1.5;}
-section img{width:100%;border-radius:15px;box-shadow:0 0 15px #00eaff;margin-top:10px;}
 
 /* Image slider */
 .slider{position:relative;overflow:hidden;border-radius:15px;box-shadow:0 0 25px #00eaff;margin-bottom:20px;}
@@ -24,6 +20,12 @@ section img{width:100%;border-radius:15px;box-shadow:0 0 15px #00eaff;margin-top
 .slider-buttons{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
 .slider-buttons span{background:rgba(0,0,0,0.5);padding:10px;border-radius:50%;cursor:pointer;transition:0.3s;}
 .slider-buttons span:hover{background:#00eaff;color:#000;}
+
+/* Sections */
+section{margin-bottom:30px;}
+section h2{color:#00eaff;margin-bottom:15px;text-shadow:0 0 10px #00fff0;font-family:'Orbitron',sans-serif;}
+section p{font-size:14px;color:#a7f5ff;line-height:1.5;}
+section img{width:100%;border-radius:15px;box-shadow:0 0 15px #00eaff;margin-top:10px;}
 
 /* Forms */
 form{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
@@ -36,7 +38,7 @@ button:hover{background:#00fff0;}
 /* Booking History */
 #historyList div{border:1px solid #00eaff;padding:8px;margin:5px;border-radius:8px;color:#a7f5ff;}
 
-/* Fixed Bottom Icons */
+/* Bottom Icons */
 .icon-menu{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;background:rgba(0,0,0,0.4);padding:10px 0;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;}
 .icon-item i{font-size:26px;color:#00eaff;cursor:pointer;transition:0.3s;}
@@ -46,13 +48,17 @@ button:hover{background:#00fff0;}
 /* WhatsApp button */
 .whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
+
+/* Ads section */
+.ads{display:flex;overflow-x:auto;gap:10px;padding:10px 0;}
+.ads img{height:150px;border-radius:15px;box-shadow:0 0 15px #00eaff;flex-shrink:0;}
 </style>
 </head>
 <body>
 
 <div class="container">
 <h1 class="logo">Astore Tourist Hub</h1>
-<div class="hero-text">Welcome to Gilgit-Baltistan's Astore Tourist Hub. Explore mountains, rivers, and cultural wonders with us.</div>
+<div class="hero-text">Welcome to Gilgit-Baltistan's Astore Tourist Hub. Explore mountains, rivers, and culture with us. Adventure, cozy rooms, car rentals & more!</div>
 
 <!-- Image Slider -->
 <div class="slider" id="slider">
@@ -60,6 +66,8 @@ button:hover{background:#00fff0;}
 <img src="https://picsum.photos/id/1015/800/400" alt="Mountain">
 <img src="https://picsum.photos/id/1025/800/400" alt="Lake">
 <img src="https://picsum.photos/id/1035/800/400" alt="Valley">
+<img src="https://picsum.photos/id/1045/800/400" alt="River">
+<img src="https://picsum.photos/id/1055/800/400" alt="Forest">
 </div>
 <div class="slider-buttons">
 <span id="prev">&#10094;</span>
@@ -117,6 +125,17 @@ button:hover{background:#00fff0;}
 <i class="fa-solid fa-person-hiking" style="color:#00fff0;font-size:22px;"></i>
 <p><strong>Adventure Package:</strong> 5 Nights, 6 Days | Family Suite + Jeep Tour + Hiking</p>
 </div>
+</div>
+</section>
+
+<!-- Ads Section -->
+<section id="ads">
+<h2>Offers & Promotions</h2>
+<div class="ads">
+<img src="https://picsum.photos/id/1065/300/150" alt="Offer1">
+<img src="https://picsum.photos/id/1075/300/150" alt="Offer2">
+<img src="https://picsum.photos/id/1085/300/150" alt="Offer3">
+<img src="https://picsum.photos/id/1095/300/150" alt="Offer4">
 </div>
 </section>
 
