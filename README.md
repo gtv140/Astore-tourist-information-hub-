@@ -9,9 +9,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Poppins',sans-serif;color:#fff;background:#000;overflow-x:hidden;}
+
+/* Container */
 .container{max-width:1000px;margin:80px auto;padding:20px;background:rgba(0,0,0,0.5);border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 30px #00eaff;}
+
+/* Logo */
 .logo{text-align:center;font-size:36px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;}
-.hero-text{text-align:center;font-size:18px;margin-bottom:20px;color:#00fff0;transition:0.5s;}
+.hero-text{text-align:center;font-size:18px;margin-bottom:20px;color:#00fff0;}
 
 /* Hero slider */
 .slider{position:relative;overflow:hidden;border-radius:15px;box-shadow:0 0 25px #00eaff;margin-bottom:20px;}
@@ -21,6 +25,10 @@ body{font-family:'Poppins',sans-serif;color:#fff;background:#000;overflow-x:hidd
 .slider-buttons{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);}
 .slider-buttons span{background:rgba(0,0,0,0.5);padding:10px;border-radius:50%;cursor:pointer;transition:0.3s;}
 .slider-buttons span:hover{background:#00eaff;color:#000;}
+
+/* Slider overlay text */
+.slider-overlay{position:absolute;top:20%;left:10%;color:#00fff0;text-shadow:0 0 15px #00eaff;animation:fadeIn 2s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
 
 /* Sections */
 section{margin-bottom:30px;}
@@ -43,7 +51,7 @@ button:hover{background:#00fff0;transform:scale(1.05);}
 #historyList div:hover{background:rgba(0,255,255,0.1);transform:scale(1.02);}
 
 /* Bottom Icons */
-.icon-menu{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;background:rgba(0,0,0,0.5);padding:10px 0;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
+.icon-menu{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;background:rgba(0,0,0,0.5);padding:10px 0;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;box-shadow:0 -5px 20px rgba(0,255,255,0.2);}
 .icon-item{text-align:center;transition:0.3s;}
 .icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
 .icon-item i:hover{color:#00fff0;transform:scale(1.3);}
@@ -63,7 +71,7 @@ button:hover{background:#00fff0;transform:scale(1.05);}
 
 <div class="container">
 <h1 class="logo">Astore Tourist Hub</h1>
-<div class="hero-text">Welcome to Gilgit-Baltistan's Astore Tourist Hub. Explore the mountains, rivers & culture with our premium guided tours, cozy rooms & car rentals.</div>
+<div class="hero-text">Welcome to Gilgit-Baltistan's Astore Tourist Hub. Explore mountains, rivers & culture with premium guided tours, cozy rooms & car rentals.</div>
 
 <!-- Hero Slider -->
 <div class="slider" id="slider">
@@ -74,6 +82,7 @@ button:hover{background:#00fff0;transform:scale(1.05);}
 <img src="https://picsum.photos/id/1045/800/400" alt="River">
 <img src="https://picsum.photos/id/1055/800/400" alt="Forest">
 </div>
+<div class="slider-overlay">Discover the beauty of Astore – Mountains, Lakes & Culture</div>
 <div class="slider-buttons">
 <span id="prev">&#10094;</span>
 <span id="next">&#10095;</span>
