@@ -3,36 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astore Tourist Hub - Final</title>
+<title>Astore Tourist Hub</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
 /* Reset & Body */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;color:#fff;background:#0a0a0a;overflow-x:hidden;line-height:1.6;}
-a{color:#00f0ff;text-decoration:none;}
-a:hover{color:#0ff;}
-
-/* Background slider */
-.bg-container{position:fixed;width:100%;height:100%;z-index:-2;overflow:hidden;}
-.bg-container img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;animation:fadeBg 30s infinite;}
-.bg-container img:nth-child(1){animation-delay:0s;}
-.bg-container img:nth-child(2){animation-delay:10s;}
-.bg-container img:nth-child(3){animation-delay:20s;}
-@keyframes fadeBg{0%{opacity:0;}10%{opacity:1;}33%{opacity:1;}43%{opacity:0;}100%{opacity:0;}}
+body{font-family:'Poppins',sans-serif;color:#fff;background:#0a0a0a;overflow-x:hidden;}
 
 /* Container */
-.container{max-width:1000px;margin:60px auto;padding:20px;background:rgba(0,0,0,0.5);border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 25px #00eaff;}
+.container{max-width:1000px;margin:60px auto;padding:20px;background:rgba(0,0,0,0.5);border-radius:15px;backdrop-filter:blur(10px);}
 
-/* Logo & Hero */
-.logo{text-align:center;font-size:40px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;text-shadow:0 0 15px #00eaff;}
-.hero-text{text-align:center;font-size:16px;margin-bottom:20px;color:#00fff0;}
+/* Logo & Hero Text */
+.logo{text-align:center;font-size:36px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;text-shadow:0 0 10px #00fff0;}
+.hero-text{text-align:center;font-size:15px;margin-bottom:20px;color:#00fff0;line-height:1.5;}
 
 /* Sections */
 section{margin-bottom:30px;}
-section h2{color:#00eaff;margin-bottom:15px;text-shadow:0 0 10px #00fff0;font-family:'Orbitron',sans-serif;}
+section h2{color:#00eaff;margin-bottom:10px;text-shadow:0 0 8px #00fff0;font-family:'Orbitron',sans-serif;}
 section p{font-size:14px;color:#a7f5ff;line-height:1.5;}
-section img{width:100%;border-radius:15px;box-shadow:0 0 20px #00eaff;margin-top:10px;}
+section img{width:100%;border-radius:12px;box-shadow:0 0 15px #00eaff;margin-top:10px;}
 
 /* Forms */
 form{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
@@ -49,34 +39,39 @@ button:hover{background:#00fff0;}
 .icon-menu{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;background:rgba(0,0,0,0.5);padding:10px 0;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;}
 .icon-item i{font-size:26px;color:#00eaff;cursor:pointer;transition:0.3s;}
-.icon-item i:hover{color:#0ff;transform:scale(1.2);}
+.icon-item i:hover{color:#00fff0;transform:scale(1.2);}
 .icon-item span{display:block;font-size:12px;margin-top:3px;color:#00fff0;}
 
 /* WhatsApp button */
 .whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
+
+/* Offers/Ads */
+.offer{background:#ff4444;color:#fff;padding:10px;border-radius:8px;text-align:center;margin:15px 0;font-weight:600;box-shadow:0 0 10px #ff6666;}
 </style>
 </head>
 <body>
 
-<div class="bg-container">
-<img src="https://picsum.photos/id/1015/1920/1080" alt="Astore Mountains">
-<img src="https://picsum.photos/id/1025/1920/1080" alt="River View">
-<img src="https://picsum.photos/id/1035/1920/1080" alt="Forest Trail">
-</div>
-
 <div class="container" id="dashboard">
 <h1 class="logo">Astore Tourist Hub</h1>
-<div class="hero-text">Explore Astore & Gilgit-Baltistan | Owner: Asim Khanzai | <a href="mailto:mohammadasimkhan2746@gmail.com">Email</a> | <a href="https://wa.me/923171588489">WhatsApp</a></div>
+<div class="hero-text">
+Discover the breathtaking beauty of Astore Valley! Explore mountains, rivers, glaciers, and cultural landmarks with guided tours, cozy rooms, and rental cars for a perfect adventure.<br>
+Owner: Asim Khanzai | <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;text-decoration:underline;">Email</a> | <a href="https://wa.me/923171588489" style="color:#00fff0;text-decoration:underline;">WhatsApp</a>
+</div>
 
-<!-- About -->
+<!-- Offer Banner -->
+<div class="offer">🔥 Limited Time Offer: Book Adventure Package and Get Free Jeep Ride! 🔥</div>
+
+<!-- About Section -->
 <section id="about">
 <h2>About Astore Tourist Hub</h2>
-<p>Experience the pristine mountains, rivers, and culture of Astore. We provide cozy rooms, guided tours, car rentals, and adventure packages, ensuring every tourist has a safe and memorable journey.</p>
-<img src="https://picsum.photos/id/1045/600/300" alt="Tourist spot">
+<p>We provide tourists with a seamless experience exploring Gilgit-Baltistan's natural wonders. Cozy accommodations, adventure packages, and car rentals make your stay unforgettable.</p>
+<img src="https://picsum.photos/id/1015/600/300" alt="Mountain View">
+<img src="https://picsum.photos/id/1016/600/300" alt="River View">
+<img src="https://picsum.photos/id/1018/600/300" alt="Valley View">
 </section>
 
-<!-- Rooms -->
+<!-- Rooms Section -->
 <section id="room">
 <h2>Room Booking</h2>
 <form id="roomForm">
@@ -93,7 +88,7 @@ button:hover{background:#00fff0;}
 </form>
 </section>
 
-<!-- Cars -->
+<!-- Car Section -->
 <section id="car">
 <h2>Car Booking</h2>
 <form id="carForm">
@@ -110,37 +105,37 @@ button:hover{background:#00fff0;}
 </form>
 </section>
 
-<!-- Packages -->
+<!-- Packages Section -->
 <section id="packages">
 <h2>Adventure Packages</h2>
 <div style="display:flex;flex-direction:column;gap:10px;">
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
 <i class="fa-solid fa-mountain" style="color:#00fff0;font-size:22px;"></i>
-<p><strong>Basic:</strong> 2N/3D | Standard Room + Guide</p>
+<p><strong>Basic Package:</strong> 2 Nights, 3 Days | Standard Room + Local Guide</p>
 </div>
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
 <i class="fa-solid fa-car" style="color:#00fff0;font-size:22px;"></i>
-<p><strong>Luxury:</strong> 4N/5D | Luxury Room + Car + Guide</p>
+<p><strong>Luxury Package:</strong> 4 Nights, 5 Days | Luxury Room + Car + Guide</p>
 </div>
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
 <i class="fa-solid fa-person-hiking" style="color:#00fff0;font-size:22px;"></i>
-<p><strong>Adventure:</strong> 5N/6D | Family Suite + Jeep + Hiking</p>
+<p><strong>Adventure Package:</strong> 5 Nights, 6 Days | Family Suite + Jeep Tour + Hiking</p>
 </div>
 </div>
 </section>
 
-<!-- Map -->
+<!-- Map Section -->
 <section id="map">
 <h2>Find Us</h2>
 <iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="250" style="border:0;border-radius:15px;"></iframe>
 </section>
 
-<!-- Contact -->
+<!-- Contact Section -->
 <section id="contact">
 <h2>Contact</h2>
-<p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com">mohammadasimkhan2746@gmail.com</a></p>
-<p>WhatsApp: <a href="https://wa.me/923171588489">0317-1588489</a></p>
-<p>Facebook: <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank">Visit Page</a></p>
+<p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;">mohammadasimkhan2746@gmail.com</a></p>
+<p>WhatsApp: <a href="https://wa.me/923171588489" style="color:#00fff0;">0317-1588489</a></p>
+<p>Facebook: <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank" style="color:#00fff0;">Visit Page</a></p>
 </section>
 
 <!-- Booking History -->
@@ -149,7 +144,7 @@ button:hover{background:#00fff0;}
 <div id="historyList"></div>
 </section>
 
-<!-- Bottom Icons -->
+<!-- Floating Icons -->
 <div class="icon-menu">
 <div class="icon-item"><i class="fa-solid fa-bed" onclick="scrollToSection('room')"></i><span>Room</span></div>
 <div class="icon-item"><i class="fa-solid fa-car" onclick="scrollToSection('car')"></i><span>Car</span></div>
@@ -161,31 +156,65 @@ button:hover{background:#00fff0;}
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Room Booking
+// Room Booking WhatsApp
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const booking={type:"Room",name:document.getElementById("rname").value,phone:document.getElementById("rphone").value,checkin:document.getElementById("rcheckin").value,checkout:document.getElementById("rcheckout").value,room:document.getElementById("rtype").value};
+  const booking={
+    type:"Room",
+    name:document.getElementById("rname").value,
+    phone:document.getElementById("rphone").value,
+    checkin:document.getElementById("rcheckin").value,
+    checkout:document.getElementById("rcheckout").value,
+    room:document.getElementById("rtype").value
+  };
   const msg=`Room Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nCheck-in: ${booking.checkin}\nCheck-out: ${booking.checkout}\nRoom: ${booking.room}`;
-  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
-  this.reset();addHistory(booking);
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
+  this.reset();
+  addHistory(booking);
 });
 
-// Car Booking
+// Car Booking WhatsApp
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const booking={type:"Car",name:document.getElementById("cname").value,phone:document.getElementById("cphone").value,date:document.getElementById("cdate").value,car:document.getElementById("ctype").value};
+  const booking={
+    type:"Car",
+    name:document.getElementById("cname").value,
+    phone:document.getElementById("cphone").value,
+    date:document.getElementById("cdate").value,
+    car:document.getElementById("ctype").value
+  };
   const msg=`Car Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nPickup Date: ${booking.date}\nCar: ${booking.car}`;
-  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
-  this.reset();addHistory(booking);
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
+  this.reset();
+  addHistory(booking);
 });
 
-// Booking History (localStorage)
-function addHistory(b){let h=JSON.parse(localStorage.getItem("tourHistory"))||[];h.push(b);localStorage.setItem("tourHistory",JSON.stringify(h));loadHistory();}
-function loadHistory(){let h=JSON.parse(localStorage.getItem("tourHistory"))||[];let list=document.getElementById("historyList");list.innerHTML="";h.forEach(b=>{let div=document.createElement("div");div.innerHTML=b.type==="Room"?`Room: ${b.room}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}`:`Car: ${b.car}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Date: ${b.date}`;list.appendChild(div);});}
+// Booking History
+function addHistory(booking){
+  let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
+  history.push(booking);
+  localStorage.setItem("tourHistory",JSON.stringify(history));
+  loadHistory();
+}
+function loadHistory(){
+  let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
+  const list=document.getElementById("historyList");
+  list.innerHTML="";
+  history.forEach(b=>{
+    const div=document.createElement("div");
+    let content="";
+    if(b.type==="Room") content=`Room: ${b.room}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}`;
+    if(b.type==="Car") content=`Car: ${b.car}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Date: ${b.date}`;
+    div.innerHTML=content;
+    list.appendChild(div);
+  });
+}
 loadHistory();
 
-// Scroll
-function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+// Scroll to section
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
 </script>
 </body>
 </html>
