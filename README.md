@@ -8,14 +8,17 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Poppins',sans-serif;color:#fff;background:#000;overflow-x:hidden;}
-.container{max-width:1000px;margin:20px auto;padding:20px;background:rgba(0,0,0,0.4);border-radius:20px;backdrop-filter:blur(10px);}
+body{font-family:'Poppins',sans-serif;color:#fff;background:#111;overflow-x:hidden;}
+.container{max-width:1000px;margin:0 auto;padding:20px;}
 .logo{text-align:center;font-size:32px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;text-shadow:0 0 10px #00fff0;}
 .hero-text{text-align:center;font-size:16px;margin-bottom:20px;color:#00fff0;}
-section{margin-bottom:30px;}
-section h2{color:#00eaff;margin-bottom:15px;text-shadow:0 0 5px #00fff0;font-family:'Orbitron',sans-serif;}
+.slider{position:relative;width:100%;overflow:hidden;border-radius:15px;margin-bottom:20px;}
+.slider img{width:100%;display:none;transition:0.8s;}
+.slider img.active{display:block;}
+section{margin-bottom:30px;padding:10px;}
+section h2{color:#00eaff;margin-bottom:10px;text-shadow:0 0 5px #00fff0;font-family:'Orbitron',sans-serif;}
 section p{font-size:14px;color:#a7f5ff;line-height:1.5;}
-section img{width:100%;border-radius:15px;box-shadow:0 0 15px #00eaff;margin-top:10px;}
+section img{width:100%;border-radius:10px;margin-top:10px;}
 form{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
 input,select,button{padding:10px;border-radius:10px;border:none;font-size:15px;}
 input,select{background:rgba(255,255,255,0.1);color:#fff;}
@@ -30,21 +33,22 @@ button:hover{background:#00fff0;}
 .icon-item span{display:block;font-size:12px;margin-top:3px;color:#00fff0;}
 .whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
-.slider{position:relative;overflow:hidden;border-radius:15px;margin-bottom:20px;}
-.slider img{width:100%;display:none;}
-.slider img.active{display:block;}
+footer{text-align:center;margin-top:20px;padding:15px;background:rgba(0,0,0,0.5);border-radius:10px;color:#00fff0;font-size:14px;}
+footer img{vertical-align:middle;border-radius:50%;margin-right:10px;}
 </style>
 </head>
 <body>
+
 <div class="container" id="dashboard">
 <h1 class="logo">Astore Tourist Hub</h1>
-<div class="hero-text">Welcome to Gilgit-Baltistan! Explore nature, mountains, rivers & local culture. | Contact: <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;text-decoration:underline;">Email</a> | <a href="https://wa.me/923171588489" style="color:#00fff0;text-decoration:underline;">WhatsApp</a></div>
+<div class="hero-text">Welcome to Gilgit-Baltistan! Explore nature, mountains, rivers & local culture.<br>Email: <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;">mohammadasimkhan2746@gmail.com</a> | WhatsApp: <a href="https://wa.me/923171588489" style="color:#00fff0;">0317-1588489</a></div>
 
-<!-- Slider -->
 <div class="slider" id="slider">
 <img src="https://picsum.photos/id/1015/600/300" class="active" alt="Nature 1">
 <img src="https://picsum.photos/id/1020/600/300" alt="Nature 2">
 <img src="https://picsum.photos/id/1032/600/300" alt="Nature 3">
+<img src="https://picsum.photos/id/1043/600/300" alt="Nature 4">
+<img src="https://picsum.photos/id/1050/600/300" alt="Nature 5">
 </div>
 
 <!-- Sections hidden until icon click -->
@@ -115,13 +119,11 @@ button:hover{background:#00fff0;}
 <div id="historyList"></div>
 </section>
 
-<!-- Footer -->
-<footer style="text-align:center;margin-top:20px;padding:15px;background:rgba(0,0,0,0.5);border-radius:10px;color:#00fff0;font-size:14px;">
-<img src="https://picsum.photos/50/50?random=1" alt="Logo" style="vertical-align:middle;border-radius:50%;margin-right:10px;">
+<footer>
+<img src="https://picsum.photos/50/50?random=1" alt="Logo">
 <span>Created by <strong>CrazyKhanTV</strong></span>
 </footer>
 
-<!-- Floating Icons -->
 <div class="icon-menu">
 <div class="icon-item"><i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span></div>
 <div class="icon-item"><i class="fa-solid fa-car" onclick="showSection('car')"></i><span>Car</span></div>
@@ -139,13 +141,13 @@ const slides=document.querySelectorAll("#slider img");
 function showSlide(){slides.forEach(s=>s.classList.remove("active"));slideIndex=(slideIndex+1)%slides.length;slides[slideIndex].classList.add("active");}
 setInterval(showSlide,3000);
 
-// Section show/hide
+// Show section
 function showSection(id){
 document.querySelectorAll("section").forEach(s=>s.style.display="none");
 document.getElementById(id).style.display="block";
 }
 
-// Room Booking WhatsApp
+// Booking Forms
 document.getElementById("roomForm").addEventListener("submit",function(e){
 e.preventDefault();
 const booking={type:"Room",name:document.getElementById("rname").value,phone:document.getElementById("rphone").value,checkin:document.getElementById("rcheckin").value,checkout:document.getElementById("rcheckout").value,room:document.getElementById("rtype").value};
@@ -154,7 +156,6 @@ window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank
 this.reset();addHistory(booking);
 });
 
-// Car Booking WhatsApp
 document.getElementById("carForm").addEventListener("submit",function(e){
 e.preventDefault();
 const booking={type:"Car",name:document.getElementById("cname").value,phone:document.getElementById("cphone").value,date:document.getElementById("cdate").value,car:document.getElementById("ctype").value};
@@ -163,7 +164,7 @@ window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank
 this.reset();addHistory(booking);
 });
 
-// Booking History
+// Booking history localStorage
 function addHistory(booking){
 let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
 history.push(booking);
