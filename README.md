@@ -7,157 +7,147 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;font-family:'Poppins',sans-serif;}
-body{background:#000;color:#fff;}
-a{text-decoration:none;color:#00eaff;}
-.container{max-width:1100px;margin:50px auto;padding:20px;}
-h1,h2,h3{color:#00eaff;}
-button{cursor:pointer;border:none;border-radius:8px;padding:10px 15px;background:#00eaff;color:#000;font-weight:600;margin-top:10px;transition:0.3s;}
-button:hover{background:#00bcd4;}
-input,select{width:100%;padding:10px;margin-top:5px;border-radius:8px;border:none;background:rgba(255,255,255,0.1);color:#fff;}
-input:focus,select:focus{background:rgba(255,255,255,0.2);outline:none;}
-.dashboard-section{margin-top:30px;}
-.photo-gallery{display:flex;overflow-x:auto;gap:15px;margin-top:15px;padding-bottom:10px;}
-.photo-gallery img{width:200px;height:140px;border-radius:12px;object-fit:cover;flex-shrink:0;}
-.icon-menu{display:flex;justify-content:space-around;background:rgba(0,0,0,0.6);padding:12px 0;position:fixed;bottom:0;width:100%;z-index:999;border-top:1px solid #00eaff;}
-.icon-item{text-align:center;color:#00eaff;}
-.icon-item i{font-size:24px;}
-.icon-item span{display:block;font-size:12px;margin-top:3px;}
-#logoutBtn{position:fixed;top:15px;right:15px;background:#ff4444;color:#fff;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
-.whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:14px 16px;border-radius:50%;color:#fff;font-size:26px;}
-/* Scrollbar for gallery */
-.photo-gallery::-webkit-scrollbar{height:6px;}
-.photo-gallery::-webkit-scrollbar-thumb{background:#00eaff;border-radius:3px;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;color:#000;background:#f5f5f5;}
+header{background:#1e3d59;color:#fff;padding:20px;text-align:center;}
+header h1{font-family:'Orbitron',sans-serif;font-size:28px;margin-bottom:5px;}
+header p{font-size:14px;}
+section{padding:20px;}
+h2{color:#1e3d59;margin-bottom:15px;}
+.card-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.card{background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);overflow:hidden;transition:0.3s;}
+.card img{width:100%;height:180px;object-fit:cover;}
+.card-body{padding:15px;}
+.card-body h3{color:#1e3d59;margin-bottom:10px;}
+.card-body p{font-size:14px;color:#333;margin-bottom:10px;}
+.card-body a{display:inline-block;padding:8px 12px;background:#1e3d59;color:#fff;border-radius:6px;text-decoration:none;font-size:14px;transition:0.3s;}
+.card-body a:hover{background:#ff6f61;}
+.icon-bar{position:fixed;bottom:0;left:0;width:100%;background:#1e3d59;display:flex;justify-content:space-around;padding:10px 0;z-index:9999;}
+.icon-bar a{color:#fff;text-align:center;font-size:16px;text-decoration:none;}
+.icon-bar a i{font-size:24px;margin-bottom:4px;display:block;}
+.icon-bar a:hover{color:#ff6f61;}
+.offer-banner{background:#ff6f61;color:#fff;text-align:center;padding:10px;margin-bottom:20px;border-radius:8px;}
+footer{background:#1e3d59;color:#fff;text-align:center;padding:15px;margin-top:20px;}
+footer a{color:#ff6f61;text-decoration:none;}
+@media(max-width:600px){.card-container{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
-<div class="container">
-<h1>Astore Tourist Hub</h1>
-<p>Explore Astore's breathtaking valleys, rivers, and mountains. Book rooms or cars easily and discover adventure packages!</p>
 
-<!-- Dashboard -->
-<div id="dashboard">
-<h2>Welcome, <span id="userDisplay">Guest</span>!</h2>
-<button id="logoutBtn" onclick="logout()"><i class="fa-solid fa-right-from-bracket"></i></button>
+<header>
+<h1>Astore Tourist Information Hub</h1>
+<p>Your guide to the best places, rooms, cars, and adventure activities in Astore.</p>
+</header>
 
-<!-- Rooms -->
-<div id="room" class="dashboard-section">
-<h2>Room Booking</h2>
-<form id="roomForm">
-<label>Name</label><input type="text" id="rname" required>
-<label>Phone</label><input type="text" id="rphone" required>
-<label>Check-in</label><input type="date" id="rcheckin" required>
-<label>Check-out</label><input type="date" id="rcheckout" required>
-<label>Room Type</label>
-<select id="rtype" required>
-<option>Standard Room</option>
-<option>Luxury Room</option>
-<option>Family Suite</option>
-</select>
-<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Room via WhatsApp</button>
-</form>
-</div>
+<section class="offer-banner">
+🔥 Special Offers: Book 2 Nights & Get 1 Free Guide Tour! 🔥
+</section>
 
-<!-- Cars -->
-<div id="car" class="dashboard-section">
-<h2>Car Booking</h2>
-<form id="carForm">
-<label>Name</label><input type="text" id="cname" required>
-<label>Phone</label><input type="text" id="cphone" required>
-<label>Pickup Date</label><input type="date" id="cdate" required>
-<label>Car Type</label>
-<select id="ctype" required>
-<option>Corolla</option>
-<option>Hiace</option>
-<option>Prado</option>
-<option>Astore Local Jeep</option>
-</select>
-<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Car via WhatsApp</button>
-</form>
-</div>
-
-<!-- Packages -->
-<div id="packages" class="dashboard-section">
-<h2>Adventure Packages</h2>
-<div class="photo-gallery">
-<img src="https://source.unsplash.com/300x200/?mountain" alt="Mountain">
-<img src="https://source.unsplash.com/300x200/?valley" alt="Valley">
-<img src="https://source.unsplash.com/300x200/?river" alt="River">
-<img src="https://source.unsplash.com/300x200/?forest" alt="Forest">
-<img src="https://source.unsplash.com/300x200/?hiking" alt="Hiking">
-</div>
-<p>Choose from Basic, Luxury, or Adventure packages with rooms, guides, and jeep tours included.</p>
-</div>
-
-<!-- Map -->
-<div id="map" class="dashboard-section">
-<h2>Find Us</h2>
-<iframe src="https://www.google.com/maps?q=Astore,+Pakistan&output=embed" width="100%" height="250" style="border:0;"></iframe>
-</div>
-
-<!-- Contact -->
-<div id="contact" class="dashboard-section">
-<h2>Contact</h2>
-<p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com">mohammadasimkhan2746@gmail.com</a></p>
-<p>WhatsApp: <a href="https://wa.me/923171588489" target="_blank">0317-1588489</a></p>
-<p>Facebook: <a href="https://www.facebook.com/share/1BoG9YCsZN/" target="_blank">Our Page</a></p>
-</div>
-
-<!-- Booking History -->
-<div id="historySection" class="dashboard-section">
-<h2>Booking History</h2>
-<div id="historyList"></div>
+<section>
+<h2>Rooms</h2>
+<div class="card-container">
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?hotel,room" alt="Standard Room">
+<div class="card-body">
+<h3>Standard Room</h3>
+<p>2 Nights / 3 Days, Comfortable stay with basic amenities.</p>
+<a href="https://wa.me/923171588489?text=I%20want%20to%20book%20Standard%20Room" target="_blank"><i class="fa-brands fa-whatsapp"></i> Book Now</a>
 </div>
 </div>
 
-<!-- Icon Menu -->
-<div class="icon-menu">
-<div class="icon-item" onclick="showSection('room')"><i class="fa-solid fa-bed"></i><span>Rooms</span></div>
-<div class="icon-item" onclick="showSection('car')"><i class="fa-solid fa-car"></i><span>Cars</span></div>
-<div class="icon-item" onclick="showSection('packages')"><i class="fa-solid fa-mountain"></i><span>Packages</span></div>
-<div class="icon-item" onclick="showSection('map')"><i class="fa-solid fa-map-location-dot"></i><span>Map</span></div>
-<div class="icon-item" onclick="showSection('contact')"><i class="fa-solid fa-envelope"></i><span>Contact</span></div>
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?luxury,hotel" alt="Luxury Room">
+<div class="card-body">
+<h3>Luxury Room</h3>
+<p>4 Nights / 5 Days, Premium room with breakfast & local guide included.</p>
+<a href="https://wa.me/923171588489?text=I%20want%20to%20book%20Luxury%20Room" target="_blank"><i class="fa-brands fa-whatsapp"></i> Book Now</a>
+</div>
 </div>
 
-<a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?suite,hotel" alt="Family Suite">
+<div class="card-body">
+<h3>Family Suite</h3>
+<p>5 Nights / 6 Days, Family suite with Jeep tour & adventure activities.</p>
+<a href="https://wa.me/923171588489?text=I%20want%20to%20book%20Family%20Suite" target="_blank"><i class="fa-brands fa-whatsapp"></i> Book Now</a>
+</div>
+</div>
+</div>
+</section>
 
-<script>
-// Guest default
-document.getElementById("userDisplay").textContent = "Guest";
+<section>
+<h2>Cars</h2>
+<div class="card-container">
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?car,corolla" alt="Corolla">
+<div class="card-body">
+<h3>Corolla</h3>
+<p>Comfortable 4-seater car for city travel and sightseeing.</p>
+<a href="https://wa.me/923171588489?text=I%20want%20to%20book%20Corolla" target="_blank"><i class="fa-brands fa-whatsapp"></i> Book Now</a>
+</div>
+</div>
 
-// Sections
-function showSection(section){
-document.querySelectorAll(".dashboard-section").forEach(s=>s.style.display="none");
-document.getElementById(section).style.display="block";
-}
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?jeep,4x4" alt="Jeep">
+<div class="card-body">
+<h3>Astore Local Jeep</h3>
+<p>6-seater Jeep for adventure tours in mountains and rough terrain.</p>
+<a href="https://wa.me/923171588489?text=I%20want%20to%20book%20Local%20Jeep" target="_blank"><i class="fa-brands fa-whatsapp"></i> Book Now</a>
+</div>
+</div>
 
-// Logout
-function logout(){alert("You are now logged out");}
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?prado,car" alt="Prado">
+<div class="card-body">
+<h3>Prado</h3>
+<p>Premium SUV for comfort and scenic tours in Astore.</p>
+<a href="https://wa.me/923171588489?text=I%20want%20to%20book%20Prado" target="_blank"><i class="fa-brands fa-whatsapp"></i> Book Now</a>
+</div>
+</div>
+</div>
+</section>
 
-// Room Booking WhatsApp
-document.getElementById("roomForm").addEventListener("submit",function(e){
-e.preventDefault();
-const booking=`Room Booking:
-Name: ${document.getElementById("rname").value}
-Phone: ${document.getElementById("rphone").value}
-Check-in: ${document.getElementById("rcheckin").value}
-Check-out: ${document.getElementById("rcheckout").value}
-Room: ${document.getElementById("rtype").value}`;
-window.open(`https://wa.me/923171588489?text=${encodeURIComponent(booking)}`,"_blank");
-this.reset();
-});
+<section>
+<h2>About Astore Tourist Hub</h2>
+<p>Welcome to the Astore Tourist Information Hub! Our platform provides travelers with all the details about the best hotels, cars, adventure activities, and local experiences in Astore. We aim to make your trip memorable with easy booking options, clear information, and amazing offers. Explore Astore like never before!</p>
+<div class="card-container">
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?mountain,travel" alt="Adventure">
+<div class="card-body">
+<h3>Adventure Tours</h3>
+<p>Hiking, jeep tours, and local guides to show you hidden gems of Astore.</p>
+</div>
+</div>
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?nature,landscape" alt="Nature">
+<div class="card-body">
+<h3>Scenic Views</h3>
+<p>Enjoy the breathtaking natural beauty, mountains, rivers, and valleys.</p>
+</div>
+</div>
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?food,local" alt="Local Cuisine">
+<div class="card-body">
+<h3>Local Cuisine</h3>
+<p>Try authentic Astore dishes prepared by local chefs and home kitchens.</p>
+</div>
+</div>
+</div>
+</section>
 
-// Car Booking WhatsApp
-document.getElementById("carForm").addEventListener("submit",function(e){
-e.preventDefault();
-const booking=`Car Booking:
-Name: ${document.getElementById("cname").value}
-Phone: ${document.getElementById("cphone").value}
-Pickup Date: ${document.getElementById("cdate").value}
-Car: ${document.getElementById("ctype").value}`;
-window.open(`https://wa.me/923171588489?text=${encodeURIComponent(booking)}`,"_blank");
-this.reset();
-});
-</script>
+<footer>
+<p>Contact: <a href="mailto:mohammadasimkhan2746@gmail.com">mohammadasimkhan2746@gmail.com</a> | WhatsApp: <a href="https://wa.me/923171588489">03171588489</a></p>
+<p>Follow us on <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank">Facebook</a></p>
+<p>&copy; 2026 Astore Tourist Information Hub</p>
+</footer>
+
+<div class="icon-bar">
+<a href="#rooms"><i class="fa-solid fa-bed"></i>Rooms</a>
+<a href="#cars"><i class="fa-solid fa-car"></i>Cars</a>
+<a href="#about"><i class="fa-solid fa-mountain"></i>About</a>
+<a href="#offers"><i class="fa-solid fa-tags"></i>Offers</a>
+<a href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a>
+</div>
+
 </body>
 </html>
