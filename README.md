@@ -1,4 +1,4 @@
-<Astore>
+<ASTORE>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -7,67 +7,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
-/* General Reset & Body */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Poppins',sans-serif;color:#fff;background:#000;overflow-x:hidden;}
-
-/* Animated Background */
-.bg-animate{
-  position:fixed;width:100%;height:100%;
-  background:linear-gradient(270deg,#000000,#0f0f0f,#001f3f,#000000);
-  background-size:800% 800%;animation:gradientBG 25s ease infinite;
-  z-index:-3;
-}
-@keyframes gradientBG{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* Floating particles */
-.particle{position:fixed;width:5px;height:5px;background:#00eaff;border-radius:50%;opacity:0.7;animation:floatUp linear infinite;}
+.bg-animate{position:fixed;width:100%;height:100%;background:linear-gradient(270deg,#000000,#0f0f0f,#001f3f,#000000);background-size:800% 800%;animation:gradientBG 20s ease infinite;z-index:-3;}
+@keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.stripes{position:fixed;width:100%;height:100%;z-index:-1;overflow:hidden;}
+.stripe{position:absolute;width:3px;height:200%;background:rgba(0,255,255,0.05);top:-50%;animation:moveStripe linear infinite;}
+.stripe:nth-child(1){left:10%;animation-duration:18s;}
+.stripe:nth-child(2){left:25%;animation-duration:22s;}
+.stripe:nth-child(3){left:40%;animation-duration:20s;}
+.stripe:nth-child(4){left:60%;animation-duration:25s;}
+.stripe:nth-child(5){left:80%;animation-duration:19s;}
+@keyframes moveStripe{0%{transform:translateY(0) rotate(20deg);}100%{transform:translateY(100%) rotate(20deg);}}
+.particle{position:fixed;width:6px;height:6px;background:#00eaff;border-radius:50%;opacity:0.7;animation:floatUp linear infinite;}
 @keyframes floatUp{0%{transform:translateY(110vh);}100%{transform:translateY(-10vh);}}
-
-/* Container */
-.container{max-width:1000px;margin:60px auto;padding:20px;background:rgba(0,0,0,0.5);border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 25px #00eaff;}
-
-/* Logo & Hero */
-.logo{text-align:center;font-size:36px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;text-shadow:0 0 15px #00eaff;}
-.hero-text{text-align:center;font-size:16px;margin-bottom:20px;color:#00fff0;}
-
-/* Sections */
-section{margin-bottom:30px;}
-section h2{color:#00eaff;margin-bottom:15px;text-shadow:0 0 10px #00fff0;font-family:'Orbitron',sans-serif;}
-section p{font-size:14px;color:#a7f5ff;line-height:1.5;}
-section img{width:100%;border-radius:15px;box-shadow:0 0 20px #00eaff;margin-top:10px;}
-
-/* Forms */
-form{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
-input,select,button{padding:12px;border-radius:10px;border:none;font-size:16px;}
-input,select{background:rgba(255,255,255,0.1);color:#fff;}
-input:focus,select:focus{background:rgba(255,255,255,0.2);outline:none;}
-button{background:#00eaff;color:#000;font-weight:600;cursor:pointer;transition:0.3s,box-shadow 0.5s;}
-button:hover{background:#00fff0;box-shadow:0 0 20px #00ffff;}
-
-/* Booking History */
-#historyList div{border:1px solid #00eaff;padding:10px;margin:5px;border-radius:8px;color:#a7f5ff;}
-
-/* Floating Bottom Icons */
-.icon-menu{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;background:rgba(0,0,0,0.5);padding:10px 0;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
+.logo{text-align:center;font-size:36px;font-weight:700;color:#00eaff;text-shadow:0 0 15px #00eaff,0 0 30px #00ffff;margin:15px 0;font-family:'Orbitron',sans-serif;}
+.hero-text{text-align:center;margin-bottom:20px;font-size:16px;background:linear-gradient(90deg,#00eaff,#00ff99,#ff00ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.container{max-width:1000px;margin:0 auto;padding:15px;}
+.dashboard-section{display:none;margin-bottom:60px;}
+input,select,button{width:100%;padding:10px;margin:6px 0;border-radius:8px;border:none;font-size:14px;}
+button{background:#00eaff;color:#000;font-weight:600;cursor:pointer;transition:0.3s;box-shadow:0 0 10px #00eaff;}
+button:hover{background:#00bcd4;box-shadow:0 0 20px #00ffff;}
+.package{background:rgba(0,0,0,0.4);padding:15px;margin:10px 0;border-radius:12px;box-shadow:0 0 15px #00eaff;}
+.package h3{color:#00ffff;}
+.package p{color:#a7f5ff;font-size:13px;}
+.package i{font-size:28px;color:#00eaff;margin-bottom:8px;display:block;}
+.map-container iframe{width:100%;height:250px;border-radius:10px;border:0;}
+.contact p{font-size:14px;margin:5px 0;color:#00eaff;}
+.icon-menu{display:flex;justify-content:space-around;position:fixed;bottom:0;left:0;width:100%;background:rgba(0,0,0,0.5);padding:8px 0;box-shadow:0 0 10px #00eaff;border-radius:15px 15px 0 0;z-index:999;}
 .icon-item{text-align:center;}
-.icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
-.icon-item i:hover{color:#00fff0;transform:scale(1.3);}
-.icon-item span{display:block;font-size:12px;margin-top:3px;color:#00fff0;}
-
-/* WhatsApp Button */
-.whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s;}
-.whatsapp-btn:hover{transform:scale(1.1);}
+.icon-item i{font-size:24px;color:#00eaff;cursor:pointer;transition:0.3s;}
+.icon-item i:hover{color:#00fff0;transform:scale(1.2);}
+.icon-item span{display:block;font-size:11px;margin-top:2px;}
+#historyList div{border:1px solid #00eaff;padding:6px;margin:5px;border-radius:6px;font-size:13px;}
+.whatsapp-btn{position:fixed;bottom:60px;right:15px;background:#25d366;padding:14px 16px;border-radius:50%;color:#fff;font-size:26px;text-decoration:none;box-shadow:0 0 15px #25d366;z-index:999;}
+#logoutBtn{position:fixed;top:10px;right:10px;width:40px;height:40px;font-size:18px;padding:0;background:#ff4444;border:none;border-radius:50%;color:#fff;box-shadow:0 0 12px #ff6666;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:999;}
+#logoutBtn:hover{transform:scale(1.1);}
 </style>
 </head>
 <body>
 <div class="bg-animate"></div>
+<div class="stripes"><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div><div class="stripe"></div></div>
 <script>
-for(let i=0;i<50;i++){
+for(let i=0;i<60;i++){
   let p=document.createElement("div");
   p.className="particle";
   p.style.left=Math.random()*100+"vw";
@@ -77,24 +59,12 @@ for(let i=0;i<50;i++){
 }
 </script>
 
-<div class="container" id="dashboard">
+<div class="container">
 <h1 class="logo">Astore Tourist Hub</h1>
-<div class="hero-text">
-Owner: Asim Khanzai | 
-<a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;text-decoration:underline;">Email</a> | 
-<a href="https://wa.me/923171588489" style="color:#00fff0;text-decoration:underline;">WhatsApp</a> | 
-<a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank" style="color:#00fff0;text-decoration:underline;">Facebook</a>
-</div>
+<div class="hero-text">Explore the beauty of Astore! Book rooms, cars, and packages easily. Contact via WhatsApp or email anytime.</div>
 
-<!-- About Section -->
-<section id="about">
-<h2>About Astore Tourist Hub</h2>
-<p>Discover the stunning beauty of Astore with our guided tours, comfortable stays, and convenient car rentals. Explore majestic mountains, rivers, and local culture while enjoying premium services at affordable rates. Perfect for adventure seekers, families, and solo travelers!</p>
-<img src="https://picsum.photos/seed/mountain/600/300" alt="Mountain View">
-</section>
-
-<!-- Rooms Section -->
-<section id="room">
+<!-- Room Booking -->
+<div id="room" class="dashboard-section" style="display:block;">
 <h2>Room Booking</h2>
 <form id="roomForm">
 <input type="text" id="rname" placeholder="Your Name" required>
@@ -106,12 +76,12 @@ Owner: Asim Khanzai |
 <option>Luxury Room</option>
 <option>Family Suite</option>
 </select>
-<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</button>
+<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Room via WhatsApp</button>
 </form>
-</section>
+</div>
 
-<!-- Car Section -->
-<section id="car">
+<!-- Car Booking -->
+<div id="car" class="dashboard-section">
 <h2>Car Booking</h2>
 <form id="carForm">
 <input type="text" id="cname" placeholder="Your Name" required>
@@ -123,122 +93,109 @@ Owner: Asim Khanzai |
 <option>Prado</option>
 <option>Astore Local Jeep</option>
 </select>
-<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book via WhatsApp</button>
+<button type="submit"><i class="fa-brands fa-whatsapp"></i> Book Car via WhatsApp</button>
 </form>
-</section>
+</div>
 
-<!-- Packages Section -->
-<section id="packages">
-<h2>Adventure Packages</h2>
-<div style="display:flex;flex-direction:column;gap:10px;">
-<div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
-<img src="https://picsum.photos/seed/package1/600/200" alt="Package 1" style="width:100%;border-radius:10px;">
-<p><strong>Basic Package:</strong> 2 Nights, 3 Days | Standard Room + Local Guide</p>
+<!-- Packages -->
+<div id="packages" class="dashboard-section">
+<div class="package"><i class="fa-solid fa-mountain"></i><h3>Adventure Package</h3><p>3 Nights, 4 Days<br>Luxury Room + Jeep Tour + Hiking</p></div>
+<div class="package"><i class="fa-solid fa-person-hiking"></i><h3>Explorer Package</h3><p>2 Nights, 3 Days<br>Standard Room + Local Guide</p></div>
+<div class="package"><i class="fa-solid fa-car"></i><h3>Family Package</h3><p>4 Nights, 5 Days<br>Family Suite + Car + Tour</p></div>
 </div>
-<div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
-<img src="https://picsum.photos/seed/package2/600/200" alt="Package 2" style="width:100%;border-radius:10px;">
-<p><strong>Luxury Package:</strong> 4 Nights, 5 Days | Luxury Room + Car + Guide</p>
-</div>
-<div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
-<img src="https://picsum.photos/seed/package3/600/200" alt="Package 3" style="width:100%;border-radius:10px;">
-<p><strong>Adventure Package:</strong> 5 Nights, 6 Days | Family Suite + Jeep Tour + Hiking</p>
-</div>
-</div>
-</section>
 
-<!-- Map Section -->
-<section id="map">
-<h2>Find Us</h2>
-<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="250" style="border:0;border-radius:15px;"></iframe>
-</section>
+<!-- Map -->
+<div id="map" class="dashboard-section map-container">
+<iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" allowfullscreen="" loading="lazy"></iframe>
+</div>
 
-<!-- Contact Section -->
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;">mohammadasimkhan2746@gmail.com</a></p>
-<p>WhatsApp: <a href="https://wa.me/923171588489" style="color:#00fff0;">0317-1588489</a></p>
-<p>Facebook: <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank" style="color:#00fff0;">Visit Page</a></p>
-</section>
+<!-- Contact -->
+<div id="contact" class="dashboard-section contact">
+<p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00ffcc;">mohammadasimkhan2746@gmail.com</a></p>
+<p>Owner: Asim Khanzai | WhatsApp: <a href="https://wa.me/923171588489" style="color:#00ffcc;">03171588489</a></p>
+<p>Follow on Facebook: <a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" style="color:#00ffcc;">Click Here</a></p>
+</div>
 
 <!-- Booking History -->
-<section id="history">
-<h2>Booking History</h2>
+<div id="historySection" class="dashboard-section">
+<h3>Booking History</h3>
 <div id="historyList"></div>
-</section>
-
-<!-- Floating Bottom Icons -->
-<div class="icon-menu">
-<div class="icon-item"><i class="fa-solid fa-bed" onclick="scrollToSection('room')"></i><span>Room</span></div>
-<div class="icon-item"><i class="fa-solid fa-car" onclick="scrollToSection('car')"></i><span>Car</span></div>
-<div class="icon-item"><i class="fa-solid fa-mountain" onclick="scrollToSection('packages')"></i><span>Packages</span></div>
-<div class="icon-item"><i class="fa-solid fa-map-location-dot" onclick="scrollToSection('map')"></i><span>Map</span></div>
-<div class="icon-item"><i class="fa-solid fa-envelope" onclick="scrollToSection('contact')"></i><span>Contact</span></div>
 </div>
 
+<!-- Navigation Icons -->
+<div class="icon-menu">
+<div class="icon-item"><i class="fa-solid fa-bed" onclick="showSection('room')"></i><span>Room</span></div>
+<div class="icon-item"><i class="fa-solid fa-car" onclick="showSection('car')"></i><span>Car</span></div>
+<div class="icon-item"><i class="fa-solid fa-mountain" onclick="showSection('packages')"></i><span>Packages</span></div>
+<div class="icon-item"><i class="fa-solid fa-map-location-dot" onclick="showSection('map')"></i><span>Map</span></div>
+<div class="icon-item"><i class="fa-solid fa-envelope" onclick="showSection('contact')"></i><span>Contact</span></div>
+</div>
+
+<!-- WhatsApp -->
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Floating particles & background handled above
+// Show sections
+function showSection(section){
+  document.querySelectorAll(".dashboard-section").forEach(s=>s.style.display="none");
+  document.getElementById(section).style.display="block";
+}
 
-// Room Booking WhatsApp
-document.getElementById("roomForm").addEventListener("submit",function(e){
+// Booking storage
+function saveBooking(type,data){
+  let history=JSON.parse(localStorage.getItem("history"))||[];
+  history.push({type,...data});
+  localStorage.setItem("history",JSON.stringify(history));
+  renderHistory();
+}
+
+// Render history
+function renderHistory(){
+  let history=JSON.parse(localStorage.getItem("history"))||[];
+  const list=document.getElementById("historyList");
+  list.innerHTML="";
+  history.forEach(b=>{
+    const div=document.createElement("div");
+    if(b.type==="Room"){
+      div.innerHTML=`Room Booking:<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}<br>Room: ${b.room}`;
+    } else {
+      div.innerHTML=`Car Booking:<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Date: ${b.date}<br>Car: ${b.car}`;
+    }
+    list.appendChild(div);
+  });
+}
+
+// Room form
+document.getElementById("roomForm").addEventListener("submit",e=>{
   e.preventDefault();
-  const booking={
-    type:"Room",
+  const data={
     name:document.getElementById("rname").value,
     phone:document.getElementById("rphone").value,
     checkin:document.getElementById("rcheckin").value,
     checkout:document.getElementById("rcheckout").value,
     room:document.getElementById("rtype").value
   };
-  const msg=`Room Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nCheck-in: ${booking.checkin}\nCheck-out: ${booking.checkout}\nRoom: ${booking.room}`;
-  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
-  this.reset();
-  addHistory(booking);
+  saveBooking("Room",data);
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent("Room Booking:\nName: "+data.name+"\nPhone: "+data.phone+"\nCheck-in: "+data.checkin+"\nCheck-out: "+data.checkout+"\nRoom: "+data.room)}`, "_blank");
+  e.target.reset();
 });
 
-// Car Booking WhatsApp
-document.getElementById("carForm").addEventListener("submit",function(e){
+// Car form
+document.getElementById("carForm").addEventListener("submit",e=>{
   e.preventDefault();
-  const booking={
-    type:"Car",
+  const data={
     name:document.getElementById("cname").value,
     phone:document.getElementById("cphone").value,
     date:document.getElementById("cdate").value,
     car:document.getElementById("ctype").value
   };
-  const msg=`Car Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nPickup Date: ${booking.date}\nCar: ${booking.car}`;
-  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
-  this.reset();
-  addHistory(booking);
+  saveBooking("Car",data);
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent("Car Booking:\nName: "+data.name+"\nPhone: "+data.phone+"\nDate: "+data.date+"\nCar: "+data.car)}`, "_blank");
+  e.target.reset();
 });
 
-// Booking History (localStorage)
-function addHistory(booking){
-  let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
-  history.push(booking);
-  localStorage.setItem("tourHistory",JSON.stringify(history));
-  loadHistory();
-}
-function loadHistory(){
-  let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
-  const list=document.getElementById("historyList");
-  list.innerHTML="";
-  history.forEach(b=>{
-    const div=document.createElement("div");
-    let content="";
-    if(b.type==="Room") content=`Room: ${b.room}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}`;
-    if(b.type==="Car") content=`Car: ${b.car}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Date: ${b.date}`;
-    div.innerHTML=content;
-    list.appendChild(div);
-  });
-}
-loadHistory();
-
-// Scroll to section
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
+// Initial render
+renderHistory();
 </script>
 </body>
 </html>
