@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astore Tourist Hub</title>
+<title>Astore Tourist Hub - Final</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 <style>
-/* General Reset & Body */
+/* Reset & Body */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Poppins',sans-serif;color:#fff;background:#0a0a0a;overflow-x:hidden;line-height:1.6;}
 a{color:#00f0ff;text-decoration:none;}
 a:hover{color:#0ff;}
 
-/* Background photos fade */
+/* Background slider */
 .bg-container{position:fixed;width:100%;height:100%;z-index:-2;overflow:hidden;}
 .bg-container img{position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;animation:fadeBg 30s infinite;}
 .bg-container img:nth-child(1){animation-delay:0s;}
@@ -24,7 +24,7 @@ a:hover{color:#0ff;}
 /* Container */
 .container{max-width:1000px;margin:60px auto;padding:20px;background:rgba(0,0,0,0.5);border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 25px #00eaff;}
 
-/* Logo & Hero Text */
+/* Logo & Hero */
 .logo{text-align:center;font-size:40px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;text-shadow:0 0 15px #00eaff;}
 .hero-text{text-align:center;font-size:16px;margin-bottom:20px;color:#00fff0;}
 
@@ -67,16 +67,16 @@ button:hover{background:#00fff0;}
 
 <div class="container" id="dashboard">
 <h1 class="logo">Astore Tourist Hub</h1>
-<div class="hero-text">Discover Astore & Gilgit-Baltistan's natural beauty | Owner: Asim Khanzai | <a href="mailto:mohammadasimkhan2746@gmail.com">Email</a> | <a href="https://wa.me/923171588489">WhatsApp</a></div>
+<div class="hero-text">Explore Astore & Gilgit-Baltistan | Owner: Asim Khanzai | <a href="mailto:mohammadasimkhan2746@gmail.com">Email</a> | <a href="https://wa.me/923171588489">WhatsApp</a></div>
 
-<!-- About Section -->
+<!-- About -->
 <section id="about">
 <h2>About Astore Tourist Hub</h2>
-<p>Experience the serenity of Astore with cozy rooms, guided tours, car rentals, and adventure packages. Our hub ensures a safe and memorable journey for tourists exploring mountains, rivers, and local culture. Enjoy premium services with local expertise at affordable rates.</p>
+<p>Experience the pristine mountains, rivers, and culture of Astore. We provide cozy rooms, guided tours, car rentals, and adventure packages, ensuring every tourist has a safe and memorable journey.</p>
 <img src="https://picsum.photos/id/1045/600/300" alt="Tourist spot">
 </section>
 
-<!-- Rooms Section -->
+<!-- Rooms -->
 <section id="room">
 <h2>Room Booking</h2>
 <form id="roomForm">
@@ -93,7 +93,7 @@ button:hover{background:#00fff0;}
 </form>
 </section>
 
-<!-- Car Section -->
+<!-- Cars -->
 <section id="car">
 <h2>Car Booking</h2>
 <form id="carForm">
@@ -110,32 +110,32 @@ button:hover{background:#00fff0;}
 </form>
 </section>
 
-<!-- Packages Section -->
+<!-- Packages -->
 <section id="packages">
 <h2>Adventure Packages</h2>
 <div style="display:flex;flex-direction:column;gap:10px;">
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
 <i class="fa-solid fa-mountain" style="color:#00fff0;font-size:22px;"></i>
-<p><strong>Basic Package:</strong> 2 Nights, 3 Days | Standard Room + Local Guide</p>
+<p><strong>Basic:</strong> 2N/3D | Standard Room + Guide</p>
 </div>
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
 <i class="fa-solid fa-car" style="color:#00fff0;font-size:22px;"></i>
-<p><strong>Luxury Package:</strong> 4 Nights, 5 Days | Luxury Room + Car + Guide</p>
+<p><strong>Luxury:</strong> 4N/5D | Luxury Room + Car + Guide</p>
 </div>
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
 <i class="fa-solid fa-person-hiking" style="color:#00fff0;font-size:22px;"></i>
-<p><strong>Adventure Package:</strong> 5 Nights, 6 Days | Family Suite + Jeep Tour + Hiking</p>
+<p><strong>Adventure:</strong> 5N/6D | Family Suite + Jeep + Hiking</p>
 </div>
 </div>
 </section>
 
-<!-- Map Section -->
+<!-- Map -->
 <section id="map">
 <h2>Find Us</h2>
 <iframe src="https://www.google.com/maps?q=Asim+KhanZai+Social+Worker,+near+DC+house,+Eidgah,+Astore,+14300&output=embed" width="100%" height="250" style="border:0;border-radius:15px;"></iframe>
 </section>
 
-<!-- Contact Section -->
+<!-- Contact -->
 <section id="contact">
 <h2>Contact</h2>
 <p>Email: <a href="mailto:mohammadasimkhan2746@gmail.com">mohammadasimkhan2746@gmail.com</a></p>
@@ -149,7 +149,7 @@ button:hover{background:#00fff0;}
 <div id="historyList"></div>
 </section>
 
-<!-- Floating Icons -->
+<!-- Bottom Icons -->
 <div class="icon-menu">
 <div class="icon-item"><i class="fa-solid fa-bed" onclick="scrollToSection('room')"></i><span>Room</span></div>
 <div class="icon-item"><i class="fa-solid fa-car" onclick="scrollToSection('car')"></i><span>Car</span></div>
@@ -161,65 +161,31 @@ button:hover{background:#00fff0;}
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
-// Room Booking WhatsApp
+// Room Booking
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const booking={
-    type:"Room",
-    name:document.getElementById("rname").value,
-    phone:document.getElementById("rphone").value,
-    checkin:document.getElementById("rcheckin").value,
-    checkout:document.getElementById("rcheckout").value,
-    room:document.getElementById("rtype").value
-  };
+  const booking={type:"Room",name:document.getElementById("rname").value,phone:document.getElementById("rphone").value,checkin:document.getElementById("rcheckin").value,checkout:document.getElementById("rcheckout").value,room:document.getElementById("rtype").value};
   const msg=`Room Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nCheck-in: ${booking.checkin}\nCheck-out: ${booking.checkout}\nRoom: ${booking.room}`;
-  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
-  this.reset();
-  addHistory(booking);
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
+  this.reset();addHistory(booking);
 });
 
-// Car Booking WhatsApp
+// Car Booking
 document.getElementById("carForm").addEventListener("submit",function(e){
   e.preventDefault();
-  const booking={
-    type:"Car",
-    name:document.getElementById("cname").value,
-    phone:document.getElementById("cphone").value,
-    date:document.getElementById("cdate").value,
-    car:document.getElementById("ctype").value
-  };
+  const booking={type:"Car",name:document.getElementById("cname").value,phone:document.getElementById("cphone").value,date:document.getElementById("cdate").value,car:document.getElementById("ctype").value};
   const msg=`Car Booking:\nName: ${booking.name}\nPhone: ${booking.phone}\nPickup Date: ${booking.date}\nCar: ${booking.car}`;
-  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`, "_blank");
-  this.reset();
-  addHistory(booking);
+  window.open(`https://wa.me/923171588489?text=${encodeURIComponent(msg)}`,"_blank");
+  this.reset();addHistory(booking);
 });
 
 // Booking History (localStorage)
-function addHistory(booking){
-  let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
-  history.push(booking);
-  localStorage.setItem("tourHistory",JSON.stringify(history));
-  loadHistory();
-}
-function loadHistory(){
-  let history=JSON.parse(localStorage.getItem("tourHistory"))||[];
-  const list=document.getElementById("historyList");
-  list.innerHTML="";
-  history.forEach(b=>{
-    const div=document.createElement("div");
-    let content="";
-    if(b.type==="Room") content=`Room: ${b.room}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}`;
-    if(b.type==="Car") content=`Car: ${b.car}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Date: ${b.date}`;
-    div.innerHTML=content;
-    list.appendChild(div);
-  });
-}
+function addHistory(b){let h=JSON.parse(localStorage.getItem("tourHistory"))||[];h.push(b);localStorage.setItem("tourHistory",JSON.stringify(h));loadHistory();}
+function loadHistory(){let h=JSON.parse(localStorage.getItem("tourHistory"))||[];let list=document.getElementById("historyList");list.innerHTML="";h.forEach(b=>{let div=document.createElement("div");div.innerHTML=b.type==="Room"?`Room: ${b.room}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Check-in: ${b.checkin}<br>Check-out: ${b.checkout}`:`Car: ${b.car}<br>Name: ${b.name}<br>Phone: ${b.phone}<br>Date: ${b.date}`;list.appendChild(div);});}
 loadHistory();
 
-// Scroll to section
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
+// Scroll
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
 </script>
 </body>
 </html>
