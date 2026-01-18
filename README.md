@@ -11,11 +11,11 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'Poppins',sans-serif;color:#fff;background:#000;overflow-x:hidden;}
 
-/* Background Animation */
+/* Animated Background */
 .bg-animate{
   position:fixed;width:100%;height:100%;
   background:linear-gradient(270deg,#000000,#0f0f0f,#001f3f,#000000);
-  background-size:800% 800%;animation:gradientBG 20s ease infinite;
+  background-size:800% 800%;animation:gradientBG 25s ease infinite;
   z-index:-3;
 }
 @keyframes gradientBG{
@@ -25,13 +25,13 @@ body{font-family:'Poppins',sans-serif;color:#fff;background:#000;overflow-x:hidd
 }
 
 /* Floating particles */
-.particle{position:fixed;width:6px;height:6px;background:#00eaff;border-radius:50%;opacity:0.7;animation:floatUp linear infinite;}
+.particle{position:fixed;width:5px;height:5px;background:#00eaff;border-radius:50%;opacity:0.7;animation:floatUp linear infinite;}
 @keyframes floatUp{0%{transform:translateY(110vh);}100%{transform:translateY(-10vh);}}
 
 /* Container */
-.container{max-width:1000px;margin:60px auto;padding:20px;background:rgba(0,0,0,0.4);border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 25px #00eaff;}
+.container{max-width:1000px;margin:60px auto;padding:20px;background:rgba(0,0,0,0.5);border-radius:20px;backdrop-filter:blur(10px);box-shadow:0 0 25px #00eaff;}
 
-/* Logo & Hero Text */
+/* Logo & Hero */
 .logo{text-align:center;font-size:36px;font-weight:700;color:#00eaff;margin-bottom:10px;font-family:'Orbitron',sans-serif;text-shadow:0 0 15px #00eaff;}
 .hero-text{text-align:center;font-size:16px;margin-bottom:20px;color:#00fff0;}
 
@@ -43,26 +43,23 @@ section img{width:100%;border-radius:15px;box-shadow:0 0 20px #00eaff;margin-top
 
 /* Forms */
 form{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
-input,select,button{padding:10px;border-radius:10px;border:none;font-size:15px;}
+input,select,button{padding:12px;border-radius:10px;border:none;font-size:16px;}
 input,select{background:rgba(255,255,255,0.1);color:#fff;}
 input:focus,select:focus{background:rgba(255,255,255,0.2);outline:none;}
-button{background:#00eaff;color:#000;font-weight:600;cursor:pointer;transition:0.3s;}
-button:hover{background:#00fff0;}
-
-/* Dashboard user display */
-#userDisplay{text-transform:capitalize;color:#00fff0;}
+button{background:#00eaff;color:#000;font-weight:600;cursor:pointer;transition:0.3s,box-shadow 0.5s;}
+button:hover{background:#00fff0;box-shadow:0 0 20px #00ffff;}
 
 /* Booking History */
-#historyList div{border:1px solid #00eaff;padding:8px;margin:5px;border-radius:8px;color:#a7f5ff;}
+#historyList div{border:1px solid #00eaff;padding:10px;margin:5px;border-radius:8px;color:#a7f5ff;}
 
-/* Fixed Bottom Icons */
-.icon-menu{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;background:rgba(0,0,0,0.4);padding:10px 0;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
+/* Floating Bottom Icons */
+.icon-menu{position:fixed;bottom:0;left:0;width:100%;display:flex;justify-content:space-around;background:rgba(0,0,0,0.5);padding:10px 0;border-top:1px solid #00eaff;z-index:9999;border-radius:15px 15px 0 0;}
 .icon-item{text-align:center;}
-.icon-item i{font-size:26px;color:#00eaff;cursor:pointer;transition:0.3s;}
-.icon-item i:hover{color:#00fff0;transform:scale(1.2);}
+.icon-item i{font-size:28px;color:#00eaff;cursor:pointer;transition:0.3s;}
+.icon-item i:hover{color:#00fff0;transform:scale(1.3);}
 .icon-item span{display:block;font-size:12px;margin-top:3px;color:#00fff0;}
 
-/* WhatsApp button */
+/* WhatsApp Button */
 .whatsapp-btn{position:fixed;bottom:70px;right:20px;background:#25d366;padding:16px 18px;border-radius:50%;color:#fff;font-size:28px;text-decoration:none;box-shadow:0 0 20px #25d366;transition:0.3s;}
 .whatsapp-btn:hover{transform:scale(1.1);}
 </style>
@@ -70,7 +67,7 @@ button:hover{background:#00fff0;}
 <body>
 <div class="bg-animate"></div>
 <script>
-for(let i=0;i<40;i++){
+for(let i=0;i<50;i++){
   let p=document.createElement("div");
   p.className="particle";
   p.style.left=Math.random()*100+"vw";
@@ -82,13 +79,18 @@ for(let i=0;i<40;i++){
 
 <div class="container" id="dashboard">
 <h1 class="logo">Astore Tourist Hub</h1>
-<div class="hero-text">Owner: Asim Khanzai | <a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;text-decoration:underline;">Email</a> | <a href="https://wa.me/923171588489" style="color:#00fff0;text-decoration:underline;">WhatsApp</a></div>
+<div class="hero-text">
+Owner: Asim Khanzai | 
+<a href="mailto:mohammadasimkhan2746@gmail.com" style="color:#00fff0;text-decoration:underline;">Email</a> | 
+<a href="https://wa.me/923171588489" style="color:#00fff0;text-decoration:underline;">WhatsApp</a> | 
+<a href="https://www.facebook.com/share/1BoG9YCsZN/?mibextid=wwXIfr" target="_blank" style="color:#00fff0;text-decoration:underline;">Facebook</a>
+</div>
 
 <!-- About Section -->
 <section id="about">
 <h2>About Astore Tourist Hub</h2>
-<p>Explore the beauty of Astore with our guided tours, cozy rooms, and convenient car rentals. We provide tourists a seamless experience with adventure packages, family-friendly stays, and local expertise. Discover mountains, rivers, and culture while enjoying premium services at affordable rates.</p>
-<img src="https://picsum.photos/id/1015/600/300" alt="Mountain view">
+<p>Discover the stunning beauty of Astore with our guided tours, comfortable stays, and convenient car rentals. Explore majestic mountains, rivers, and local culture while enjoying premium services at affordable rates. Perfect for adventure seekers, families, and solo travelers!</p>
+<img src="https://picsum.photos/seed/mountain/600/300" alt="Mountain View">
 </section>
 
 <!-- Rooms Section -->
@@ -130,15 +132,15 @@ for(let i=0;i<40;i++){
 <h2>Adventure Packages</h2>
 <div style="display:flex;flex-direction:column;gap:10px;">
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
-<i class="fa-solid fa-mountain" style="color:#00fff0;font-size:22px;"></i>
+<img src="https://picsum.photos/seed/package1/600/200" alt="Package 1" style="width:100%;border-radius:10px;">
 <p><strong>Basic Package:</strong> 2 Nights, 3 Days | Standard Room + Local Guide</p>
 </div>
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
-<i class="fa-solid fa-car" style="color:#00fff0;font-size:22px;"></i>
+<img src="https://picsum.photos/seed/package2/600/200" alt="Package 2" style="width:100%;border-radius:10px;">
 <p><strong>Luxury Package:</strong> 4 Nights, 5 Days | Luxury Room + Car + Guide</p>
 </div>
 <div style="background:rgba(0,0,0,0.3);padding:10px;border-radius:10px;">
-<i class="fa-solid fa-person-hiking" style="color:#00fff0;font-size:22px;"></i>
+<img src="https://picsum.photos/seed/package3/600/200" alt="Package 3" style="width:100%;border-radius:10px;">
 <p><strong>Adventure Package:</strong> 5 Nights, 6 Days | Family Suite + Jeep Tour + Hiking</p>
 </div>
 </div>
@@ -164,7 +166,7 @@ for(let i=0;i<40;i++){
 <div id="historyList"></div>
 </section>
 
-<!-- Floating Icons -->
+<!-- Floating Bottom Icons -->
 <div class="icon-menu">
 <div class="icon-item"><i class="fa-solid fa-bed" onclick="scrollToSection('room')"></i><span>Room</span></div>
 <div class="icon-item"><i class="fa-solid fa-car" onclick="scrollToSection('car')"></i><span>Car</span></div>
@@ -176,6 +178,8 @@ for(let i=0;i<40;i++){
 <a class="whatsapp-btn" href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
 
 <script>
+// Floating particles & background handled above
+
 // Room Booking WhatsApp
 document.getElementById("roomForm").addEventListener("submit",function(e){
   e.preventDefault();
