@@ -1,136 +1,147 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Astore Premium Travels</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astore Hub | Official</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #064e3b; --gold: #f59e0b; --bg: #fdfdfd; }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: #333; overflow-x: hidden; }
+        :root { --primary: #064e3b; --gold: #f59e0b; --light: #f9fafb; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--light); color: #1f2937; line-height: 1.5; }
 
-        /* Modern Full-Width Header */
+        /* Fix Header */
         nav { 
-            background: white; padding: 15px 5%; display: flex; justify-content: space-between; 
-            align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            background: white; padding: 15px 20px; display: flex; 
+            justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
         }
-        .logo { font-weight: 800; color: var(--primary); text-decoration: none; font-size: 1.2rem; }
+        .logo { font-weight: 800; color: var(--primary); font-size: 1.2rem; text-decoration: none; }
 
-        /* Cinematic Mobile Hero */
+        /* Full-Width Mobile Hero */
         .hero { 
-            height: 70vh; width: 100%;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1596395819057-e37f55a8516b?q=80&w=1000');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596395819057-e37f55a8516b?q=80&w=800');
             background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; padding: 20px;
+            height: 60vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center; color: white; padding: 20px;
         }
-        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        .hero-btn { background: var(--gold); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 20px; box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4); }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        .hero p { font-size: 1rem; opacity: 0.9; }
 
-        /* Services Quick Look */
-        .services-bar { display: flex; overflow-x: auto; gap: 20px; padding: 25px; background: white; white-space: nowrap; -webkit-overflow-scrolling: touch; }
-        .service-item { display: inline-block; text-align: center; min-width: 100px; }
-        .service-item i { font-size: 1.5rem; color: var(--primary); background: #f0fdf4; padding: 15px; border-radius: 50%; margin-bottom: 8px; }
-        .service-item p { font-size: 0.8rem; font-weight: bold; }
+        /* Content Container */
+        .container { padding: 30px 15px; max-width: 600px; margin: auto; }
+        .section-title { font-size: 1.6rem; color: var(--primary); text-align: center; margin-bottom: 25px; }
 
-        /* Premium Card Layout */
-        .container { padding: 30px 20px; }
-        .section-title { font-size: 1.8rem; color: var(--primary); text-align: center; margin-bottom: 30px; position: relative; }
-        
-        .dest-card { 
-            background: white; border-radius: 25px; overflow: hidden; margin-bottom: 30px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #f0f0f0;
+        /* Clean Destination Cards */
+        .card { 
+            background: white; border-radius: 15px; overflow: hidden; 
+            margin-bottom: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
         }
-        .dest-card img { width: 100%; height: 250px; object-fit: cover; }
-        .dest-info { padding: 25px; }
-        .dest-info h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--primary); }
-        .dest-meta { display: flex; gap: 15px; margin-top: 15px; font-size: 0.8rem; color: #666; font-weight: bold; }
+        .card img { width: 100%; height: 200px; object-fit: cover; background: #ddd; }
+        .card-body { padding: 20px; }
+        .card-body h3 { font-size: 1.3rem; margin-bottom: 8px; color: var(--primary); }
+        .card-body p { font-size: 0.9rem; color: #6b7280; margin-bottom: 15px; }
+        .meta { display: flex; justify-content: space-between; font-weight: bold; font-size: 0.85rem; color: var(--gold); }
 
-        /* Luxury Booking Section */
-        .booking-box { background: var(--primary); border-radius: 30px; padding: 40px 25px; color: white; text-align: center; }
-        .booking-box h2 { font-size: 1.8rem; margin-bottom: 15px; }
-        .input-style { width: 100%; padding: 15px; border-radius: 12px; border: none; margin-bottom: 15px; font-size: 1rem; }
-        .book-btn { width: 100%; padding: 18px; background: #25d366; color: white; border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        /* Centered Booking Form */
+        .booking-section { 
+            background: var(--primary); border-radius: 20px; padding: 30px 20px; 
+            color: white; margin-top: 20px;
+        }
+        .booking-section h2 { text-align: center; margin-bottom: 20px; font-size: 1.5rem; }
+        .input-group { margin-bottom: 15px; }
+        input, select { 
+            width: 100%; padding: 14px; border-radius: 10px; border: none; 
+            font-size: 1rem; outline: none; margin-top: 5px;
+        }
+        .submit-btn { 
+            width: 100%; padding: 16px; background: #25d366; color: white; 
+            border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold;
+            cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
 
-        /* Floating WhatsApp Icon */
-        .wa-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.3); z-index: 2000; text-decoration: none; }
+        /* Float WhatsApp */
+        .wa-float { 
+            position: fixed; bottom: 20px; right: 20px; background: #25d366; 
+            color: white; width: 55px; height: 55px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 2000;
+        }
 
-        footer { text-align: center; padding: 40px 20px; background: #f1f5f9; color: #64748b; font-size: 0.9rem; margin-top: 40px; }
+        footer { text-align: center; padding: 40px 20px; font-size: 0.8rem; color: #9ca3af; }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#" class="logo"><i class="fas fa-compass"></i> ASTORE HUB</a>
-    <a href="tel:+923171588489" style="color:var(--primary); text-decoration:none;"><i class="fas fa-phone-alt"></i></a>
+    <a href="#" class="logo">ASTORE HUB</a>
+    <a href="tel:+923171588489" style="color:var(--primary);"><i class="fas fa-phone-alt"></i></a>
 </nav>
 
-<section class="hero">
-    <h1>Experience Astore</h1>
+<div class="hero">
+    <h1>Astore Valley</h1>
     <p>Premium 4x4 Jeep & Tour Services</p>
-    <a href="#book" class="hero-btn">PLAN YOUR TRIP</a>
-</section>
-
-<div class="services-bar">
-    <div class="service-item"><i class="fas fa-car-side"></i><p>Jeep Rental</p></div>
-    <div class="service-item"><i class="fas fa-hotel"></i><p>Hotels</p></div>
-    <div class="service-item"><i class="fas fa-hiking"></i><p>Local Guides</p></div>
-    <div class="service-item"><i class="fas fa-shield-alt"></i><p>NOC Assist</p></div>
 </div>
 
 <div class="container">
-    <h2 class="section-title">Major Attractions</h2>
-    
-    <div class="dest-card">
-        <img src="https://images.unsplash.com/photo-1627896157734-4d7d4388f28b" alt="Rama">
-        <div class="dest-info">
+    <h2 class="section-title">Top Destinations</h2>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1627896157734-4d7d4388f28b" alt="Rama Meadows">
+        <div class="card-body">
             <h3>Rama Meadows</h3>
-            <p>Explore the lush green valley and the crystal clear Rama Lake.</p>
-            <div class="dest-meta">
+            <p>Experience the lush green valley at the base of Nanga Parbat.</p>
+            <div class="meta">
                 <span><i class="fas fa-clock"></i> Full Day</span>
-                <span><i class="fas fa-tag" style="color:var(--gold)"></i> Rs. 8,000</span>
+                <span>Rs. 8,500</span>
             </div>
         </div>
     </div>
 
-    <div class="dest-card">
+    <div class="card">
         <img src="https://images.unsplash.com/photo-1533130061792-64b345e4e833" alt="Minimarg">
-        <div class="dest-info">
+        <div class="card-body">
             <h3>Minimarg Valley</h3>
             <p>Visit the iconic Rainbow Lake near the border mountains.</p>
-            <div class="dest-meta">
+            <div class="meta">
                 <span><i class="fas fa-clock"></i> Full Day</span>
-                <span><i class="fas fa-tag" style="color:var(--gold)"></i> Rs. 14,000</span>
+                <span>Rs. 14,000</span>
             </div>
         </div>
     </div>
 
-    <div class="booking-box" id="book">
+    <div class="booking-section">
         <h2>Quick Booking</h2>
-        <p style="margin-bottom: 25px; opacity: 0.8;">Enter details for instant quote</p>
-        <input type="text" id="custName" class="input-style" placeholder="Your Full Name">
-        <select id="custLoc" class="input-style">
-            <option>Minimarg & Rainbow Lake</option>
-            <option>Rama Meadows</option>
-            <option>Deosai Plains</option>
-        </select>
-        <button class="book-btn" onclick="sendToWA()"><i class="fab fa-whatsapp"></i> Book on WhatsApp</button>
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Your Full Name">
+        </div>
+        <div class="input-group">
+            <select id="loc">
+                <option>Rama Meadows</option>
+                <option>Minimarg & Rainbow Lake</option>
+                <option>Deosai Plains</option>
+            </select>
+        </div>
+        <button class="submit-btn" onclick="bookNow()">
+            <i class="fab fa-whatsapp"></i> WhatsApp Booking
+        </button>
     </div>
 </div>
 
 <a href="https://wa.me/923171588489" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <footer>
-    <p>📍 Main Bazar Astore, Gilgit-Baltistan</p>
-    <p>Contact: +92 317 1588489</p>
-    <p style="margin-top:15px; opacity:0.5;">© 2026 Astore Tourist Information Hub</p>
+    <p>Main Bazar Astore, Gilgit-Baltistan</p>
+    <p>+92 317 1588489</p>
+    <p style="margin-top:10px;">© 2026 Astore Tourist Hub</p>
 </footer>
 
 <script>
-    function sendToWA() {
-        const name = document.getElementById('custName').value;
-        const loc = document.getElementById('custLoc').value;
-        const text = `Hi, I am ${name}. I want to book a trip to ${loc}. Please share details.`;
+    function bookNow() {
+        const name = document.getElementById('name').value;
+        const loc = document.getElementById('loc').value;
+        if(!name) { alert('Please enter your name'); return; }
+        const text = `Hi, I am ${name}. I want to book a trip to ${loc}. Please guide me.`;
         window.open(`https://wa.me/923171588489?text=${encodeURIComponent(text)}`, '_blank');
     }
 </script>
