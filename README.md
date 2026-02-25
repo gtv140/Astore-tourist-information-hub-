@@ -2,203 +2,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astore Signature | Peak Luxury</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bormioli:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Astore Hub | Feel the Mountains</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <style>
         :root {
-            --accent: #d4af37; /* Gold Accent for Luxury */
-            --bg: #0a0a0a;
-            --surface: #161616;
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
+            --primary: #00f2ff;
+            --secondary: #0066ff;
+            --bg-dark: #020617;
+            --card-glass: rgba(255, 255, 255, 0.03);
+            --accent-gradient: linear-gradient(135deg, #00f2ff 0%, #0066ff 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background: var(--bg); color: var(--text-main); overflow-x: hidden; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-dark); color: #fff; overflow-x: hidden; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+        /* Smooth Background Glows */
+        .glow {
+            position: fixed; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+            z-index: -1; pointer-events: none;
+        }
 
-        /* Hero Video/Image Background */
+        /* Hero Section with Parallax Feel */
         .hero {
-            height: 100vh; width: 100%; position: relative;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.5), var(--bg)), 
-                        url('https://images.unsplash.com/photo-1549410148-97171f644be3?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover; background-position: center; text-align: center;
+            height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.3), var(--bg-dark)),
+                        url('https://images.unsplash.com/photo-1622324341735-906567087679?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover; background-position: center; background-attachment: fixed; text-align: center; padding: 20px;
         }
 
         .hero h1 {
-            font-size: clamp(40px, 8vw, 80px); letter-spacing: -2px; font-weight: 800;
-            background: linear-gradient(to right, #fff, var(--text-dim));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: heroFade 1.5s ease;
+            font-family: 'Syne', sans-serif; font-size: clamp(40px, 10vw, 90px); font-weight: 800;
+            line-height: 0.9; text-transform: uppercase; margin-bottom: 20px;
+            background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
-        /* Floating Cards Design */
-        .section-container { max-width: 1100px; margin: -100px auto 50px; padding: 20px; position: relative; z-index: 10; }
-
-        .booking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-
-        .card {
-            background: var(--surface); border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 30px; padding: 40px; transition: 0.5s cubic-bezier(0.2, 1, 0.2, 1);
-            position: relative; overflow: hidden;
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2); font-size: 12px; letter-spacing: 3px; margin-bottom: 20px;
         }
-        .card:hover { transform: translateY(-15px); border-color: var(--accent); }
-        .card i { font-size: 40px; color: var(--accent); margin-bottom: 20px; opacity: 0.8; }
 
-        /* Premium Inputs */
-        .field { margin-bottom: 20px; }
-        .field label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-dim); margin-bottom: 8px; }
-        .field input, .field select {
-            width: 100%; background: rgba(255,255,255,0.03); border: none; border-bottom: 1px solid #333;
-            padding: 12px 0; color: #fff; outline: none; transition: 0.3s; font-size: 16px;
+        /* Floating Info Hub Cards */
+        .content-wrapper { max-width: 1200px; margin: -80px auto 100px; padding: 20px; }
+
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+
+        .glass-panel {
+            background: var(--card-glass); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 40px; padding: 40px; transition: 0.5s; position: relative;
         }
-        .field input:focus { border-color: var(--accent); }
+        .glass-panel:hover { border-color: var(--primary); transform: translateY(-10px); background: rgba(255, 255, 255, 0.05); }
 
-        /* Action Button */
-        .cta-btn {
-            width: 100%; padding: 20px; background: var(--accent); color: #000;
-            border: none; border-radius: 50px; font-weight: 700; text-transform: uppercase;
-            letter-spacing: 2px; cursor: pointer; transition: 0.4s; margin-top: 10px;
+        /* Stylish Forms */
+        h2 { font-family: 'Syne', sans-serif; font-size: 24px; margin-bottom: 25px; display: flex; align-items: center; gap: 15px; }
+        .input-box { position: relative; margin-bottom: 25px; }
+        .input-box input, .input-box select {
+            width: 100%; background: transparent; border: none; border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding: 10px 0; color: #fff; font-size: 16px; outline: none; transition: 0.3s;
         }
-        .cta-btn:hover { letter-spacing: 4px; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
+        .input-box input:focus { border-color: var(--primary); }
+        .input-box label { font-size: 11px; text-transform: uppercase; color: var(--primary); display: block; margin-bottom: 5px; }
 
-        /* Dynamic History Section */
-        .history-box { margin-top: 40px; background: #111; border-radius: 20px; padding: 20px; }
-        .log-entry { padding: 15px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
+        /* Luxury Button */
+        .action-btn {
+            width: 100%; padding: 18px; border-radius: 20px; border: none;
+            background: var(--accent-gradient); color: #000; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s;
+        }
+        .action-btn:hover { box-shadow: 0 0 40px rgba(0, 242, 255, 0.4); transform: scale(1.02); }
 
-        /* Bottom Minimal Nav */
+        /* Floating Dock Navigation */
         .dock {
             position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: rgba(255,255,255,0.05); backdrop-filter: blur(20px);
-            padding: 10px 30px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1);
-            display: flex; gap: 30px; z-index: 1000;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(15px);
+            padding: 15px 40px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.1);
+            display: flex; gap: 40px; z-index: 1000;
         }
-        .dock-item { color: var(--text-dim); text-decoration: none; font-size: 20px; transition: 0.3s; }
-        .dock-item:hover { color: var(--accent); transform: scale(1.2); }
+        .dock i { font-size: 22px; color: #64748b; cursor: pointer; transition: 0.3s; }
+        .dock i:hover { color: var(--primary); transform: translateY(-5px); }
 
-        @keyframes heroFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        /* History Activity Bar */
+        .activity-bar { margin-top: 30px; font-size: 12px; color: #64748b; text-align: center; }
 
-        /* Responsive Mobile Fixes */
-        @media (max-width: 600px) { .hero h1 { font-size: 45px; } .dock { gap: 20px; padding: 10px 20px; } }
+        /* Map Styling */
+        .map-box iframe { width: 100%; height: 250px; border-radius: 30px; filter: grayscale(1) invert(1) brightness(0.7); border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <div class="status-badge" style="border: 1px solid var(--accent); padding: 5px 15px; border-radius: 20px; font-size: 10px; color: var(--accent); margin-bottom: 20px;">EST. 2026 | ASTORE VALLEY</div>
-        <h1>ASTORE SIGNATURE</h1>
-        <p style="color: var(--text-dim); font-weight: 300; letter-spacing: 5px;">THE PEAK OF LUXURY</p>
-        <div style="margin-top: 40px; animation: bounce 2s infinite;">
-            <i class="fa-solid fa-chevron-down" style="color: var(--accent);"></i>
-        </div>
-    </div>
+    <div class="glow" style="top: 10%; right: 10%;"></div>
+    <div class="glow" style="bottom: 20%; left: 5%;"></div>
 
-    <div class="section-container">
-        <div class="booking-grid">
-            <div class="card" id="room-card">
-                <i class="fa-solid fa-hotel"></i>
-                <h3 style="margin-bottom: 20px;">RESERVE A SUITE</h3>
-                <form id="roomForm">
-                    <div class="field"><label>Name</label><input type="text" id="rname" placeholder="John Doe" required></div>
-                    <div class="field"><label>WhatsApp</label><input type="tel" id="rphone" placeholder="+92 ..." required></div>
-                    <div style="display: flex; gap: 15px;">
-                        <div class="field" style="flex:1;"><label>Check In</label><input type="date" id="rcheckin"></div>
-                        <div class="field" style="flex:1;"><label>Check Out</label><input type="date" id="rcheckout"></div>
+    <section class="hero">
+        <div class="hero-badge">ASTORE • GILGIT BALTISTAN</div>
+        <h1>ASTORE<br>VALLEY</h1>
+        <p style="letter-spacing: 8px; font-size: 12px; margin-top: 10px; opacity: 0.6;">INFORMATION HUB & SERVICES</p>
+    </section>
+
+    <div class="content-wrapper">
+        <div class="grid-layout">
+            
+            <div class="glass-panel" id="stay">
+                <h2><i class="fa-solid fa-moon"></i> Stay Hub</h2>
+                <form id="stayForm">
+                    <div class="input-box">
+                        <label>Explorer Name</label>
+                        <input type="text" id="sname" placeholder="Who is travelling?" required>
                     </div>
-                    <div class="field">
-                        <label>Category</label>
-                        <select id="rtype">
-                            <option>Presidential Suite</option>
-                            <option>Royal Alpine Room</option>
-                            <option>Executive Cabin</option>
+                    <div class="input-box">
+                        <label>WhatsApp Contact</label>
+                        <input type="tel" id="sphone" placeholder="+92 ..." required>
+                    </div>
+                    <div class="input-box">
+                        <label>Accommodation</label>
+                        <select id="stype">
+                            <option>Mountain View Suite</option>
+                            <option>Luxury Pine Cabin</option>
+                            <option>Basecamp Standard</option>
                         </select>
                     </div>
-                    <button type="submit" class="cta-btn">Check Availability</button>
+                    <button type="submit" class="action-btn">Request Reservation</button>
                 </form>
             </div>
 
-            <div class="card" id="car-card">
-                <i class="fa-solid fa-car-rear"></i>
-                <h3 style="margin-bottom: 20px;">ELITE TRANSPORT</h3>
-                <form id="carForm">
-                    <div class="field"><label>Pickup Date</label><input type="date" id="cdate"></div>
-                    <div class="field">
-                        <label>Vehicle Fleet</label>
-                        <select id="ctype">
-                            <option>Land Cruiser V8 (Elite 4x4)</option>
-                            <option>Prado TX (Adventure)</option>
-                            <option>Luxury Grand Cabin</option>
+            <div class="glass-panel" id="ride">
+                <h2><i class="fa-solid fa-compass"></i> Ride Hub</h2>
+                <form id="rideForm">
+                    <div class="input-box">
+                        <label>Pickup Location</label>
+                        <input type="text" id="loc" placeholder="Astore Bazar / Gilgit" required>
+                    </div>
+                    <div class="input-box">
+                        <label>Select Fleet</label>
+                        <select id="vtype">
+                            <option>Prado V6 (Deosai Special)</option>
+                            <option>Jeep 4x4 (Local Routes)</option>
+                            <option>Hiace (Group Travel)</option>
                         </select>
                     </div>
-                    <button type="submit" class="cta-btn" style="background: transparent; border: 1px solid var(--accent); color: var(--accent);">Request Fleet</button>
+                    <button type="submit" class="action-btn" style="background: #fff; color: #000;">Book Adventure</button>
                 </form>
             </div>
+
         </div>
 
-        <div class="card" style="margin-top: 30px; text-align: center;">
-            <h2 style="letter-spacing: 5px; margin-bottom: 20px;">OUR PRESENCE</h2>
-            <iframe src="http://googleusercontent.com/maps.google.com/4" width="100%" height="300" style="border-radius: 20px; filter: grayscale(1) invert(1) brightness(0.8);" allowfullscreen="" loading="lazy"></iframe>
-            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 40px;">
-                <a href="https://wa.me/923171588489" target="_blank" class="dock-item" style="color:#25d366;"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://www.facebook.com/share/1BoG9YCsZN/" target="_blank" class="dock-item" style="color:#1877f2;"><i class="fa-brands fa-facebook"></i></a>
-                <a href="mailto:mohammadasimkhan2746@gmail.com" class="dock-item" style="color:#ff4b4b;"><i class="fa-solid fa-envelope"></i></a>
+        <div class="glass-panel" style="margin-top: 30px; text-align: center;">
+            <h2 style="justify-content: center;">FIND US IN THE PEAKS</h2>
+            <div class="map-box">
+                <iframe src="http://googleusercontent.com/maps.google.com/5"></iframe>
+            </div>
+            <div style="margin-top: 30px; display: flex; justify-content: center; gap: 50px;">
+                <a href="https://wa.me/923171588489" target="_blank" style="color: #25d366; font-size: 30px;"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/share/1BoG9YCsZN/" target="_blank" style="color: #1877f2; font-size: 30px;"><i class="fa-brands fa-facebook"></i></a>
+                <a href="mailto:mohammadasimkhan2746@gmail.com" style="color: #ff4b4b; font-size: 30px;"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
 
-        <div class="history-box" id="historyBox">
-            <h4 style="font-size: 12px; color: var(--accent); letter-spacing: 2px; margin-bottom: 10px;">RECENT REQUESTS</h4>
-            <div id="logContent" style="font-size: 13px; color: var(--text-dim);">No requests yet.</div>
-        </div>
+        <div class="activity-bar" id="historyText">Waiting for your first adventure booking...</div>
     </div>
 
-    <div class="dock">
-        <a onclick="window.scrollTo(0, 800)" class="dock-item"><i class="fa-solid fa-bed"></i></a>
-        <a onclick="window.scrollTo(0, 800)" class="dock-item"><i class="fa-solid fa-mountain-sun"></i></a>
-        <a href="https://wa.me/923171588489" class="dock-item"><i class="fa-solid fa-headset"></i></a>
-    </div>
+    <nav class="dock">
+        <i class="fa-solid fa-bed" onclick="window.scrollTo(0, 800)"></i>
+        <i class="fa-solid fa-car" onclick="window.scrollTo(0, 800)"></i>
+        <i class="fa-solid fa-map-location-dot" onclick="window.scrollTo(0, 1500)"></i>
+        <i class="fa-solid fa-info-circle" onclick="alert('Astore Hub v3.0 - Ready for 2026')"></i>
+    </nav>
 
     <script>
-        const WHATSAPP = "923171588489";
+        const WHATSAPP_API = "923171588489";
 
-        function processBooking(e, category) {
+        function sendBooking(e, category) {
             e.preventDefault();
             const formData = new FormData(e.target);
-            let message = `*ASTORE SIGNATURE RESERVATION*\n*CATEGORY:* ${category}\n---\n`;
+            let message = `*ASTORE HUB - NEW INQUIRY*\n*Category:* ${category}\n---\n`;
             
             for (let [key, value] of formData.entries()) {
                 message += `*${key.toUpperCase()}:* ${value}\n`;
             }
 
-            window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, '_blank');
-            saveLog(category);
+            window.open(`https://wa.me/${WHATSAPP_API}?text=${encodeURIComponent(message)}`, '_blank');
+            
+            // Update Activity Bar
+            document.getElementById('historyText').innerText = `Last Inquiry: ${category} sent at ${new Date().toLocaleTimeString()}`;
             e.target.reset();
         }
 
-        document.getElementById('roomForm').onsubmit = (e) => processBooking(e, 'SUITE RESERVATION');
-        document.getElementById('carForm').onsubmit = (e) => processBooking(e, 'FLEET REQUEST');
+        document.getElementById('stayForm').onsubmit = (e) => sendBooking(e, 'Accommodation');
+        document.getElementById('rideForm').onsubmit = (e) => sendBooking(e, 'Transport Fleet');
 
-        function saveLog(cat) {
-            let logs = JSON.parse(localStorage.getItem('sig_logs')) || [];
-            logs.unshift({cat: cat, time: new Date().toLocaleTimeString()});
-            localStorage.setItem('sig_logs', JSON.stringify(logs.slice(0,3)));
-            renderLogs();
-        }
-
-        function renderLogs() {
-            const box = document.getElementById('logContent');
-            let logs = JSON.parse(localStorage.getItem('sig_logs')) || [];
-            if(logs.length > 0) {
-                box.innerHTML = logs.map(l => `<div class="log-entry"><span>${l.cat}</span><span style="font-size:10px;">${l.time}</span></div>`).join('');
-            }
-        }
-
-        window.onload = renderLogs;
+        // Simple Parallax Effect
+        window.addEventListener('scroll', () => {
+            let offset = window.pageYOffset;
+            document.querySelector('.hero h1').style.transform = `translateY(${offset * 0.4}px)`;
+        });
     </script>
 </body>
 </html>
