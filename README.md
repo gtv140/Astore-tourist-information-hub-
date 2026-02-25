@@ -2,177 +2,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astore Hub | Official Tourist Portal</title>
+    <title>Astore Hub | The Ultimate Travel Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --main: #0b3d2e; --gold: #c5a059; --bg: #fdfdfd; }
-        
-        * { box-sizing: border-box; transition: all 0.3s ease; }
-        body { font-family: 'Garamond', serif; margin: 0; background: var(--bg); color: #333; }
+        :root { --primary: #0b3d2e; --accent: #d4af37; --light: #f4f7f6; --text: #2d3436; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Playfair Display', serif; font-family: 'Poppins', sans-serif; margin: 0; background: var(--light); color: var(--text); }
 
-        /* Navigation */
-        nav { 
-            background: white; padding: 20px 8%; display: flex; 
-            justify-content: space-between; align-items: center;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
-        }
-        .logo { font-size: 1.8rem; font-weight: bold; color: var(--main); letter-spacing: 2px; }
-        nav a { text-decoration: none; color: #555; margin-left: 30px; font-weight: 600; font-size: 15px; }
-        nav a:hover { color: var(--gold); }
+        /* Header & Navigation */
+        nav { background: white; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; letter-spacing: 1px; }
+        .nav-links a { text-decoration: none; color: var(--text); margin-left: 25px; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
 
         /* Hero Section */
-        .hero {
-            height: 75vh; 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1596395819057-e37f55a8516b?q=80&w=1500');
+        .hero { 
+            height: 80vh; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1596395819057-e37f55a8516b?auto=format&fit=crop&q=80&w=1500'); 
             background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 0 20px;
         }
-        .hero h1 { font-size: 4rem; margin: 0; letter-spacing: 5px; text-transform: uppercase; }
-        .hero p { font-size: 1.2rem; margin-top: 10px; opacity: 0.9; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin-top: 15px; }
 
-        /* Sections */
+        /* General Container */
         .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
-        .heading { text-align: center; margin-bottom: 60px; }
-        .heading h2 { font-size: 2.5rem; color: var(--main); margin-bottom: 10px; }
-        .heading .line { width: 80px; height: 3px; background: var(--gold); margin: auto; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary); margin: 0; }
+        .section-title .bar { width: 50px; height: 3px; background: var(--accent); margin: 15px auto; }
 
-        /* Professional Destinations Grid */
-        .dest-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        .dest-card { background: white; border: 1px solid #eee; border-radius: 0px; overflow: hidden; }
-        .dest-card:hover { box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .dest-card img { width: 100%; height: 300px; object-fit: cover; filter: grayscale(20%); }
-        .dest-card:hover img { filter: grayscale(0%); }
-        .dest-info { padding: 30px; }
-        .dest-info h3 { margin-top: 0; color: var(--main); font-size: 1.6rem; }
+        /* Features Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card img { width: 100%; height: 250px; object-fit: cover; transition: 0.5s; }
+        .card:hover img { transform: scale(1.1); }
+        .card-content { padding: 25px; }
 
-        /* Information & Rates Table */
-        .info-section { background: #f9f9f9; padding: 80px 0; }
-        .table-container { background: white; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 20px; text-align: left; border-bottom: 1px solid #eee; }
-        th { color: var(--main); font-size: 1.1rem; }
+        /* Itinerary Section */
+        .itinerary-box { background: white; padding: 30px; border-left: 5px solid var(--primary); margin-bottom: 20px; }
 
-        /* Contact Section */
-        .contact-area { background: var(--main); color: white; padding: 80px 20px; text-align: center; }
-        .contact-area h2 { font-size: 2.5rem; margin-bottom: 20px; }
-        .btn-gold { 
-            background: var(--gold); color: white; padding: 15px 40px; 
-            text-decoration: none; display: inline-block; font-weight: bold; margin: 10px; 
-            border-radius: 2px; text-transform: uppercase; letter-spacing: 1px;
-        }
-        
-        /* Floating WhatsApp Button (Pure Website Style) */
-        .wa-btn {
-            position: fixed; bottom: 30px; right: 30px; background: #25d366; 
-            color: white; width: 60px; height: 60px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000;
-        }
+        /* Testimonials */
+        .testimonial-card { background: #fff; padding: 30px; border-radius: 10px; text-align: center; font-style: italic; border: 1px solid #eee; }
+        .stars { color: var(--accent); margin-bottom: 10px; }
 
-        footer { padding: 40px; text-align: center; background: white; border-top: 1px solid #eee; color: #777; font-size: 14px; }
+        /* Newsletter */
+        .newsletter { background: var(--primary); color: white; text-align: center; padding: 60px 20px; border-radius: 20px; }
+        .newsletter input { padding: 12px 20px; width: 250px; border-radius: 50px; border: none; outline: none; }
+        .newsletter button { padding: 12px 30px; border-radius: 50px; border: none; background: var(--accent); color: white; font-weight: bold; cursor: pointer; }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav { padding: 20px 5%; flex-direction: column; }
-            nav .links { margin-top: 15px; }
-            nav a { margin: 0 10px; font-size: 13px; }
-        }
+        /* Floating Buttons */
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; text-decoration: none; }
+        .back-top { position: fixed; bottom: 100px; right: 35px; background: #333; color: white; padding: 10px; border-radius: 5px; cursor: pointer; display: none; }
+
+        footer { background: #1a1a1a; color: #999; padding: 60px 5% 20px; text-align: center; }
+        .social-links a { color: white; margin: 0 10px; font-size: 1.5rem; text-decoration: none; }
+
+        @media (max-width: 768px) { nav { flex-direction: column; } .nav-links { margin-top: 15px; } .nav-links a { margin: 0 10px; } }
     </style>
 </head>
 <body>
 
 <nav>
-    <div class="logo">ASTORE HUB</div>
-    <div class="links">
-        <a href="#destinations">DESTINATIONS</a>
-        <a href="#rates">RATES</a>
-        <a href="#contact">CONTACT</a>
+    <a href="#" class="logo">ASTORE HUB</a>
+    <div class="nav-links">
+        <a href="#destinations">Destinations</a>
+        <a href="#itinerary">Trip Plans</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
     </div>
 </nav>
 
-<div class="hero">
-    <h1>Discover Astore</h1>
-    <p>Premium Jeep Services & Guided Tours Across the Valley</p>
-</div>
+<section class="hero">
+    <h1>Experience the Majestic Astore</h1>
+    <p>From the crystalline waters of Rainbow Lake to the vastness of Deosai, your authentic northern adventure starts here.</p>
+    <a href="https://wa.me/923171588489" style="background: var(--accent); color:white; padding: 15px 40px; text-decoration:none; border-radius:50px; font-weight:bold; margin-top:20px;">Book a Jeep Now</a>
+</section>
 
 <div class="container" id="destinations">
-    <div class="heading">
-        <h2>Our Main Attractions</h2>
-        <div class="line"></div>
+    <div class="section-title">
+        <h2>Top Sightseeing</h2>
+        <div class="bar"></div>
     </div>
-    <div class="dest-grid">
-        <div class="dest-card">
+    <div class="grid">
+        <div class="card">
             <img src="https://images.unsplash.com/photo-1627896157734-4d7d4388f28b" alt="Rama">
-            <div class="dest-info">
-                <h3>Rama Meadows</h3>
-                <p>Nanga Parbat ke haseen nazaaron ke saath camping ke liye behtareen jagah.</p>
-            </div>
+            <div class="card-content"><h3>Rama Meadows</h3><p>Aik pur-sukoon wadi jahan Nanga Parbat ka rukh ankhon ko thandak deta hai.</p></div>
         </div>
-        <div class="dest-card">
+        <div class="card">
             <img src="https://images.unsplash.com/photo-1533130061792-64b345e4e833" alt="Minimarg">
-            <div class="dest-info">
-                <h3>Minimarg Valley</h3>
-                <p>Rainbow Lake aur sarhad ki khoobsurti ka aik munfarid nazaara.</p>
-            </div>
+            <div class="card-content"><h3>Minimarg & Rainbow</h3><p>Pakistan ki sarhad par waqiye jannat ka tukra. Rainbow Lake lazmi dekhein.</p></div>
         </div>
-        <div class="dest-card">
+        <div class="card">
             <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b" alt="Deosai">
-            <div class="dest-info">
-                <h3>Deosai Plains</h3>
-                <p>The Land of Giants. Chillum gate se Deosai ki jannat ka safar shuru karein.</p>
-            </div>
+            <div class="card-content"><h3>Deosai Plains</h3><p>High altitude plateau jahan dunya khatam hoti mehsoos hoti hai.</p></div>
         </div>
     </div>
 </div>
 
-<div class="info-section" id="rates">
-    <div class="container">
-        <div class="heading">
-            <h2>Service Rates 2026</h2>
-            <div class="line"></div>
+<div class="container" id="itinerary" style="background: #fdfdfd;">
+    <div class="section-title">
+        <h2>Sample 3-Day Plan</h2>
+        <div class="bar"></div>
+    </div>
+    <div class="itinerary-box">
+        <h4>Day 1: Arrival & Rama Meadows</h4>
+        <p>Astore city arrival, check-in to hotel, and afternoon visit to Rama Lake.</p>
+    </div>
+    <div class="itinerary-box">
+        <h4>Day 2: Minimarg & Rainbow Lake</h4>
+        <p>Early morning departure for Minimarg via Burzil Pass. Full day exploration.</p>
+    </div>
+    <div class="itinerary-box">
+        <h4>Day 3: Deosai to Skardu / Return</h4>
+        <p>Crossing Chillum Gate to Sheosar Lake and exploring the giants' land.</p>
+    </div>
+</div>
+
+<div class="container" id="reviews">
+    <div class="section-title">
+        <h2>Guest Reviews</h2>
+        <div class="bar"></div>
+    </div>
+    <div class="grid">
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Zabardast service! Inhon ne hamari Minimarg ki trip bohot asaan bana di."</p>
+            <strong>- Salman from Islamabad</strong>
         </div>
-        <div class="table-container">
-            <table>
-                <tr>
-                    <th>Service Description</th>
-                    <th>Average Rate</th>
-                    <th>Booking Info</th>
-                </tr>
-                <tr>
-                    <td>4x4 Jeep (Minimarg Trip)</td>
-                    <td>PKR 12,000 - 15,000</td>
-                    <td>Inclusive of Driver</td>
-                </tr>
-                <tr>
-                    <td>Deosai Plains Tour</td>
-                    <td>PKR 10,000 - 13,000</td>
-                    <td>Full Day Return</td>
-                </tr>
-                <tr>
-                    <td>Standard Guest House Room</td>
-                    <td>PKR 5,000 / Night</td>
-                    <td>Astore/Gorikot Area</td>
-                </tr>
-            </table>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Highly recommended jeep drivers and guides. Very polite and helpful."</p>
+            <strong>- Amna from Karachi</strong>
         </div>
     </div>
 </div>
 
-<div class="contact-area" id="contact">
-    <h2>Ready to Plan Your Journey?</h2>
-    <p>Contact +92 317 1588489 for customized tour packages and real-time road updates.</p>
-    <a href="tel:+923171588489" class="btn-gold">Call Now</a>
-    <a href="https://wa.me/923171588489" class="btn-gold" style="background:#25d366;">WhatsApp Booking</a>
+<div class="container">
+    <div class="newsletter">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to get road updates and seasonal discount alerts.</p>
+        <input type="email" placeholder="Enter your email">
+        <button>Subscribe</button>
+    </div>
 </div>
 
-<a href="https://wa.me/923171588489" class="wa-btn" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<footer>
-    <p>&copy; 2026 Astore Tourist Information Hub. All Rights Reserved.</p>
-    <p>📍 Main Bazaar Astore, Gilgit Baltistan</p>
+<footer id="contact">
+    <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p style="margin-top: 20px;">Contact: +92 317 1588489 | Email: info@astorehub.com</p>
+    <p>&copy; 2026 Astore Tourist Hub. All Rights Reserved.</p>
 </footer>
+
+<a href="https://wa.me/923171588489" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+    // Show back to top button on scroll
+    window.onscroll = function() {
+        if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+            document.querySelector('.back-top').style.display = "block";
+        } else {
+            document.querySelector('.back-top').style.display = "none";
+        }
+    };
+</script>
 
 </body>
 </html>
