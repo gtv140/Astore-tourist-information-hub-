@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Astore Hub | Real-Time Guide</title>
+    <title>Astore Hub | Luxury Experience</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
@@ -11,166 +11,148 @@
         :root {
             --primary: #00f2ff;
             --bg: #010409;
-            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-bg: #0d1117;
             --border: rgba(255, 255, 255, 0.1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { background: var(--bg); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background: var(--bg); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
 
-        /* Navigation */
-        nav.navbar {
-            position: fixed; top: 0; width: 100%; padding: 15px 6%;
-            background: rgba(1, 4, 9, 0.9); backdrop-filter: blur(15px);
+        /* Modern Nav */
+        nav {
+            position: sticky; top: 0; width: 100%; padding: 20px;
+            background: rgba(1, 4, 9, 0.95); backdrop-filter: blur(10px);
             display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid var(--border); z-index: 1000;
         }
-        .logo { font-family: 'Syne'; font-size: 20px; font-weight: 800; text-transform: uppercase; }
+        .logo { font-family: 'Syne'; font-size: 22px; font-weight: 800; letter-spacing: -1px; }
         .logo span { color: var(--primary); }
 
-        /* Hero with Real Image */
+        /* Hero */
         .hero {
-            height: 75vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.6), var(--bg)), 
-                        url('https://images.unsplash.com/photo-1549410148-97171f644be3?q=80&w=1200&auto=format') no-repeat center center/cover;
-            text-align: center; padding: 20px;
+            padding: 60px 20px; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), var(--bg)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format');
+            background-size: cover; background-position: center;
         }
-        .hero h1 { font-family: 'Syne'; font-size: clamp(40px, 12vw, 80px); line-height: 0.9; margin-bottom: 15px; }
+        .hero h1 { font-family: 'Syne'; font-size: 48px; text-transform: uppercase; line-height: 1; margin-bottom: 10px; }
 
-        /* Live Weather Widget */
-        .weather-box {
-            background: rgba(0, 242, 255, 0.1); border: 1px solid var(--primary);
-            padding: 10px 20px; border-radius: 50px; display: inline-flex; align-items: center; gap: 10px;
-            font-size: 14px; font-weight: 700; margin-top: 10px;
+        .weather-chip {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(0, 242, 255, 0.15); border: 1px solid var(--primary);
+            padding: 8px 16px; border-radius: 50px; font-size: 13px; font-weight: 700;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        
-        /* Grid System */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card {
-            background: var(--card-bg); border-radius: 24px; overflow: hidden;
-            border: 1px solid var(--border); transition: 0.3s;
-        }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card img { width: 100%; height: 220px; object-fit: cover; }
-        .card-body { padding: 20px; }
-        .card-body h3 { font-family: 'Syne'; margin-bottom: 10px; color: var(--primary); }
+        .container { padding: 20px; max-width: 1000px; margin: 0 auto; }
 
-        /* Booking Form */
-        .booking-ui { background: var(--card-bg); padding: 30px; border-radius: 30px; border: 1px solid var(--border); margin-top: 40px; }
+        /* Destination Cards - Fixed Images */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
+        .card { background: var(--card-bg); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+        .card .img-box { width: 100%; height: 200px; background: #161b22; position: relative; }
+        .card img { width: 100%; height: 100%; object-fit: cover; }
+        .card-info { padding: 20px; }
+        .card-info h3 { font-family: 'Syne'; color: var(--primary); margin-bottom: 8px; }
+        .card-info p { font-size: 14px; opacity: 0.7; line-height: 1.5; }
+
+        /* Booking Section */
+        .form-card { background: var(--card-bg); padding: 30px; border-radius: 25px; border: 1px solid var(--primary); margin: 40px 0 100px; }
         input, select, textarea {
             width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 12px;
-            border: 1px solid var(--border); background: #000; color: #fff; outline: none;
+            border: 1px solid var(--border); background: #010409; color: #fff; font-size: 16px;
         }
-        .btn-send {
+        .btn-glow {
             width: 100%; padding: 18px; background: var(--primary); color: #000;
             border: none; border-radius: 12px; font-weight: 800; cursor: pointer; text-transform: uppercase;
         }
 
-        /* Bottom App Bar */
-        .app-bar {
+        /* Fixed Bottom Bar */
+        .dock {
             position: fixed; bottom: 0; width: 100%; background: #000;
             display: flex; justify-content: space-around; padding: 15px 0 30px;
-            border-top: 1px solid var(--border); z-index: 1000;
+            border-top: 1px solid var(--border); z-index: 2000;
         }
-        .app-bar a { color: #fff; opacity: 0.5; font-size: 20px; text-decoration: none; }
-        .app-bar a.active { color: var(--primary); opacity: 1; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 50px; }
-        }
+        .dock a { color: #fff; opacity: 0.5; font-size: 24px; transition: 0.3s; }
+        .dock a.active { color: var(--primary); opacity: 1; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
+    <nav>
         <div class="logo">ASTORE<span>HUB</span></div>
-        <div id="live-clock" style="font-size: 10px; opacity: 0.6;">00:00:00</div>
+        <div id="time" style="font-size: 12px; font-weight: bold; color: var(--primary);">00:00</div>
     </nav>
 
     <section class="hero">
-        <div>
-            <p style="letter-spacing: 5px; font-size: 10px; font-weight: 800; color: var(--primary);">WELCOME TO HEAVEN</p>
-            <h1>ASTORE<br>VALLEY</h1>
-            
-            <div class="weather-box">
-                <i class="fa-solid fa-temperature-half"></i>
-                <span>Astore: 12°C | Sunny</span>
-            </div>
+        <p style="letter-spacing: 5px; font-size: 10px; margin-bottom: 10px;">PREMIUM TRAVEL HUB</p>
+        <h1>EXPLORE THE<br><span>NORTH</span></h1>
+        <div class="weather-chip">
+            <i class="fa-solid fa-cloud-sun-rain"></i>
+            <span>ASTORE: 14°C | LIVE</span>
         </div>
     </section>
 
     <div class="container">
+        <h2 style="font-family:'Syne'; font-size: 28px; margin: 20px 0;">Top Spots</h2>
         
-        <h2 style="font-family:'Syne'; margin-bottom:25px;">Top Spots</h2>
         <div class="grid">
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1627548613747-42506c11760c?q=80&w=800&auto=format" alt="Rama">
-                <div class="card-body">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1627548613747-42506c11760c?auto=format&fit=crop&w=600" alt="Rama">
+                </div>
+                <div class="card-info">
                     <h3>Rama Meadows</h3>
-                    <p>The green jewel of Astore. Surrounded by mountains and pine forests.</p>
+                    <p>Experience the lush green meadows and the majestic Rama Lake at the foot of Nanga Parbat.</p>
                 </div>
             </div>
+
             <div class="card">
-                <img src="https://images.unsplash.com/photo-1596465492651-789a68e36780?q=80&w=800&auto=format" alt="Hunza">
-                <div class="card-body">
-                    <h3>Hunza Valley</h3>
-                    <p>Ancient forts, blue lakes, and the world-famous hospitality.</p>
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1549410148-97171f644be3?auto=format&fit=crop&w=600" alt="Deosai">
                 </div>
-            </div>
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1549410148-97171f644be3?q=80&w=800&auto=format" alt="Deosai">
-                <div class="card-body">
+                <div class="card-info">
                     <h3>Deosai Plains</h3>
-                    <p>The second-highest plateau in the world. Home of the Brown Bear.</p>
+                    <p>Visit the Land of Giants. A high-altitude plateau with breathtaking wildflowers and clear blue skies.</p>
                 </div>
             </div>
         </div>
 
-        
-
-        <h2 id="book" style="font-family:'Syne'; margin: 50px 0 20px;">Book Tour</h2>
-        <div class="booking-ui">
-            <form id="hubForm">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <input type="tel" id="phone" placeholder="WhatsApp Number" required>
-                <select id="tour">
-                    <option>Astore & Deosai Safari</option>
-                    <option>Hunza Luxury Trip</option>
+        <h2 id="book" style="font-family:'Syne'; font-size: 28px; margin: 40px 0 20px;">Book Your Tour</h2>
+        <div class="form-card">
+            <form id="waForm">
+                <input type="text" id="user" placeholder="Your Name" required>
+                <input type="tel" id="whatsapp" placeholder="WhatsApp Number" required>
+                <select id="trip">
+                    <option>Astore & Deosai Special</option>
+                    <option>Hunza Valley Retreat</option>
                     <option>Skardu Adventure</option>
                 </select>
-                <textarea id="msg" placeholder="Travel dates & details..."></textarea>
-                <button type="submit" class="btn-send">Send Inquiry to Hub</button>
+                <textarea id="note" placeholder="Any special requests?"></textarea>
+                <button type="submit" class="btn-glow">Request Booking</button>
             </form>
-        </div>
-
-        <div style="height: 300px; border-radius: 24px; overflow: hidden; margin: 40px 0 100px; border: 1px solid var(--border);">
-            <iframe src="http://googleusercontent.com/maps.google.com/9" width="100%" height="100%" frameborder="0" style="filter: invert(90%) hue-rotate(180deg);"></iframe>
         </div>
     </div>
 
-    <div class="app-bar">
-        <a href="#" class="active"><i class="fa-solid fa-house"></i></a>
-        <a href="#book"><i class="fa-solid fa-mountain-sun"></i></a>
+    <div class="dock">
+        <a href="#" class="active"><i class="fa-solid fa-house-user"></i></a>
+        <a href="#book"><i class="fa-solid fa-map-marked-alt"></i></a>
         <a href="#book"><i class="fa-solid fa-calendar-check"></i></a>
         <a href="https://wa.me/923171588489"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
 
     <script>
-        // Live Clock Function
-        function updateTime() {
+        // Real-time Clock
+        function getTime() {
             const now = new Date();
-            document.getElementById('live-clock').innerText = now.toLocaleTimeString();
+            document.getElementById('time').innerText = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0');
         }
-        setInterval(updateTime, 1000);
+        setInterval(getTime, 1000);
+        getTime();
 
-        // Form Function
-        document.getElementById('hubForm').onsubmit = function(e) {
+        // Form Submission
+        document.getElementById('waForm').onsubmit = function(e) {
             e.preventDefault();
-            const n = document.getElementById('name').value;
-            const t = document.getElementById('tour').value;
-            const text = `*HUB INQUIRY*\nName: ${n}\nTour: ${t}\nSent from Astore Hub.`;
+            const u = document.getElementById('user').value;
+            const t = document.getElementById('trip').value;
+            const text = `🚀 *ASTORE HUB BOOKING*\n---\n*Name:* ${u}\n*Tour:* ${t}\n---\nSent from Website.`;
             window.open(`https://wa.me/923171588489?text=${encodeURIComponent(text)}`, '_blank');
         };
     </script>
