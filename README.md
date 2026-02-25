@@ -2,113 +2,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Astore - Tourist Information Hub</title>
+    <title>Astore Hub | Official Tourist Guide</title>
     <style>
-        :root { --primary: #2c5f2d; --accent: #97bc62; --light: #f4f4f4; }
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; line-height: 1.6; color: #333; }
-        header { background: var(--primary); color: white; padding: 2rem; text-align: center; }
-        nav { background: #333; color: white; padding: 10px; text-align: center; position: sticky; top: 0; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-        .hero { background: #e0e0e0; padding: 60px 20px; text-align: center; }
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
+        :root { --primary: #1b4332; --secondary: #2d6a4f; --accent: #95d5b2; --light: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: var(--light); color: #333; scroll-behavior: smooth; }
         
+        /* Navigation */
+        nav { background: var(--primary); padding: 15px; position: sticky; top: 0; z-index: 1000; display: flex; justify-content: space-around; flex-wrap: wrap; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        nav a { color: white; text-decoration: none; font-weight: bold; margin: 5px 15px; }
+
+        /* Hero Section */
+        header { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1589308454676-40742d45903b?q=80&w=1000') no-repeat center center/cover; height: 60vh; color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        header h1 { font-size: 3rem; margin: 0; }
+
+        /* Grid System */
+        .container { max-width: 1200px; margin: auto; padding: 40px 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        .card { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: white; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 200px; object-fit: cover; background: #ccc; }
-        .card-content { padding: 15px; }
-        .tag { background: var(--accent); color: white; padding: 3px 8px; border-radius: 4px; font-size: 12px; }
-        
-        footer { background: #222; color: white; text-align: center; padding: 20px; margin-top: 40px; }
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: 0.3s; border-bottom: 4px solid var(--secondary); }
+        .card:hover { transform: translateY(-10px); }
+        .card-content { padding: 20px; }
+        .tag { background: var(--secondary); color: white; padding: 4px 10px; border-radius: 5px; font-size: 12px; text-transform: uppercase; }
+
+        /* Table Style */
+        .table-container { overflow-x: auto; background: white; padding: 20px; border-radius: 12px; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 15px; border-bottom: 1px solid #ddd; }
+        th { background: var(--secondary); color: white; }
+
+        /* Contact & WhatsApp */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2000; }
+        .contact-box { background: var(--primary); color: white; padding: 50px 20px; text-align: center; border-radius: 15px; margin-top: 40px; }
+        .call-btn { background: white; color: var(--primary); padding: 12px 30px; border-radius: 8px; text-decoration: none; display: inline-block; margin-top: 20px; font-weight: bold; }
+
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Astore Tourist Information Hub</h1>
-    <p>The Gateway to Deosai and the Hidden Gems of Gilgit-Baltistan</p>
-</header>
-
 <nav>
-    <a href="#destinations">Destinations</a>
-    <a href="#itinerary">Plans</a>
-    <a href="#contact">Emergency Contacts</a>
+    <a href="#home">Home</a>
+    <a href="#destinations">Places</a>
+    <a href="#hotels">Hotels & Rates</a>
+    <a href="#itinerary">Road Updates</a>
+    <a href="#contact">Contact Support</a>
 </nav>
 
+<header id="home">
+    <h1>Astore Tourist Hub</h1>
+    <p>Get Real-time Information & Local Guides for Your Trip</p>
+    <a href="tel:+923171588489" class="call-btn" style="background: #25d366; color: white; border: none;">Call Now for Booking</a>
+</header>
+
 <div class="container" id="destinations">
-    <h2 style="text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 10px;">Explore All Places in Astore</h2>
-    
+    <h2 style="text-align: center; margin-bottom: 40px;">Top Places to Visit</h2>
     <div class="grid">
         <div class="card">
             <div class="card-content">
-                <span class="tag">Most Popular</span>
+                <span class="tag">Highlight</span>
                 <h3>Rama Meadows & Lake</h3>
-                <p>Astore se 30 mins ki drive par. Pine trees aur Nanga Parbat ke view ke liye best jagah.</p>
+                <p>Nanga Parbat ka perfect view aur ghane jungle. Astore se sirf 11km door.</p>
             </div>
         </div>
-
         <div class="card">
             <div class="card-content">
                 <span class="tag">Border Area</span>
                 <h3>Minimarg & Rainbow Lake</h3>
-                <p>Burzil Pass ke zariye rasta jata hai. Rainbow Lake apni khoobsurti ki wajah se mashhoor hai.</p>
+                <p>Jannat-nazeer jagah. Rainbow Lake ka pani rang badalta hai. (NOC Required)</p>
             </div>
         </div>
-
         <div class="card">
             <div class="card-content">
-                <span class="tag">High Altitude</span>
-                <h3>Deosai (Chillum Gate)</h3>
-                <p>Astore side se Deosai enter hone ka rasta Chillum se hai. Sheosar Lake raste mein aati hai.</p>
+                <span class="tag">High Plateau</span>
+                <h3>Deosai Plains (Chillum)</h3>
+                <p>Dunya ka doosra buland tareen maidan. Sheosar Lake aur brown bears ke liye mashhoor.</p>
             </div>
         </div>
-
         <div class="card">
             <div class="card-content">
                 <span class="tag">Base Camp</span>
-                <h3>Rupal Valley (Nanga Parbat)</h3>
-                <p>Tarashing village se hiking shuru hoti hai Nanga Parbat ke Rupal Face ki taraf.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-content">
-                <span class="tag">Hidden Gem</span>
-                <h3>Parishing Valley</h3>
-                <p>Kam log jate hain magar ye valley apni greenery aur waterfalls ke liye jani jati hai.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-content">
-                <span class="tag">Skiing Hub</span>
-                <h3>Rattu Valley</h3>
-                <p>Sardiyon mein skiing ke liye mashhoor aur garmiyon mein sukoon deh maqam.</p>
-            </div>
-        </div>
-        
-        <div class="card">
-            <div class="card-content">
-                <span class="tag">Trekking</span>
-                <h3>Kamri Top / Pass</h3>
-                <p>Purana rasta jo Astore ko Neelum Valley (Kashmir) se milata hai.</p>
+                <h3>Rupal Valley</h3>
+                <p>Tarashing se hiking shuru hoti hai. Nanga Parbat ka "Rupal Face" yahan se nazar aata hai.</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container" id="itinerary" style="background: #f9f9f9; padding: 40px; border-radius: 10px;">
-    <h3>Important Travel Tips for Astore:</h3>
-    <ul>
-        <li>**Roads:** Astore-Gilgit road aksar landslide ki wajah se band hoti hai, update lekar niklen.</li>
-        <li>**4x4 Required:** Minimarg aur Deosai ke liye 4x4 Jeep zaroori hai.</li>
-        <li>**NOC:** Minimarg jane ke liye Army se NOC/Permission leni parti hai.</li>
-    </ul>
+<div class="container" id="hotels">
+    <h2 style="text-align: center;">Estimated Rates (Hotels & Jeeps)</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Service Type</th>
+                    <th>Average Rate (PKR)</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Standard Hotel Room</td>
+                    <td>4,000 - 6,000</td>
+                    <td>Astore City / Rama</td>
+                </tr>
+                <tr>
+                    <td>Camping (Per Night)</td>
+                    <td>1,500 - 2,500</td>
+                    <td>Rama / Rainbow Lake</td>
+                </tr>
+                <tr>
+                    <td>Jeep Rent (4x4)</td>
+                    <td>10,000 - 15,000</td>
+                    <td>Full Day for Deosai/Minimarg</td>
+                </tr>
+                <tr>
+                    <td>Local Guide</td>
+                    <td>2,000 - 3,000</td>
+                    <td>Daily Basis</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<footer id="contact">
-    <p>Astore Tourist Information Hub &copy; 2026</p>
-    <p>Helping you explore the heart of Gilgit-Baltistan.</p>
+<div class="container" id="itinerary">
+    <div style="background: #fff; padding: 30px; border-radius: 12px; border-left: 8px solid #f39c12;">
+        <h3>⚠️ Important Road Updates</h3>
+        <ul>
+            <li><strong>Burzil Pass:</strong> Sirf June se October tak khula rehta hai.</li>
+            <li><strong>Jeep Rental:</strong> Minimarg ke liye sirf Astore ki local jeeps ko permission milti hai.</li>
+            <li><strong>Fuel:</strong> Astore city mein akhri Petrol Pump hai, aage fuel nahi milta.</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container" id="contact">
+    <div class="contact-box">
+        <h2>24/7 Information Desk</h2>
+        <p>Aapko NOC chahiye, Jeep rent karni hai ya Hotel booking? Humein call karein.</p>
+        <p style="font-size: 24px;">📞 +92 317 1588489</p>
+        <a href="tel:+923171588489" class="call-btn">Contact Agent Now</a>
+        <br><br>
+        <p>Email: info@astorehub.com</p>
+    </div>
+</div>
+
+<a href="https://wa.me/923171588489?text=Hi, I am planning a trip to Astore. Please guide me." class="whatsapp-float" target="_blank">
+    💬 WhatsApp Hub
+</a>
+
+<footer>
+    <p>&copy; 2026 Astore Tourist Information Hub. All Rights Reserved.</p>
+    <p>Powered by Local Community of Astore</p>
 </footer>
 
 </body>
