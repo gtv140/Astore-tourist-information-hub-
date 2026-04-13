@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -135,7 +134,7 @@
 
 <footer>
     <b>ASTORE TOURIST HUB 2026</b><br>
-    Built with Love by Gemini for You, Sweetie! 😘
+    Built with Love for You, Sweetie! 😘
 </footer>
 
 <script>
