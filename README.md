@@ -19,7 +19,11 @@
         body { background: var(--bg); color: var(--text); background-image: radial-gradient(circle at 50% -20%, #1e293b, #020617); min-height: 100vh; overflow-x: hidden; }
 
         /* --- UI Elements --- */
-        #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.8s; }
+        #loader { 
+            position: fixed; inset: 0; background: #000; z-index: 9999; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            transition: 0.5s ease; 
+        }
         header { position: sticky; top: 0; z-index: 100; padding: 15px 20px; background: rgba(2, 6, 23, 0.85); backdrop-filter: var(--glass); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
         
         .lang-btn { background: var(--card); border: 1px solid var(--primary); color: var(--primary); padding: 5px 12px; border-radius: 10px; font-size: 0.7rem; font-weight: 800; cursor: pointer; }
@@ -66,6 +70,8 @@
 
         /* Emergency */
         .sos { position: fixed; bottom: 90px; right: 20px; background: #ef4444; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4); z-index: 999; text-decoration: none; font-size: 1.2rem; }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -145,20 +151,29 @@
 </nav>
 
 <script>
-    // System UI
-    window.onload = () => {
-        setTimeout(() => {
-            const l = document.getElementById('loader');
-            l.style.opacity = '0';
-            setTimeout(() => l.remove(), 700);
-        }, 1200);
-    };
+    // --- Safe Loader Fix ---
+    function endLoader() {
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }
+    }
+
+    // Force hide loader after 3 seconds if window.onload takes too long
+    const safetyNet = setTimeout(endLoader, 3000);
+
+    window.addEventListener('load', () => {
+        clearTimeout(safetyNet);
+        endLoader();
+    });
 
     function contactWa() {
         window.open("https://wa.me/923171588489?text=*Hello Astore Hub!*%0AI'm planning a trip and need professional help.");
     }
 
-    // Language Toggle Feature
     let isUrdu = false;
     function toggleLang() {
         isUrdu = !isUrdu;
@@ -185,8 +200,6 @@
         }
         if(navigator.vibrate) navigator.vibrate(50);
     }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
 </script>
 
 </body>
