@@ -95,7 +95,7 @@
 
     <div class="branding-card">
         <p id="h-managed" style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 5px;">Supervised & Developed By</p>
-        <a href="https://web-hub-code.github.io/Web-hub/" target="_blank" class="brand-link">Prime Solutions<i class="fa-solid fa-external-link-alt"></i></a><br>
+        <a href="https://web-hub-code.github.io/Web-hub/" target="_blank" class="brand-link">Web-hub<i class="fa-solid fa-external-link-alt"></i></a><br>
         <a href="https://web-hub-code.github.io/PRIMESOLUTIONS/" target="_blank" class="brand-link">Prime Solutions <i class="fa-solid fa-external-link-alt"></i></a>
     </div>
 </div>
