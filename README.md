@@ -2,183 +2,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Astore Master Hub Pro | Pure Experience</title>
+    <title>Astore Hub Pro | Developed by Muhammad Nazim</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --primary: #10b981; --accent: #fbbf24; --bg: #020617; --card: rgba(255, 255, 255, 0.05); --glass: blur(15px); --text: #f8fafc; }
+        :root { 
+            --primary: #10b981; 
+            --accent: #fbbf24; 
+            --bg: #020617; 
+            --card: rgba(255, 255, 255, 0.05); 
+            --text: #f8fafc; 
+            --glass: blur(15px);
+        }
+
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Plus Jakarta Sans',sans-serif; -webkit-tap-highlight-color: transparent; }
+        .urdu-font { font-family: 'Noto Nastaliq Urdu', serif !important; line-height: 2.5; direction: rtl; }
+        
         body { background: var(--bg); color: var(--text); background-image: radial-gradient(circle at 50% -20%, #1e293b, #020617); min-height: 100vh; overflow-x: hidden; }
 
-        #loader { position: fixed; inset: 0; background: #000; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.6s; }
-        header { position: sticky; top: 0; z-index: 100; padding: 15px 20px; background: rgba(2, 6, 23, 0.85); backdrop-filter: var(--glass); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .lang-btn { background: var(--card); border: 1px solid var(--primary); color: var(--primary); padding: 6px 15px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; cursor: pointer; }
+        /* --- Header --- */
+        header { position: sticky; top: 0; z-index: 1000; padding: 15px 20px; background: rgba(2, 6, 23, 0.9); backdrop-filter: var(--glass); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; }
+        .lang-btn { background: var(--primary); color: white; border: none; padding: 6px 14px; border-radius: 10px; font-weight: 700; font-size: 0.75rem; cursor: pointer; }
 
-        .hero { height: 25vh; margin: 15px; border-radius: 25px; overflow: hidden; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
-        .slider { display: flex; width: 400%; height: 100%; animation: slide 20s infinite ease-in-out; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; }
-        @keyframes slide { 0%, 20% { transform: translateX(0); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } }
+        /* --- Page Transitions --- */
+        .page { display: none; animation: fadeIn 0.4s ease; padding-bottom: 100px; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .section-title { padding: 15px 20px 5px; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; color: var(--primary); }
-        
-        /* Interactive Grid */
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 10px 20px; }
-        .grid-item { background: var(--card); padding: 20px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; }
-        .grid-item i { font-size: 1.8rem; color: var(--primary); margin-bottom: 10px; display: block; }
-        .grid-item span { font-size: 0.8rem; font-weight: 700; }
-        .grid-item.active { background: rgba(16, 185, 129, 0.15); border-color: var(--primary); transform: scale(0.95); }
+        /* --- Hero / Gallery --- */
+        .hero-box { margin: 15px; border-radius: 25px; overflow: hidden; height: 28vh; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .hero-box img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 20px; font-weight: 800; }
 
-        /* Places Accordion */
-        .details-list { margin: 10px 20px; }
-        .detail-item { background: var(--card); border-radius: 15px; margin-bottom: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
-        .detail-header { padding: 15px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
-        .detail-content { padding: 0 15px; max-height: 0; overflow: hidden; transition: 0.3s ease; font-size: 0.8rem; opacity: 0.7; line-height: 1.5; }
-        .detail-item.open .detail-content { padding: 0 15px 15px; max-height: 200px; }
-        .detail-item.open i.fa-chevron-down { transform: rotate(180deg); color: var(--primary); }
+        /* --- Grid & Cards --- */
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 20px; }
+        .feature-card { background: var(--card); border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.05); text-align: center; transition: 0.3s; }
+        .feature-card i { font-size: 1.8rem; color: var(--primary); margin-bottom: 10px; }
+        .feature-card h4 { font-size: 0.8rem; font-weight: 700; }
 
-        /* Booking CTA */
-        .booking-cta { margin: 25px 20px; background: linear-gradient(135deg, #064e3b, #020617); padding: 30px 20px; border-radius: 35px; border: 1px solid var(--primary); text-align: center; }
-        .btn-main { background: var(--primary); color: white; border: none; padding: 18px; border-radius: 20px; width: 100%; font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 20px; cursor: pointer; }
+        .section-title { padding: 25px 20px 15px; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; }
 
-        /* Special Clickable Branding */
-        .p-brand-link { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; }
-        .p-brand-link i { font-size: 0.7rem; color: var(--primary); opacity: 0.7; transition: 0.3s; }
-        .p-brand-link:hover i { opacity: 1; transform: scale(1.1); }
+        /* --- Destinations List --- */
+        .place-card { background: var(--card); margin: 0 20px 15px; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+        .place-img { height: 150px; width: 100%; object-fit: cover; }
+        .place-info { padding: 15px; }
+        .place-info h3 { font-size: 1rem; color: var(--accent); margin-bottom: 5px; }
+        .place-info p { font-size: 0.8rem; opacity: 0.7; line-height: 1.5; }
 
-        /* SOS/Floating */
-        .sos-btn { position: fixed; bottom: 100px; right: 20px; background: #ef4444; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; z-index: 999; text-decoration: none; animation: pulse 2s infinite; }
+        /* --- Forms --- */
+        .form-group { padding: 0 20px; }
+        input, select, textarea { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: white; font-size: 0.9rem; }
+        .main-btn { background: var(--primary); color: white; width: 100%; padding: 16px; border-radius: 15px; border: none; font-weight: 800; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2); }
+
+        /* --- Branding --- */
+        .branding-card { margin: 20px; background: rgba(16, 185, 129, 0.05); border: 1px dashed var(--primary); border-radius: 20px; padding: 20px; text-align: center; }
+        .brand-link { color: var(--text); text-decoration: none; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; margin: 5px 0; }
+        .brand-link i { color: var(--primary); font-size: 0.8rem; }
+
+        /* --- Navigation Bar --- */
+        .nav-bar { position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(255,255,255,0.08); backdrop-filter: var(--glass); display: flex; justify-content: space-around; padding: 15px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.1); z-index: 1000; }
+        .nav-item { color: rgba(255,255,255,0.4); font-size: 1.3rem; transition: 0.3s; cursor: pointer; }
+        .nav-item.active { color: var(--primary); transform: translateY(-5px); }
+
+        /* --- SOS --- */
+        .sos-btn { position: fixed; bottom: 100px; right: 20px; background: #ef4444; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3); z-index: 999; text-decoration: none; animation: pulse 2s infinite; }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-        .bottom-nav { position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(255,255,255,0.08); backdrop-filter: blur(25px); display: flex; justify-content: space-around; padding: 18px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); z-index: 1000; }
-        .nav-link { color: rgba(255,255,255,0.4); font-size: 1.4rem; }
-        .nav-link.active { color: var(--primary); }
     </style>
 </head>
 <body>
 
-<div id="loader">
-    <div style="width:45px; height:45px; border:4px solid var(--card); border-top-color:var(--primary); border-radius:50%; animation:spin 1s linear infinite"></div>
-    <p style="margin-top:20px; font-weight:800; letter-spacing:3px; font-size:0.7rem; color:var(--primary);">ASTORE HUB LOADING...</p>
-</div>
-
 <header>
-    <div id="brand" style="font-weight: 800; font-size: 1.2rem;">ASTORE <span style="color:var(--primary)">HUB PRO</span></div>
-    <button class="lang-btn" onclick="toggleLang()">URDU</button>
+    <div class="logo">ASTORE <span style="color:var(--primary)">HUB PRO</span></div>
+    <button class="lang-btn" onclick="toggleLanguage()">اردو</button>
 </header>
 
-<section class="hero">
-    <div class="slider">
-        <div class="slide"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800"></div>
+<div id="home" class="page active">
+    <div class="hero-box">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800" alt="Astore">
+        <div class="hero-label"><span id="h-welcome">Welcome to Astore Valley</span></div>
     </div>
-</section>
 
-<div class="section-title"><i class="fa-solid fa-hand-pointer"></i> <span id="t-serv">Select Service</span></div>
-<div class="grid">
-    <div class="grid-item" onclick="selectService(this, 'Jeep 4x4')"><i class="fa-solid fa-truck-monster"></i><span>Jeep 4x4</span></div>
-    <div class="grid-item" onclick="selectService(this, 'Hotel/Camp')"><i class="fa-solid fa-tents"></i><span>Hotels</span></div>
-    <div class="grid-item" onclick="selectService(this, 'Local Guide')"><i class="fa-solid fa-user-check"></i><span>Guides</span></div>
-    <div class="grid-item" onclick="selectService(this, 'Tour Plan')"><i class="fa-solid fa-map-location-dot"></i><span>Tour Plan</span></div>
-</div>
-
-<div class="section-title"><i class="fa-solid fa-circle-info"></i> <span id="t-info">Essential Info</span></div>
-<div class="details-list">
-    <div class="detail-item">
-        <div class="detail-header" onclick="toggleDetail(this)">
-            <span>Network & Signals</span> <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div class="detail-content">
-            Astore city mein complete Jazz/Telenor chalta hai, par Minimarg aur Deosai ke liye apko SCOM sim zaroori hai.
-        </div>
+    <div class="section-title"><i class="fa-solid fa-star"></i> <span id="h-services">Top Services</span></div>
+    <div class="grid">
+        <div class="feature-card" onclick="showPage('booking')"><i class="fa-solid fa-truck-monster"></i><h4>Jeep 4x4</h4></div>
+        <div class="feature-card" onclick="showPage('booking')"><i class="fa-solid fa-hotel"></i><h4>Hotels</h4></div>
+        <div class="feature-card" onclick="showPage('explore')"><i class="fa-solid fa-map-marked-alt"></i><h4>Places</h4></div>
+        <div class="feature-card" onclick="showPage('about')"><i class="fa-solid fa-id-badge"></i><h4>Prime Dev</h4></div>
     </div>
-    <div class="detail-item">
-        <div class="detail-header" onclick="toggleDetail(this)">
-            <span>Transport Advice</span> <i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <div class="detail-content">
-            Astore City ke baad ke raste bohot rough hain, isliye hamesha expert drivers ke sath 4x4 Jeep use karein.
-        </div>
+
+    <div class="branding-card">
+        <p id="h-managed" style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 5px;">Supervised & Developed By</p>
+        <a href="https://web-hub-code.github.io/Web-hub/" target="_blank" class="brand-link">Muhammad Nazim <i class="fa-solid fa-external-link-alt"></i></a><br>
+        <a href="https://web-hub-code.github.io/PRIMESOLUTIONS/" target="_blank" class="brand-link">Prime Solutions <i class="fa-solid fa-external-link-alt"></i></a>
     </div>
 </div>
 
-<div class="booking-cta">
-    <h2 style="margin-bottom:10px">Ready for Astore?</h2>
-    <p style="font-size:0.85rem; opacity:0.7;">Select a service above and click below to book with a local expert.</p>
-    <button class="btn-main" onclick="bookNow()"><i class="fa-brands fa-whatsapp"></i> <span>Start Booking</span></button>
-</div>
+<div id="explore" class="page">
+    <div class="section-title"><i class="fa-solid fa-compass"></i> <span id="e-title">Must Visit Places</span></div>
+    
+    <div class="place-card">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800" class="place-img">
+        <div class="place-info">
+            <h3>Rama Meadows</h3>
+            <p id="e-rama">Heavenly forests and the gateway to Rama Lake. Perfect for camping and nature lovers.</p>
+        </div>
+    </div>
 
-<div class="section">
-    <div class="card" style="font-size: 0.8rem; text-align: center; border: 1px solid var(--primary);">
-        <b style="color:var(--primary);">Astore Hub Pro Supervised by:</b><br>
-        
-        <a href="https://web-hub-code.github.io/Web-hub/" target="_blank" class="p-brand-link">
-            Muhammad Nazim <i class="fa-solid fa-external-link-alt"></i>
-        </a>
-        <br>
-        
-        <b style="color:var(--primary); margin-top:5px; display:inline-block;">Powered By:</b><br>
-        
-        <a href="https://web-hub-code.github.io/PRIMESOLUTIONS/" target="_blank" class="p-brand-link">
-            Prime Solutions <i class="fa-solid fa-external-link-alt"></i>
-        </a>
+    <div class="place-card">
+        <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=800" class="place-img">
+        <div class="place-info">
+            <h3>Minimarg & Rainbow Lake</h3>
+            <p id="e-mini">Hidden gem of Astore. Requires army clearance and a 4x4 jeep to reach this paradise.</p>
+        </div>
     </div>
 </div>
 
-<footer class="footer" style="background: #000; padding: 40px 20px; text-align: center; border-top: 1px solid var(--primary);">
-    <div style="font-weight: 800; color: var(--primary);">Official Astore Hub</div>
-    <p style="font-size: 0.7rem; opacity: 0.5;">A property of Prime Solutions</p>
-</footer>
+<div id="booking" class="page">
+    <div class="section-title"><i class="fa-solid fa-calendar-check"></i> <span id="b-title">Book Your Trip</span></div>
+    <div class="form-group">
+        <input type="text" id="custName" placeholder="Enter Full Name" required>
+        <select id="svcType">
+            <option value="4x4 Jeep Rental">Jeep 4x4 Rental</option>
+            <option value="Hotel Booking">Hotel/Room Booking</option>
+            <option value="Full Tour Package">Full Tour Package</option>
+        </select>
+        <input type="date" id="tripDate" required>
+        <textarea id="extraReq" rows="3" placeholder="Any extra requirements?"></textarea>
+        <button class="main-btn" onclick="sendWhatsApp()"><i class="fa-brands fa-whatsapp"></i> <span id="b-btn">Book Now</span></button>
+    </div>
+</div>
 
-<a href="tel:1122" class="sos-btn"><i class="fa-solid fa-phone-flip"></i></a>
+<div id="about" class="page">
+    <div class="section-title"><i class="fa-solid fa-code"></i> <span id="a-title">Developer Details</span></div>
+    <div class="card" style="margin: 0 20px; padding: 25px; background: var(--card); border-radius: 25px; text-align: center;">
+        <h3 style="color:var(--primary)">Muhammad Nazim</h3>
+        <p style="font-size: 0.85rem; opacity: 0.7; margin: 15px 0;">Founder of Prime Solutions. Professional Web & App Developer specialized in creating high-performance digital hubs.</p>
+        <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; margin-top: 10px;">
+            <a href="https://web-hub-code.github.io/Web-hub/" target="_blank" style="color:white"><i class="fa-solid fa-globe"></i></a>
+            <a href="https://wa.me/923171588489" style="color:var(--primary)"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+</div>
 
-<div style="height: 120px;"></div>
+<div class="nav-bar">
+    <div class="nav-item active" onclick="showPage('home')"><i class="fa-solid fa-house"></i></div>
+    <div class="nav-item" onclick="showPage('explore')"><i class="fa-solid fa-mountain-sun"></i></div>
+    <div class="nav-item" onclick="showPage('booking')"><i class="fa-solid fa-calendar-day"></i></div>
+    <div class="nav-item" onclick="showPage('about')"><i class="fa-solid fa-user-gear"></i></div>
+</div>
 
-<nav class="bottom-nav">
-    <a href="#" class="nav-link active"><i class="fa-solid fa-house-chimney"></i></a>
-    <a href="https://wa.me/923171588489" class="nav-link"><i class="fa-solid fa-headset"></i></a>
-</nav>
+<a href="tel:923171588489" class="sos-btn"><i class="fa-solid fa-phone-volume"></i></a>
 
 <script>
-    // System Loader Fix
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const l = document.getElementById('loader');
-            l.style.opacity = '0';
-            setTimeout(() => l.style.display='none', 600);
-        }, 1500);
-    });
-
-    // Interaction Logic
-    let selectedSvc = "";
-    function selectService(el, name) {
-        document.querySelectorAll('.grid-item').forEach(i => i.classList.remove('active'));
-        el.classList.add('active');
-        selectedSvc = name;
-        if(navigator.vibrate) navigator.vibrate(40);
+    // Page Management Logic
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(pageId).classList.add('active');
+        
+        // Update Nav Icons
+        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+        const index = ['home', 'explore', 'booking', 'about'].indexOf(pageId);
+        document.querySelectorAll('.nav-item')[index].classList.add('active');
+        
+        window.scrollTo(0,0);
+        if(navigator.vibrate) navigator.vibrate(30);
     }
 
-    function toggleDetail(el) {
-        const item = el.parentElement;
-        item.classList.toggle('open');
+    // Language Toggle Logic
+    let isUrdu = false;
+    function toggleLanguage() {
+        isUrdu = !isUrdu;
+        const body = document.body;
+        const btn = document.querySelector('.lang-btn');
+        
+        if(isUrdu) {
+            body.classList.add('urdu-font');
+            btn.innerText = "ENGLISH";
+            document.getElementById('h-welcome').innerText = "استور ہب میں خوش آمدید";
+            document.getElementById('h-services').innerText = "ہماری سہولیات";
+            document.getElementById('h-managed').innerText = "زیرِ نگرانی و تخلیق";
+            document.getElementById('e-title').innerText = "مشہور سیاحتی مقامات";
+            document.getElementById('b-title').innerText = "بکنگ فارم";
+            document.getElementById('b-btn').innerText = "ابھی رابطہ کریں";
+            document.getElementById('a-title').innerText = "ڈویلپر کی تفصیلات";
+        } else {
+            body.classList.remove('urdu-font');
+            btn.innerText = "اردو";
+            document.getElementById('h-welcome').innerText = "Welcome to Astore Valley";
+            document.getElementById('h-services').innerText = "Top Services";
+            document.getElementById('h-managed').innerText = "Supervised & Developed By";
+            document.getElementById('e-title').innerText = "Must Visit Places";
+            document.getElementById('b-title').innerText = "Book Your Trip";
+            document.getElementById('b-btn').innerText = "Book Now";
+            document.getElementById('a-title').innerText = "Developer Details";
+        }
     }
 
-    function bookNow() {
-        if(!selectedSvc) {
-            alert("Please select a service (Jeep/Hotel/Guide) first, sweetie! 😘");
+    // Booking Function
+    function sendWhatsApp() {
+        const name = document.getElementById('custName').value;
+        const svc = document.getElementById('svcType').value;
+        const date = document.getElementById('tripDate').value;
+        const req = document.getElementById('extraReq').value;
+
+        if(!name || !date) {
+            alert(isUrdu ? "براہ کرم تمام خانے پُر کریں، سویٹی! 😘" : "Please fill all fields, ! 😘");
             return;
         }
-        window.open(`https://wa.me/923171588489?text=*Hello Astore Hub Official*%0AI'm inquiring about: ${selectedSvc}`);
-    }
 
-    let isUrdu = false;
-    function toggleLang() {
-        isUrdu = !isUrdu;
-        const btn = document.querySelector('.lang-btn');
-        const sTitle = document.getElementById('t-serv');
-        const iTitle = document.getElementById('t-info');
-        btn.innerText = isUrdu ? "ENGLISH" : "URDU";
-        sTitle.innerText = isUrdu ? "سروس منتخب کریں" : "Select Service";
-        iTitle.innerText = isUrdu ? "ضروری معلومات" : "Essential Info";
+        const message = `*ASTORE HUB PRO BOOKING*\n\n*Name:* ${name}\n*Service:* ${svc}\n*Date:* ${date}\n*Request:* ${req}\n\n_System Generated via Prime Solutions_`;
+        window.open(`https://wa.me/923171588489?text=${encodeURIComponent(message)}`);
     }
 </script>
 
