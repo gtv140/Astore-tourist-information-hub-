@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Astore Hub Pro | Developed by Muhammad Nazim</title>
+    <title>Astore Hub Pro | Developed by PRIMESOLUTIONS</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -95,7 +95,7 @@
 
     <div class="branding-card">
         <p id="h-managed" style="font-size: 0.75rem; opacity: 0.6; margin-bottom: 5px;">Supervised & Developed By</p>
-        <a href="https://web-hub-code.github.io/Web-hub/" target="_blank" class="brand-link">Muhammad Nazim <i class="fa-solid fa-external-link-alt"></i></a><br>
+        <a href="https://web-hub-code.github.io/Web-hub/" target="_blank" class="brand-link">Prime Solutions<i class="fa-solid fa-external-link-alt"></i></a><br>
         <a href="https://web-hub-code.github.io/PRIMESOLUTIONS/" target="_blank" class="brand-link">Prime Solutions <i class="fa-solid fa-external-link-alt"></i></a>
     </div>
 </div>
@@ -138,7 +138,7 @@
 <div id="about" class="page">
     <div class="section-title"><i class="fa-solid fa-code"></i> <span id="a-title">Developer Details</span></div>
     <div class="card" style="margin: 0 20px; padding: 25px; background: var(--card); border-radius: 25px; text-align: center;">
-        <h3 style="color:var(--primary)">Muhammad Nazim</h3>
+        <h3 style="color:var(--primary)">Prime Solutions</h3>
         <p style="font-size: 0.85rem; opacity: 0.7; margin: 15px 0;">Founder of Prime Solutions. Professional Web & App Developer specialized in creating high-performance digital hubs.</p>
         <div style="display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; margin-top: 10px;">
             <a href="https://web-hub-code.github.io/Web-hub/" target="_blank" style="color:white"><i class="fa-solid fa-globe"></i></a>
